@@ -3426,6 +3426,7 @@ module.exports = [
 var yo = require('yo-yo')
 var wayfarer = require('wayfarer')
 var login = require('./modulos/login/login.js')
+var menu = require('./modulos/menu_hidden/menu_hidden.js')
 var router = wayfarer('/404')
 module.exports = function (state) {
   router.on('/', function () {return (function () {
@@ -3460,12 +3461,13 @@ module.exports = function (state) {
 appendChild(bel0, ["Hola"])
           return bel0
         }())})
+  router.on('/menu', function () {return menu()})
   router.on('/login', function(){return login('blah')})
   router.on('/404', function () {return undefined})
   return router(state.url)
 }
 
-},{"./modulos/login/login.js":46,"wayfarer":36,"yo-yo":41}],44:[function(require,module,exports){
+},{"./modulos/login/login.js":46,"./modulos/menu_hidden/menu_hidden.js":47,"wayfarer":36,"yo-yo":41}],44:[function(require,module,exports){
 /* Trabajamos el worker mediante webworkify. Esto resulta mas natural que compilar el worker aparte y llamarlo desde index.html. */
 var work = require('webworkify')
 var worker = work(require('./worker.js'))
@@ -3543,7 +3545,7 @@ document.body.addEventListener('click', function (event) {
   }
 })
 
-},{"./app.js":43,"./worker.js":48,"local-links":29,"webworkify":38,"yo-yo":41}],45:[function(require,module,exports){
+},{"./app.js":43,"./worker.js":50,"local-links":29,"webworkify":38,"yo-yo":41}],45:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 
 module.exports = csjs`
@@ -3655,6 +3657,220 @@ appendChild(bel15, [bel14])
 
 
 },{"./login.csjs.js":45,"yo-yo":41}],47:[function(require,module,exports){
+var yo = require('yo-yo')
+var styles = require('./menu_hidden_css.js')
+var style = styles();
+
+var wrapper = style['wrapper']
+var sidebar = style['sidebar']
+var nav = style['nav'] 
+var active = style['active']
+var title = style['title']
+var probando = style['probando']
+
+var button = style['button']
+
+module.exports = function menu_hidden () {
+
+  var content = style['content'] + " "+ style['isOpen']
+
+   return (function () {
+          function appendChild (el, childs) {
+            for (var i = 0; i < childs.length; i++) {
+              var node = childs[i];
+              if (Array.isArray(node)) {
+                appendChild(el, node)
+                continue
+              }
+              if (typeof node === "number" ||
+                typeof node === "boolean" ||
+                node instanceof Date ||
+                node instanceof RegExp) {
+                node = node.toString()
+              }
+
+              if (typeof node === "string") {
+                if (el.lastChild && el.lastChild.nodeName === "#text") {
+                  el.lastChild.nodeValue += node
+                  continue
+                }
+                node = document.createTextNode(node)
+              }
+
+              if (node && node.nodeType) {
+                el.appendChild(node)
+              }
+            }
+          }
+          var bel22 = document.createElement("div")
+bel22.setAttribute("class", arguments[6])
+var bel18 = document.createElement("div")
+bel18.setAttribute("class", arguments[3])
+var bel0 = document.createElement("div")
+bel0.setAttribute("class", arguments[0])
+appendChild(bel0, ["\n      Sidebar\n    "])
+var bel17 = document.createElement("ul")
+bel17.setAttribute("class", arguments[2])
+var bel2 = document.createElement("li")
+var bel1 = document.createElement("a")
+appendChild(bel1, ["Dashboard"])
+appendChild(bel2, ["\n        ",bel1,"\n      "])
+var bel4 = document.createElement("li")
+var bel3 = document.createElement("a")
+appendChild(bel3, ["Statistics"])
+appendChild(bel4, ["\n        ",bel3,"\n      "])
+var bel6 = document.createElement("li")
+var bel5 = document.createElement("a")
+bel5.setAttribute("class", arguments[1])
+appendChild(bel5, ["Milestones"])
+appendChild(bel6, ["\n        ",bel5,"\n      "])
+var bel8 = document.createElement("li")
+var bel7 = document.createElement("a")
+appendChild(bel7, ["Experiments"])
+appendChild(bel8, ["\n        ",bel7,"\n      "])
+var bel10 = document.createElement("li")
+var bel9 = document.createElement("a")
+appendChild(bel9, ["Previews"])
+appendChild(bel10, ["\n        ",bel9,"\n      "])
+var bel12 = document.createElement("li")
+var bel11 = document.createElement("a")
+appendChild(bel11, ["Assets"])
+appendChild(bel12, ["\n        ",bel11,"\n      "])
+var bel14 = document.createElement("li")
+var bel13 = document.createElement("a")
+appendChild(bel13, ["Settings"])
+appendChild(bel14, ["\n        ",bel13,"\n      "])
+var bel16 = document.createElement("li")
+var bel15 = document.createElement("a")
+appendChild(bel15, ["Logout"])
+appendChild(bel16, ["\n        ",bel15,"\n      "])
+appendChild(bel17, ["\n      ",bel2,"\n      ",bel4,"\n      ",bel6,"\n      ",bel8,"\n      ",bel10,"\n      ",bel12,"\n      ",bel14,"\n      ",bel16,"\n    "])
+appendChild(bel18, ["\n    ",bel0,"\n    ",bel17,"\n  "])
+var bel21 = document.createElement("div")
+bel21.setAttribute("class", arguments[5] + " ")
+var bel19 = document.createElement("a")
+bel19.setAttribute("class", arguments[4])
+var bel20 = document.createElement("h1")
+appendChild(bel20, ["CONTENIDO"])
+appendChild(bel21, ["\n    ",bel19,"\n    ",bel20,"\n  "])
+appendChild(bel22, ["\n  ",bel18,"\n  ",bel21,"\n"])
+          return bel22
+        }(title,active,nav,sidebar,button,content,wrapper));
+}
+
+},{"./menu_hidden_css.js":48,"yo-yo":41}],48:[function(require,module,exports){
+var csjs = require('csjs-injectify/csjs-inject');
+module.exports = function () {
+  return csjs`
+
+
+.wrapper {
+  display: flex;
+  min-height: 100%;
+}
+
+.sidebar {
+  position: absolute;
+  width: 220px;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  background: #eee;
+  box-shadow: 0 0 5px black;
+  transform: translate3d(0, 0, 0);
+  transition: transform .3s;
+}
+
+.content.isOpen {
+  transform: translate3d(220px, 0, 0);
+}
+
+.button {
+  cursor: pointer;
+}
+
+.button:before {
+  content: '\f0c9';
+  font: 42px fontawesome;
+}
+
+/* Demo Navigation */
+.title {
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  color: #eee;
+  border-bottom: 1px solid #222;
+  background: #2a2a2a;
+}
+
+.nav li a {
+  position: relative;
+  display: block;
+  padding: 15px 15px 15px 50px;
+  font-size: 12px;
+  color: #eee;
+  border-bottom: 1px solid #222;
+}
+
+.nav li a:before {
+  font: 14px fontawesome;
+  position: absolute;
+  top: 14px;
+  left: 20px;
+}
+
+.nav li:nth-child(1) a:before {
+  content: '\f00a';
+}
+
+.nav li:nth-child(2) a:before {
+  content: '\f012';
+}
+
+.nav li:nth-child(3) a:before {
+  content: '\f0e8';
+}
+
+.nav li:nth-child(4) a:before {
+  content: '\f0c3';
+}
+
+.nav li:nth-child(5) a:before {
+  content: '\f022';
+}
+
+.nav li:nth-child(6) a:before {
+  content: '\f115';
+}
+
+.nav li:nth-child(7) a:before {
+  content: '\f085';
+}
+
+.nav li:nth-child(8) a:before {
+  content: '\f023';
+  left: 23px;
+}
+
+.nav li a:hover {
+  background: #444;
+}
+
+.nav li a.active {
+  box-shadow: inset 5px 0 0 #5b5, inset 6px 0 0 #222;
+  background: #444;
+}
+
+
+
+`;
+}
+},{"csjs-injectify/csjs-inject":8}],49:[function(require,module,exports){
 var createStore = require('store-emitter')
 var xtend = require('xtend')
 /* Qué vamos a hacer con los eventos que reciba el store.
@@ -3682,7 +3898,7 @@ var store = createStore(modifier,
 )
 module.exports = store
 
-},{"store-emitter":33,"xtend":39}],48:[function(require,module,exports){
+},{"store-emitter":33,"xtend":39}],50:[function(require,module,exports){
 /* Nos permite mantener el estado completo de la aplicacion en un unico objeto que emite eventos ante cualquier modificacion */
 var store = require('./store.js')
 
@@ -3701,4 +3917,4 @@ self.addEventListener('message', function(ev){store(ev.data)})
  // self.postMessage(store.getState())
 }
 
-},{"./store.js":47}]},{},[44]);
+},{"./store.js":49}]},{},[44]);
