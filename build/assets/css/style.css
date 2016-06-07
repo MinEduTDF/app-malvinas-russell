@@ -1,0 +1,23 @@
+body {
+	background: #F3F3F3;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+.center {
+	padding-top: 5%;
+    margin: auto;
+    width: 23%;
+    text-align: center;
+}
+
+.footer {
+	    position:absolute;
+    bottom:0;
+    width: 100%;
+}

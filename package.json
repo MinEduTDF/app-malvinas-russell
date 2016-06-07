@@ -1,0 +1,48 @@
+{
+  "name": "app-malvinas-russell",
+  "version": "0.1.0",
+  "description": "Aplicacion web progresiva sobre Malvinas basada en Russell",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node server.js & watchify src/index.js -o build/assets/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MinEduTDF/app-malvinas-russell.git"
+  },
+  "keywords": [
+    "russell"
+  ],
+  "author": "MinEduTDF",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MinEduTDF/app-malvinas-russell/issues"
+  },
+  "homepage": "https://github.com/MinEduTDF/app-malvinas-russell#readme",
+  "dependencies": {
+    "JSONStream": "^1.1.1",
+    "csjs": "^1.0.3",
+    "ecstatic": "^1.4.1",
+    "hyperstream": "^1.2.2",
+    "local-links": "^1.4.0",
+    "store-emitter": "^2.2.0",
+    "wayfarer": "^6.1.4",
+    "xtend": "^4.0.1",
+    "yo-yo": "^1.2.1"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "csjs-extractify": "^1.0.0-alpha.0",
+    "csjs-injectify": "^1.0.0",
+    "watchify": "^3.7.0",
+    "webworkify": "^1.2.1",
+    "yo-yoify": "^1.0.0"
+  },
+  "browserify": {
+    "transform": [
+      "yo-yoify",
+      "csjs-injectify"
+    ]
+  }
+}
