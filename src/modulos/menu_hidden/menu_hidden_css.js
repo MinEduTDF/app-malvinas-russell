@@ -26,15 +26,6 @@ module.exports = function () {
   transform: translate3d(220px, 0, 0);
 }
 
-.button {
-  cursor: pointer;
-}
-
-.button:before {
-  content: '\f0c9';
-  font: 42px fontawesome;
-}
-
 /* Demo Navigation */
 .title {
   font-size: 16px;

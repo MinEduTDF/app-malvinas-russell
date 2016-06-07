@@ -9,8 +9,6 @@ var active = style['active']
 var title = style['title']
 var probando = style['probando']
 
-var button = style['button']
-
 module.exports = function menu_hidden () {
 
   var content = style['content'] + " "+ style['isOpen']
@@ -48,7 +46,6 @@ module.exports = function menu_hidden () {
     </ul>
   </div>
   <div class='${content} '>
-    <a class='${button}'></a>
     <h1>CONTENIDO</h1>
   </div>
 </div>`;

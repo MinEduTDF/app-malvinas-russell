@@ -3668,7 +3668,7 @@ var active = style['active']
 var title = style['title']
 var probando = style['probando']
 
-var button = style['button']
+
 
 module.exports = function menu_hidden () {
 
@@ -3702,8 +3702,8 @@ module.exports = function menu_hidden () {
               }
             }
           }
-          var bel22 = document.createElement("div")
-bel22.setAttribute("class", arguments[6])
+          var bel21 = document.createElement("div")
+bel21.setAttribute("class", arguments[5])
 var bel18 = document.createElement("div")
 bel18.setAttribute("class", arguments[3])
 var bel0 = document.createElement("div")
@@ -3746,16 +3746,14 @@ appendChild(bel15, ["Logout"])
 appendChild(bel16, ["\n        ",bel15,"\n      "])
 appendChild(bel17, ["\n      ",bel2,"\n      ",bel4,"\n      ",bel6,"\n      ",bel8,"\n      ",bel10,"\n      ",bel12,"\n      ",bel14,"\n      ",bel16,"\n    "])
 appendChild(bel18, ["\n    ",bel0,"\n    ",bel17,"\n  "])
-var bel21 = document.createElement("div")
-bel21.setAttribute("class", arguments[5] + " ")
-var bel19 = document.createElement("a")
-bel19.setAttribute("class", arguments[4])
-var bel20 = document.createElement("h1")
-appendChild(bel20, ["CONTENIDO"])
-appendChild(bel21, ["\n    ",bel19,"\n    ",bel20,"\n  "])
-appendChild(bel22, ["\n  ",bel18,"\n  ",bel21,"\n"])
-          return bel22
-        }(title,active,nav,sidebar,button,content,wrapper));
+var bel20 = document.createElement("div")
+bel20.setAttribute("class", arguments[4] + " ")
+var bel19 = document.createElement("h1")
+appendChild(bel19, ["CONTENIDO"])
+appendChild(bel20, ["\n    ",bel19,"\n  "])
+appendChild(bel21, ["\n  ",bel18,"\n  ",bel20,"\n"])
+          return bel21
+        }(title,active,nav,sidebar,content,wrapper));
 }
 
 },{"./menu_hidden_css.js":48,"yo-yo":41}],48:[function(require,module,exports){
@@ -3785,15 +3783,6 @@ module.exports = function () {
 
 .content.isOpen {
   transform: translate3d(220px, 0, 0);
-}
-
-.button {
-  cursor: pointer;
-}
-
-.button:before {
-  content: '\f0c9';
-  font: 42px fontawesome;
 }
 
 /* Demo Navigation */
