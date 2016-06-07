@@ -5,11 +5,16 @@ var xtend = require('xtend')
 function modifier ( action, state ) {
   if (action.type === 'setUrl')
   return xtend(state, {url : action.payload})
+  if (action.type === 'menu') {
+  return xtend(state, {isOpen: !state.isOpen})
+
+  }
 }
 
 /* Creamos el store pasando como parámetros la función que lo modifica y el estado inicial. */
 var store = createStore(modifier, 
 {
+  isOpen: false,
   milestones: [],
   url: '/',
   title: "El titulo",

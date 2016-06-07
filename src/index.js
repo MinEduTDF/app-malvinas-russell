@@ -68,8 +68,9 @@ document.body.addEventListener('click', function (event) {
   // {type: "decrement"}
   // but could contain any serializable payload
   // describing the action that occured
-  var click = event.target['data-click']
+  var click = JSON.parse(event.target['dataset'].click)
   if (click) {
+    // console.log(typeof JSON.parse(click))
     event.preventDefault()
     worker.postMessage(click)
   }

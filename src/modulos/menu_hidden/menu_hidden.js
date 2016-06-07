@@ -1,6 +1,7 @@
 var yo = require('yo-yo')
 var styles = require('./menu_hidden_css.js')
 var style = styles();
+var store = require('../../store.js')
 
 var wrapper = style['wrapper']
 var sidebar = style['sidebar']
@@ -9,10 +10,8 @@ var active = style['active']
 var title = style['title']
 var probando = style['probando']
 
-module.exports = function menu_hidden () {
-
-  var content = style['content'] + " "+ style['isOpen']
-
+module.exports = function menu_hidden (state) {
+  var content = state.isOpen ? style['content'] + " "+ style['isOpen'] : style['content']
    return yo` <div class='${wrapper}'>
   <div class='${sidebar}'>
     <div class='${title}'>
@@ -45,7 +44,8 @@ module.exports = function menu_hidden () {
       </li>
     </ul>
   </div>
-  <div class='${content} '>
+  <div class='${content}'>
+  <button data-click='{"type": "menu"}'>menu</button>
     <h1>CONTENIDO</h1>
   </div>
 </div>`;
