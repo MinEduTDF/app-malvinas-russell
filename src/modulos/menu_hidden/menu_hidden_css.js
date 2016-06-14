@@ -54,39 +54,6 @@ module.exports = function () {
   left: 20px;
 }
 
-.nav li:nth-child(1) a:before {
-  content: '\f00a';
-}
-
-.nav li:nth-child(2) a:before {
-  content: '\f012';
-}
-
-.nav li:nth-child(3) a:before {
-  content: '\f0e8';
-}
-
-.nav li:nth-child(4) a:before {
-  content: '\f0c3';
-}
-
-.nav li:nth-child(5) a:before {
-  content: '\f022';
-}
-
-.nav li:nth-child(6) a:before {
-  content: '\f115';
-}
-
-.nav li:nth-child(7) a:before {
-  content: '\f085';
-}
-
-.nav li:nth-child(8) a:before {
-  content: '\f023';
-  left: 23px;
-}
-
 .nav li a:hover {
   background: #444;
 }

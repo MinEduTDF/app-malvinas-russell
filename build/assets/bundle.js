@@ -3461,7 +3461,7 @@ module.exports = function (state) {
 appendChild(bel0, ["Hola"])
           return bel0
         }())})
-  router.on('/menu', function () {return menu()})
+  router.on('/menu', function () {return menu(state)})
   router.on('/login', function(){return login('blah')})
   router.on('/404', function () {return undefined})
   return router(state.url)
@@ -3538,8 +3538,9 @@ document.body.addEventListener('click', function (event) {
   // {type: "decrement"}
   // but could contain any serializable payload
   // describing the action that occured
-  var click = event.target['data-click']
+  var click = JSON.parse(event.target['dataset'].click)
   if (click) {
+    // console.log(typeof JSON.parse(click))
     event.preventDefault()
     worker.postMessage(click)
   }
@@ -3660,6 +3661,7 @@ appendChild(bel15, [bel14])
 var yo = require('yo-yo')
 var styles = require('./menu_hidden_css.js')
 var style = styles();
+var store = require('../../store.js')
 
 var wrapper = style['wrapper']
 var sidebar = style['sidebar']
@@ -3668,12 +3670,8 @@ var active = style['active']
 var title = style['title']
 var probando = style['probando']
 
-
-
-module.exports = function menu_hidden () {
-
-  var content = style['content'] + " "+ style['isOpen']
-
+module.exports = function menu_hidden (state) {
+  var content = state.isOpen ? style['content'] + " "+ style['isOpen'] : style['content']
    return (function () {
           function appendChild (el, childs) {
             for (var i = 0; i < childs.length; i++) {
@@ -3702,8 +3700,8 @@ module.exports = function menu_hidden () {
               }
             }
           }
-          var bel21 = document.createElement("div")
-bel21.setAttribute("class", arguments[5])
+          var bel22 = document.createElement("div")
+bel22.setAttribute("class", arguments[5])
 var bel18 = document.createElement("div")
 bel18.setAttribute("class", arguments[3])
 var bel0 = document.createElement("div")
@@ -3746,17 +3744,20 @@ appendChild(bel15, ["Logout"])
 appendChild(bel16, ["\n        ",bel15,"\n      "])
 appendChild(bel17, ["\n      ",bel2,"\n      ",bel4,"\n      ",bel6,"\n      ",bel8,"\n      ",bel10,"\n      ",bel12,"\n      ",bel14,"\n      ",bel16,"\n    "])
 appendChild(bel18, ["\n    ",bel0,"\n    ",bel17,"\n  "])
-var bel20 = document.createElement("div")
-bel20.setAttribute("class", arguments[4] + " ")
-var bel19 = document.createElement("h1")
-appendChild(bel19, ["CONTENIDO"])
-appendChild(bel20, ["\n    ",bel19,"\n  "])
-appendChild(bel21, ["\n  ",bel18,"\n  ",bel20,"\n"])
-          return bel21
+var bel21 = document.createElement("div")
+bel21.setAttribute("class", arguments[4])
+var bel19 = document.createElement("button")
+bel19.setAttribute("data-click", "{\"type\": \"menu\"}")
+appendChild(bel19, ["menu"])
+var bel20 = document.createElement("h1")
+appendChild(bel20, ["CONTENIDO"])
+appendChild(bel21, ["\n  ",bel19,"\n    ",bel20,"\n  "])
+appendChild(bel22, ["\n  ",bel18,"\n  ",bel21,"\n"])
+          return bel22
         }(title,active,nav,sidebar,content,wrapper));
 }
 
-},{"./menu_hidden_css.js":48,"yo-yo":41}],48:[function(require,module,exports){
+},{"../../store.js":49,"./menu_hidden_css.js":48,"yo-yo":41}],48:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 module.exports = function () {
   return csjs`
@@ -3813,39 +3814,6 @@ module.exports = function () {
   left: 20px;
 }
 
-.nav li:nth-child(1) a:before {
-  content: '\f00a';
-}
-
-.nav li:nth-child(2) a:before {
-  content: '\f012';
-}
-
-.nav li:nth-child(3) a:before {
-  content: '\f0e8';
-}
-
-.nav li:nth-child(4) a:before {
-  content: '\f0c3';
-}
-
-.nav li:nth-child(5) a:before {
-  content: '\f022';
-}
-
-.nav li:nth-child(6) a:before {
-  content: '\f115';
-}
-
-.nav li:nth-child(7) a:before {
-  content: '\f085';
-}
-
-.nav li:nth-child(8) a:before {
-  content: '\f023';
-  left: 23px;
-}
-
 .nav li a:hover {
   background: #444;
 }
@@ -3867,11 +3835,16 @@ var xtend = require('xtend')
 function modifier ( action, state ) {
   if (action.type === 'setUrl')
   return xtend(state, {url : action.payload})
+  if (action.type === 'menu') {
+  return xtend(state, {isOpen: !state.isOpen})
+
+  }
 }
 
 /* Creamos el store pasando como parámetros la función que lo modifica y el estado inicial. */
 var store = createStore(modifier, 
 {
+  isOpen: false,
   milestones: [],
   url: '/',
   title: "El titulo",
