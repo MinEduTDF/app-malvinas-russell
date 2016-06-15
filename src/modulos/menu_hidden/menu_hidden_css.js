@@ -2,6 +2,10 @@ var csjs = require('csjs');
 module.exports = function () {
   return csjs`
 
+.img {
+background-image: url('/assets/img/malvinas.jpg');
+padding: 90px;
+}
 
 .wrapper {
   display: flex;
@@ -42,9 +46,9 @@ module.exports = function () {
   position: relative;
   display: block;
   padding: 15px 15px 15px 50px;
-  font-size: 12px;
-  color: #eee;
-  border-bottom: 1px solid #222;
+  font-size: 13px;
+  color: #adadad;
+  font-weight: bold;
 }
 
 .nav li a:before {
@@ -54,49 +58,25 @@ module.exports = function () {
   left: 20px;
 }
 
-.nav li:nth-child(1) a:before {
-  content: '\f00a';
-}
-
-.nav li:nth-child(2) a:before {
-  content: '\f012';
-}
-
-.nav li:nth-child(3) a:before {
-  content: '\f0e8';
-}
-
-.nav li:nth-child(4) a:before {
-  content: '\f0c3';
-}
-
-.nav li:nth-child(5) a:before {
-  content: '\f022';
-}
-
-.nav li:nth-child(6) a:before {
-  content: '\f115';
-}
-
-.nav li:nth-child(7) a:before {
-  content: '\f085';
-}
-
-.nav li:nth-child(8) a:before {
-  content: '\f023';
-  left: 23px;
-}
-
 .nav li a:hover {
-  background: #444;
+  cursor: pointer;
+  background: #f3f3f3;
+  color: #989898;
 }
 
 .nav li a.active {
-  box-shadow: inset 5px 0 0 #5b5, inset 6px 0 0 #222;
-  background: #444;
+  box-shadow: inset 5px 0 0 #5b7dbd, inset 6px 0 0;
+  background: #e4e4e4;
+  color: #5b7dbd;
 }
 
-
+.icon {
+  fill: #6182C2;
+  margin-top: -6px;
+  float:left; 
+  height: 32px;
+  width: 34px;
+}
 
 `;
 }

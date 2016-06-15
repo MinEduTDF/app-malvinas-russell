@@ -3461,7 +3461,7 @@ module.exports = function (state) {
 appendChild(bel0, ["Hola"])
           return bel0
         }())})
-  router.on('/menu', function () {return menu()})
+  router.on('/menu', function () {return menu(state)})
   router.on('/login', function(){return login('blah')})
   router.on('/404', function () {return undefined})
   return router(state.url)
@@ -3538,8 +3538,9 @@ document.body.addEventListener('click', function (event) {
   // {type: "decrement"}
   // but could contain any serializable payload
   // describing the action that occured
-  var click = event.target['data-click']
+  var click = JSON.parse(event.target['dataset'].click)
   if (click) {
+    // console.log(typeof JSON.parse(click))
     event.preventDefault()
     worker.postMessage(click)
   }
@@ -3660,6 +3661,7 @@ appendChild(bel15, [bel14])
 var yo = require('yo-yo')
 var styles = require('./menu_hidden_css.js')
 var style = styles();
+var store = require('../../store.js')
 
 var wrapper = style['wrapper']
 var sidebar = style['sidebar']
@@ -3667,13 +3669,11 @@ var nav = style['nav']
 var active = style['active']
 var title = style['title']
 var probando = style['probando']
+var img = style['img']
+var icon = style['icon']
 
-
-
-module.exports = function menu_hidden () {
-
-  var content = style['content'] + " "+ style['isOpen']
-
+module.exports = function menu_hidden (state) {
+  var content = state.isOpen ? style['content'] + " "+ style['isOpen'] : style['content']
    return (function () {
           function appendChild (el, childs) {
             for (var i = 0; i < childs.length; i++) {
@@ -3702,65 +3702,94 @@ module.exports = function menu_hidden () {
               }
             }
           }
-          var bel21 = document.createElement("div")
-bel21.setAttribute("class", arguments[5])
-var bel18 = document.createElement("div")
-bel18.setAttribute("class", arguments[3])
+          var bel30 = document.createElement("div")
+bel30.setAttribute("class", arguments[11])
+var bel26 = document.createElement("div")
+bel26.setAttribute("class", arguments[9])
 var bel0 = document.createElement("div")
 bel0.setAttribute("class", arguments[0])
-appendChild(bel0, ["\n      Sidebar\n    "])
-var bel17 = document.createElement("ul")
-bel17.setAttribute("class", arguments[2])
-var bel2 = document.createElement("li")
-var bel1 = document.createElement("a")
-appendChild(bel1, ["Dashboard"])
-appendChild(bel2, ["\n        ",bel1,"\n      "])
+appendChild(bel0, ["\n    "])
+var bel25 = document.createElement("ul")
+bel25.setAttribute("class", arguments[8])
 var bel4 = document.createElement("li")
 var bel3 = document.createElement("a")
-appendChild(bel3, ["Statistics"])
-appendChild(bel4, ["\n        ",bel3,"\n      "])
-var bel6 = document.createElement("li")
-var bel5 = document.createElement("a")
-bel5.setAttribute("class", arguments[1])
-appendChild(bel5, ["Milestones"])
-appendChild(bel6, ["\n        ",bel5,"\n      "])
+var bel2 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+bel2.setAttributeNS(null, "class", arguments[1])
+var bel1 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+bel1.setAttributeNS(null, "d", "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z")
+appendChild(bel2, [" ",bel1])
+appendChild(bel3, [bel2,"\n              Principal"])
+appendChild(bel4, ["\n          ",bel3,"\n      "])
 var bel8 = document.createElement("li")
 var bel7 = document.createElement("a")
-appendChild(bel7, ["Experiments"])
+var bel6 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+bel6.setAttributeNS(null, "class", arguments[2])
+var bel5 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+bel5.setAttributeNS(null, "d", "M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z")
+appendChild(bel6, [" ",bel5,"\n    "])
+appendChild(bel7, ["\n",bel6,"\n\n        Historia"])
 appendChild(bel8, ["\n        ",bel7,"\n      "])
-var bel10 = document.createElement("li")
-var bel9 = document.createElement("a")
-appendChild(bel9, ["Previews"])
-appendChild(bel10, ["\n        ",bel9,"\n      "])
 var bel12 = document.createElement("li")
 var bel11 = document.createElement("a")
-appendChild(bel11, ["Assets"])
+bel11.setAttribute("class", arguments[4])
+var bel10 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+bel10.setAttributeNS(null, "class", arguments[3])
+var bel9 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+bel9.setAttributeNS(null, "d", "M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z")
+appendChild(bel10, ["     ",bel9,"\n    "])
+appendChild(bel11, ["\n",bel10,"\n        Efemérides"])
 appendChild(bel12, ["\n        ",bel11,"\n      "])
-var bel14 = document.createElement("li")
-var bel13 = document.createElement("a")
-appendChild(bel13, ["Settings"])
-appendChild(bel14, ["\n        ",bel13,"\n      "])
 var bel16 = document.createElement("li")
 var bel15 = document.createElement("a")
-appendChild(bel15, ["Logout"])
+var bel14 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+bel14.setAttributeNS(null, "class", arguments[5])
+var bel13 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+bel13.setAttributeNS(null, "d", "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z")
+appendChild(bel14, ["     ",bel13,"\n    "])
+appendChild(bel15, ["\n",bel14,"\n        Geolocalización"])
 appendChild(bel16, ["\n        ",bel15,"\n      "])
-appendChild(bel17, ["\n      ",bel2,"\n      ",bel4,"\n      ",bel6,"\n      ",bel8,"\n      ",bel10,"\n      ",bel12,"\n      ",bel14,"\n      ",bel16,"\n    "])
-appendChild(bel18, ["\n    ",bel0,"\n    ",bel17,"\n  "])
-var bel20 = document.createElement("div")
-bel20.setAttribute("class", arguments[4] + " ")
-var bel19 = document.createElement("h1")
-appendChild(bel19, ["CONTENIDO"])
-appendChild(bel20, ["\n    ",bel19,"\n  "])
-appendChild(bel21, ["\n  ",bel18,"\n  ",bel20,"\n"])
-          return bel21
-        }(title,active,nav,sidebar,content,wrapper));
+var bel20 = document.createElement("li")
+var bel19 = document.createElement("a")
+var bel18 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+bel18.setAttributeNS(null, "class", arguments[6])
+var bel17 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+bel17.setAttributeNS(null, "d", "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z")
+appendChild(bel18, ["     ",bel17,"\n    "])
+appendChild(bel19, ["\n",bel18,"\n        Centros"])
+appendChild(bel20, ["\n        ",bel19,"\n      "])
+var bel24 = document.createElement("li")
+var bel23 = document.createElement("a")
+var bel22 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+bel22.setAttributeNS(null, "class", arguments[7])
+var bel21 = document.createElementNS("http://www.w3.org/2000/svg", "path")
+bel21.setAttributeNS(null, "d", "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z")
+appendChild(bel22, ["   ",bel21,"\n    "])
+appendChild(bel23, ["\n",bel22,"\n        Eventos"])
+appendChild(bel24, ["\n        ",bel23,"\n      "])
+appendChild(bel25, ["\n      ",bel4,"\n\n      ",bel8,"\n      ",bel12,"\n      ",bel16,"\n      ",bel20,"\n      ",bel24,"\n    "])
+appendChild(bel26, ["\n    ",bel0,"\n    ",bel25,"\n  "])
+var bel29 = document.createElement("div")
+bel29.setAttribute("class", arguments[10])
+var bel27 = document.createElement("button")
+bel27.setAttribute("data-click", "{\"type\": \"menu\"}")
+appendChild(bel27, ["menu"])
+var bel28 = document.createElement("h1")
+appendChild(bel28, ["CONTENIDO"])
+appendChild(bel29, ["\n  ",bel27,"\n    ",bel28,"\n  "])
+appendChild(bel30, ["\n  ",bel26,"\n  ",bel29,"\n"])
+          return bel30
+        }(img,icon,icon,icon,active,icon,icon,icon,nav,sidebar,content,wrapper));
 }
 
-},{"./menu_hidden_css.js":48,"yo-yo":41}],48:[function(require,module,exports){
+},{"../../store.js":49,"./menu_hidden_css.js":48,"yo-yo":41}],48:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 module.exports = function () {
   return csjs`
 
+.img {
+background-image: url('/assets/img/malvinas.jpg');
+padding: 90px;
+}
 
 .wrapper {
   display: flex;
@@ -3801,9 +3830,9 @@ module.exports = function () {
   position: relative;
   display: block;
   padding: 15px 15px 15px 50px;
-  font-size: 12px;
-  color: #eee;
-  border-bottom: 1px solid #222;
+  font-size: 13px;
+  color: #adadad;
+  font-weight: bold;
 }
 
 .nav li a:before {
@@ -3813,49 +3842,25 @@ module.exports = function () {
   left: 20px;
 }
 
-.nav li:nth-child(1) a:before {
-  content: '\f00a';
-}
-
-.nav li:nth-child(2) a:before {
-  content: '\f012';
-}
-
-.nav li:nth-child(3) a:before {
-  content: '\f0e8';
-}
-
-.nav li:nth-child(4) a:before {
-  content: '\f0c3';
-}
-
-.nav li:nth-child(5) a:before {
-  content: '\f022';
-}
-
-.nav li:nth-child(6) a:before {
-  content: '\f115';
-}
-
-.nav li:nth-child(7) a:before {
-  content: '\f085';
-}
-
-.nav li:nth-child(8) a:before {
-  content: '\f023';
-  left: 23px;
-}
-
 .nav li a:hover {
-  background: #444;
+  cursor: pointer;
+  background: #f3f3f3;
+  color: #989898;
 }
 
 .nav li a.active {
-  box-shadow: inset 5px 0 0 #5b5, inset 6px 0 0 #222;
-  background: #444;
+  box-shadow: inset 5px 0 0 #5b7dbd, inset 6px 0 0;
+  background: #e4e4e4;
+  color: #5b7dbd;
 }
 
-
+.icon {
+  fill: #6182C2;
+  margin-top: -6px;
+  float:left; 
+  height: 32px;
+  width: 34px;
+}
 
 `;
 }
@@ -3867,11 +3872,16 @@ var xtend = require('xtend')
 function modifier ( action, state ) {
   if (action.type === 'setUrl')
   return xtend(state, {url : action.payload})
+  if (action.type === 'menu') {
+  return xtend(state, {isOpen: !state.isOpen})
+
+  }
 }
 
 /* Creamos el store pasando como parámetros la función que lo modifica y el estado inicial. */
 var store = createStore(modifier, 
 {
+  isOpen: false,
   milestones: [],
   url: '/',
   title: "El titulo",
