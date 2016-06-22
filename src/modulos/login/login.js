@@ -1,11 +1,11 @@
-var yo = require('yo-yo')
+var rv = require('russell-view')
 var styles = require('./login.csjs.js')
 
 var mc = styles['mdl-card']
 var mct = styles['mdl-card__title']
 
 module.exports = function login (text) {
- return yo`<div id="container"><div class="center"><div class="login"><div class="demo-card-square ${mc} mdl-shadow--2dp">
+ return rv`<div id='container'><div class="center"><div class="login"><div class="demo-card-square ${mc} mdl-shadow--2dp">
   <div class="${mct} ${mc}--expand">
     <h2 class="${mct}-text">${text}</h2>
   </div>

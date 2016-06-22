@@ -1,31 +1,30 @@
 /* Trabajamos el worker mediante webworkify. Esto resulta mas natural que compilar el worker aparte y llamarlo desde index.html. */
 var work = require('webworkify')
 var worker = work(require('./worker.js'))
-var yo = require('yo-yo')
+var morphdom = require('morphdom')
 
 /* app, es nuestra vista principal. Contiene ademas la logica para elegir la vista en funcion de la url en el estado. */
-var app = require('./app.js')
 
 /* Permite identificar los links locales facilmente y sin lidiar con diferencias entre navegadores. */
 var localLinks = require('local-links')
 
 /* El elemento base sobre el que vamos a correr yo.update */
-var el = document.getElementById('content')
-
+var el = document.getElementById('container')
 /* Por cada evento que recibimos del woker verificamos si existe el elemento base el.
    Si no existe, vaciamos el body y lo inicializamos.
    Si existe, ya podemos correr yo.update.
 */
-worker.onmessage = function (ev) {
-    var newel = app(ev.data)
+worker.onmessage = function onmsg(ev) {
+    var newel = ev.data.view
     var url = ev.data.url
   // if (!el) {
-  //       el = newel
-  //   document.body.innerHTML = ''
-  //   return document.body.appendChild(el)
+  //       var elemento = document.createElement('div')
+  //         elemento.innerHTML = newel
+  //         el = elemento.firstChild
+  //   document.body.appendChild(el)
   // }
-requestAnimationFrame( function () { 
-yo.update(el, newel)
+requestAnimationFrame( function render() { 
+morphdom(el, newel)
 })
 /* Si la url de la barra de navegacion no coincide con la recibida, la actualizamos. */
   if (location.pathname !== url) {

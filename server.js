@@ -15,7 +15,7 @@ var server = http.createServer(function (req, res) {
   if (!app(xtend(state, {url: req.url}))) return st(req, res)
     var elem =  app(xtend(state, {url: req.url}))
   read('index.html').pipe(hyperstream({
-      '#content': elem.toString()
+      '#main': elem
     })).pipe(res)
 })
 server.listen(8000)

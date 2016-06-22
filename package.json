@@ -33,15 +33,15 @@
   },
   "devDependencies": {
     "browserify": "^13.0.0",
-    "csjs-extractify": "^1.0.0-alpha.0",
     "csjs-injectify": "^1.0.0",
+    "es6-templates": "^0.2.2",
     "watchify": "^3.7.0",
     "webworkify": "^1.2.1",
     "yo-yoify": "^1.0.0"
   },
   "browserify": {
     "transform": [
-      "yo-yoify",
+      "es6-templates",
       "csjs-injectify"
     ]
   }

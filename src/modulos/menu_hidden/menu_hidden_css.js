@@ -1,6 +1,5 @@
 var csjs = require('csjs');
-module.exports = function () {
-  return csjs`
+module.exports = csjs`
 
 .img {
 background-image: url('/assets/img/malvinas.jpg');
@@ -78,5 +77,4 @@ padding: 90px;
   width: 34px;
 }
 
-`;
-}
+`
