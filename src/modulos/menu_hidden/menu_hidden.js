@@ -1,9 +1,9 @@
-var yo = require('yo-yo')
-var styles = require('./menu_hidden_css.js')
-var style = styles();
+var rv = require('russell-view')
+var style = require('./menu_hidden_css.js')
 var store = require('../../store.js')
 
 
+module.exports = function menu_hidden (state) {
 var wrapper = style['wrapper']
 var sidebar = style['sidebar']
 var nav = style['nav'] 
@@ -13,9 +13,9 @@ var probando = style['probando']
 var img = style['img']
 var icon = style['icon']
 
-module.exports = function menu_hidden (state) {
+
   var content = state.isOpen ? style['content'] + " "+ style['isOpen'] : style['content']
-   return yo` <div class='${wrapper}'>
+   return rv`<div id='container' class='${wrapper}'>
   <div class='${sidebar}'>
     <div class='${img}'>
     </div>
