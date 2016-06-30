@@ -2939,18 +2939,20 @@ var login = require('./modulos/login/login.js')
 var menu = require('./modulos/menu_hidden/menu_hidden.js')
 var cuadro = require('./modulos/cuadro/cuadro.js')
 var linetime = require('./seccion/linetime.js')
+var brujula = require('./modulos/brujula/brujula.js')
 var router = wayfarer('/404')
 module.exports = function app(state) {
-  router.on('/', function () {return rv`<div id='container'><h1><a href='/login'>login</a> <a href='/linetime'>linetime</a> <a href='/cuadro'>login</a> <a href='/menu'>menu</a></h1></div>`})
+  router.on('/', function () {return rv`<div id='container'><h1> <a href='/login'>login</a> <a href='/brujula'>brujula</a> <a href='/linetime'>linetime</a> <a href='/cuadro'>login</a> <a href='/menu'>menu</a></h1></div>`})
   router.on('/menu', function (){return menu(state)})
   router.on('/login', function () {return login(state)})
   router.on('/linetime', function () {return linetime(state)})
+  router.on('/brujula', function () {return brujula(state)})
   router.on('/cuadro', function () {return cuadro('titulo','blabla','#00bcd4')})
   router.on('/404', function () {return undefined})
   return router(state.url)
 }
 
-},{"./modulos/cuadro/cuadro.js":39,"./modulos/login/login.js":44,"./modulos/menu_hidden/menu_hidden.js":45,"./seccion/linetime.js":47,"russell-view":27,"wayfarer":32}],38:[function(require,module,exports){
+},{"./modulos/brujula/brujula.js":39,"./modulos/cuadro/cuadro.js":40,"./modulos/login/login.js":45,"./modulos/menu_hidden/menu_hidden.js":46,"./seccion/linetime.js":48,"russell-view":27,"wayfarer":32}],38:[function(require,module,exports){
 /* Trabajamos el worker mediante webworkify. Esto resulta mas natural que compilar el worker aparte y llamarlo desde index.html. */
 var work = require('webworkify')
 var worker = work(require('./worker.js'))
@@ -3028,7 +3030,51 @@ document.body.addEventListener('click', function (event) {
   }
 })
 
-},{"./worker.js":49,"local-links":24,"morphdom":25,"webworkify":34}],39:[function(require,module,exports){
+},{"./worker.js":50,"local-links":24,"morphdom":25,"webworkify":34}],39:[function(require,module,exports){
+var yo = require('russell-view')
+// var styles = require('./linetime_css.js')
+
+module.exports = function brujula() {
+// var circle = styles['circle'];
+// var titulo = styles['titulo'];
+
+ return yo`<div>
+
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <defs>
+  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_39">
+   <stop offset="0.471375" stop-opacity="0.988281" stop-color="#fd514f"/>
+   <stop offset="0.510437" stop-opacity="0.992188" stop-color="#cd1312"/>
+   <stop offset="1" stop-opacity="0.992188" stop-color="#cd1312"/>
+  </linearGradient>
+  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_48">
+   <stop offset="0" stop-opacity="0.988281" stop-color="#aaaaaa"/>
+   <stop offset="0.510437" stop-opacity="0.988281" stop-color="#aaaaaa"/>
+   <stop offset="0.514343" stop-opacity="0.984375" stop-color="#f0f0f0"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <circle stroke="#000000" id="svg_3" r="143.413788" cy="149.000014" cx="150.000014" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#364e66"/>
+  <circle stroke="#000000" id="svg_5" r="121.485565" cy="148.999997" cx="150.000003" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ffffff"/>
+  <text stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" id="svg_6" y="92.104944" x="146.921513" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">N</text>
+  <path transform="rotate(54.018157958984375 73.19783020019528,214.08299255371094) " id="svg_8" d="m62.791571,223.188462l10.406257,-18.21095l10.406257,18.21095l-20.812514,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#bfbfbf"/>
+  <path transform="rotate(-41.87788391113281 219.62501525878906,218.312515258789) " id="svg_10" d="m209.218762,227.417996l10.40626,-18.21095l10.40626,18.21095l-20.81252,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#bfbfbf"/>
+  <path id="svg_14" transform="rotate(131.8031768798828 75.27355194091795,85.04252624511719) " d="m64.867299,94.148001l10.40626,-18.21095l10.40625,18.21095l-20.81251,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#bfbfbf"/>
+  <path id="svg_15" transform="rotate(-128.53736877441406 226.3134307861328,83.46419525146483) " d="m215.907164,92.569672l10.40626,-18.21095l10.40626,18.21095l-20.81252,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#bfbfbf"/>
+  <text id="svg_16" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="260.308022" x="144.36519" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">S</text>
+  <text id="svg_17" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="169.889982" x="234.779331" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">E</text>
+  <text id="svg_18" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="171.200242" x="62.480096" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">O</text>
+  <path stroke="#000000" id="svg_28" d="m135.107142,147.156242l13.500001,-103.031249l13.500001,103.031249l-27.000001,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="url(#svg_39)"/>
+  <path stroke="#000000" transform="rotate(-179.46453857421875 148.2474670410156,198.3960113525391) " id="svg_40" d="m134.7499,249.911643l13.497567,-103.031248l13.497567,103.031248l-26.995135,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="url(#svg_48)"/>
+  <circle stroke="#000000" id="svg_31" r="7.875" cy="147.375" cx="148.375" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ffffff"/>
+ </g>
+</svg>
+
+</div>`	
+}
+},{"russell-view":27}],40:[function(require,module,exports){
 var rv = require('russell-view')
 var style = require('./cuadro_css.js')
 
@@ -3043,7 +3089,7 @@ var cuadro = style['cuadro']
 </div>`	
 }
 
-},{"./cuadro_css.js":40,"russell-view":27}],40:[function(require,module,exports){
+},{"./cuadro_css.js":41,"russell-view":27}],41:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 var color = '#666'
 module.exports = csjs`
@@ -3071,7 +3117,7 @@ line-height: 18px;
 font-size: 15px;
 }
 `;
-},{"csjs-injectify/csjs-inject":6}],41:[function(require,module,exports){
+},{"csjs-injectify/csjs-inject":6}],42:[function(require,module,exports){
 var yo = require('russell-view')
 var styles = require('./linetime_css.js')
 
@@ -3128,7 +3174,7 @@ if ( lado === "right") {
 }
 
 }
-},{"./linetime_css.js":42,"russell-view":27}],42:[function(require,module,exports){
+},{"./linetime_css.js":43,"russell-view":27}],43:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 module.exports = csjs`
 
@@ -3144,7 +3190,7 @@ module.exports = csjs`
     font-size: 47px;
 }
 `;
-},{"csjs-injectify/csjs-inject":6}],43:[function(require,module,exports){
+},{"csjs-injectify/csjs-inject":6}],44:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 
 module.exports = csjs`
@@ -3162,7 +3208,7 @@ module.exports = csjs`
 
 `;
 
-},{"csjs-injectify/csjs-inject":6}],44:[function(require,module,exports){
+},{"csjs-injectify/csjs-inject":6}],45:[function(require,module,exports){
 var rv = require('russell-view')
 var styles = require('./login.csjs.js')
 
@@ -3195,7 +3241,7 @@ module.exports = function login (text) {
 }
 
 
-},{"./login.csjs.js":43,"russell-view":27}],45:[function(require,module,exports){
+},{"./login.csjs.js":44,"russell-view":27}],46:[function(require,module,exports){
 var rv = require('russell-view')
 var style = require('./menu_hidden_css.js')
 var store = require('../../store.js')
@@ -3265,7 +3311,7 @@ var icon = style['icon']
 </div>`;
 }
 
-},{"../../store.js":48,"../cuadro/cuadro.js":39,"./menu_hidden_css.js":46,"russell-view":27}],46:[function(require,module,exports){
+},{"../../store.js":49,"../cuadro/cuadro.js":40,"./menu_hidden_css.js":47,"russell-view":27}],47:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 module.exports = csjs`
 
@@ -3347,7 +3393,7 @@ padding: 90px;
 
 `
 
-},{"csjs-injectify/csjs-inject":6}],47:[function(require,module,exports){
+},{"csjs-injectify/csjs-inject":6}],48:[function(require,module,exports){
 var rv = require('russell-view')
 var line = require('../modulos/linetime/linetime.js')
 module.exports = function linetime ( state ) {
@@ -3358,14 +3404,11 @@ ${line('left','#d1652f','2050')}
 ${line('right','#b1c482','3000')}
 ${line('left','#6dbacc','4000')}
 	</div>`
-
-
-
 }
 
 
 
-},{"../modulos/linetime/linetime.js":41,"russell-view":27}],48:[function(require,module,exports){
+},{"../modulos/linetime/linetime.js":42,"russell-view":27}],49:[function(require,module,exports){
 var createStore = require('store-emitter')
 var xtend = require('xtend')
 /* Qué vamos a hacer con los eventos que reciba el store.
@@ -3398,7 +3441,7 @@ var store = createStore(modifier,
 )
 module.exports = store
 
-},{"store-emitter":29,"xtend":35}],49:[function(require,module,exports){
+},{"store-emitter":29,"xtend":35}],50:[function(require,module,exports){
 /* Nos permite mantener el estado completo de la aplicacion en un unico objeto que emite eventos ante cualquier modificacion */
 var store = require('./store.js')
 var app = require('./app.js')
@@ -3418,4 +3461,4 @@ self.addEventListener('message', function(ev){store(ev.data)})
  // self.postMessage(store.getState())
 }
 
-},{"./app.js":37,"./store.js":48}]},{},[38]);
+},{"./app.js":37,"./store.js":49}]},{},[38]);
