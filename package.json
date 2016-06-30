@@ -40,7 +40,6 @@
   },
   "browserify": {
     "transform": [
-      "es6-templates",
       "csjs-injectify"
     ]
   }

@@ -1,6 +1,7 @@
 var rv = require('russell-view')
 var style = require('./menu_hidden_css.js')
 var store = require('../../store.js')
+var ModCuadro = require('../cuadro/cuadro.js')
 
 
 module.exports = function menu_hidden (state) {
@@ -61,6 +62,7 @@ var icon = style['icon']
   <div class='${content}'>
   <button data-click='{"type": "menu"}'>menu</button>
     <h1>CONTENIDO</h1>
+    ${ModCuadro('titulo','blabla','#666')}
   </div>
 </div>`;
 }
