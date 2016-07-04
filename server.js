@@ -3,7 +3,7 @@ var path = require('path')
 var xtend = require('xtend')
 var hyperstream = require('hyperstream')
 var app = require('./src/app.js')
-var store = require('./src/store.js')()
+var store = require('./src/store.js')
 
 var ecstatic = require('ecstatic')
 var st = ecstatic(path.join(__dirname, 'build'))

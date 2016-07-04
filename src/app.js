@@ -14,7 +14,7 @@ module.exports = function app(state) {
   router.on('/linetime', function () {return linetime(state)})
   router.on('/brujula', function () {return brujula(state)})
   router.on('/cuadro', function () {return cuadro('titulo','blabla','#00bcd4')})
-  router.on('/noticias', function () {return noticias(state)})
+  router.on('/', function () {return noticias(state)})
   router.on('/404', function () {return undefined})
   return router(state.url)
 }
