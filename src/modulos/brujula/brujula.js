@@ -10,15 +10,15 @@ module.exports = function brujula() {
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
  <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
  <defs>
-  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_39">
-   <stop offset="0.471375" stop-opacity="0.988281" stop-color="#fd514f"/>
-   <stop offset="0.510437" stop-opacity="0.992188" stop-color="#cd1312"/>
-   <stop offset="1" stop-opacity="0.992188" stop-color="#cd1312"/>
+  <linearGradient id="svg_39" x1="0" y1="0" x2="1" y2="0">
+   <stop stop-color="#fd514f" stop-opacity="0.988281" offset="0.471375"/>
+   <stop stop-color="#cd1312" stop-opacity="0.992188" offset="0.510437"/>
+   <stop stop-color="#cd1312" stop-opacity="0.992188" offset="1"/>
   </linearGradient>
-  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_48">
-   <stop offset="0" stop-opacity="0.988281" stop-color="#aaaaaa"/>
-   <stop offset="0.510437" stop-opacity="0.988281" stop-color="#aaaaaa"/>
-   <stop offset="0.514343" stop-opacity="0.984375" stop-color="#f0f0f0"/>
+  <linearGradient id="svg_48" x1="0" y1="0" x2="1" y2="0">
+   <stop stop-color="#aaaaaa" stop-opacity="0.988281" offset="0"/>
+   <stop stop-color="#aaaaaa" stop-opacity="0.988281" offset="0.510437"/>
+   <stop stop-color="#f0f0f0" stop-opacity="0.984375" offset="0.514343"/>
   </linearGradient>
  </defs>
  <g>
