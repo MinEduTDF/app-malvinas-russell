@@ -28,6 +28,11 @@ padding: 90px;
 .sidebar.isOpen {
   transform: translateX(220px);
   transition: transform .048s;
+  box-shadow: 0 0 5px black;
+}
+
+.content.isOpen {
+  transform: translateX(220px);
 }
 
 /* Demo Navigation */

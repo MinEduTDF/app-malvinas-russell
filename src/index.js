@@ -2,7 +2,7 @@
 var work = require('webworkify')
 var worker = work(require('./worker.js'))
 var morphdom = require('morphdom')
-
+var nT = requestAnimationFrame
 /* app, es nuestra vista principal. Contiene ademas la logica para elegir la vista en funcion de la url en el estado. */
 
 /* Permite identificar los links locales facilmente y sin lidiar con diferencias entre navegadores. */
@@ -14,24 +14,23 @@ var el = document.getElementById('main')
    Si no existe, vaciamos el body y lo inicializamos.
    Si existe, ya podemos correr yo.update.
 */
+var url
 worker.onmessage = function onmsg(ev) {
-    var newel = ev.data.view
-    var url = ev.data.url
-  // if (!el) {
-  //       var elemento = document.createElement('div')
-  //         elemento.innerHTML = newel
-  //         el = elemento.firstChild
-  //   document.body.appendChild(el)
-  // }
-requestAnimationFrame( function render() { 
-morphdom(el, newel)
-})
-/* Si la url de la barra de navegacion no coincide con la recibida, la actualizamos. */
+      // nT( function updateUrl() { 
+  url = ev.data.url
   if (location.pathname !== url) {
     history.pushState(null, null, url)
   }
+// })
+nT( function render() { 
+  // newel = ev.data.view
+  // morphdom(el, ev.data.view)
+  el.innerHTML = ev.data.view
+})
 }
+/* Si la url de la barra de navegacion no coincide con la recibida, la actualizamos. */
 
+nT(function(){
 /* Escuchamos eventos de los botones atras y adelante del navegador y enviamos la nueva url al worker para que actualice el estado */
 window.addEventListener('popstate', function () {
   worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
@@ -55,8 +54,10 @@ document.body.addEventListener('click', function (event) {
     // instead, post the new URL to our worker
     // which will trigger compute a new vDom
     // based on that new URL state
+    nT(function () {
     worker.postMessage({type: 'setUrl', payload: pathname})
     return
+    })
   }
 
   // this is for other "onClick" type events we want to
@@ -68,10 +69,13 @@ document.body.addEventListener('click', function (event) {
   // {type: "decrement"}
   // but could contain any serializable payload
   // describing the action that occured
-  var click = JSON.parse(event.target['dataset'].click)
+  var click = {type: event.target['dataset'].type} //JSON.parse(event.target['dataset'].click)
   if (click) {
     // console.log(typeof JSON.parse(click))
     event.preventDefault()
-    worker.postMessage(click)
+    return  nT(function(){
+    return worker.postMessage(click)
+      })
   }
+})
 })
