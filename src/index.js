@@ -9,7 +9,7 @@ var morphdom = require('morphdom')
 var localLinks = require('local-links')
 
 /* El elemento base sobre el que vamos a correr yo.update */
-var el = document.getElementById('container')
+var el = document.getElementById('main')
 /* Por cada evento que recibimos del woker verificamos si existe el elemento base el.
    Si no existe, vaciamos el body y lo inicializamos.
    Si existe, ya podemos correr yo.update.
@@ -43,6 +43,7 @@ window.addEventListener('load', function () {
 
 // Escuchamos todos los clicks.
 document.body.addEventListener('click', function (event) {
+    // worker.postMessage({type: 'closeMenu'})
   // handles internal navigation defined as
   // clicks on <a> tags that have `href` that is
   // on the same origin.

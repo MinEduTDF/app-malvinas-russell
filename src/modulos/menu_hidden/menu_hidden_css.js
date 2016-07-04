@@ -6,27 +6,28 @@ background-image: url('/assets/img/malvinas.jpg');
 padding: 90px;
 }
 
-.wrapper {
-  display: flex;
-  min-height: 100%;
-}
+
 
 .sidebar {
   position: absolute;
+  left: -220px;
   width: 220px;
+  z-index: 999;
+  top: 0;
+  background-color: #ffffff;
+  min-height: 100%;
+
 }
 
 .content {
   flex: 1;
   padding: 30px;
   background: #eee;
-  box-shadow: 0 0 5px black;
-  transform: translate3d(0, 0, 0);
-  transition: transform .3s;
 }
 
-.content.isOpen {
-  transform: translate3d(220px, 0, 0);
+.sidebar.isOpen {
+  transform: translateX(220px);
+  transition: transform .048s;
 }
 
 /* Demo Navigation */
