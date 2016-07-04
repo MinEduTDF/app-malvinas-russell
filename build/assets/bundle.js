@@ -2939,20 +2939,22 @@ var login = require('./modulos/login/login.js')
 var menu = require('./modulos/menu_hidden/menu_hidden.js')
 var cuadro = require('./modulos/cuadro/cuadro.js')
 var linetime = require('./seccion/linetime.js')
-var brujula = require('./modulos/brujula/brujula.js')
+var azimuth = require('./seccion/azimuth.js')
+var noticias = require('./seccion/noticias.js')
 var router = wayfarer('/404')
 module.exports = function app(state) {
-  router.on('/', function () {return rv`<div id='container'><h1> <a href='/login'>login</a> <a href='/brujula'>brujula</a> <a href='/linetime'>linetime</a> <a href='/cuadro'>login</a> <a href='/menu'>menu</a></h1></div>`})
-  router.on('/menu', function (){return menu(state)})
-  router.on('/login', function () {return login(state)})
+  // router.on('/', function () {return menu(state)})
+  // router.on('/', function (){return login(state)})
+  router.on('/azimuth', function () {return azimuth(state)})
   router.on('/linetime', function () {return linetime(state)})
   router.on('/brujula', function () {return brujula(state)})
   router.on('/cuadro', function () {return cuadro('titulo','blabla','#00bcd4')})
+  router.on('/noticias', function () {return noticias(state)})
   router.on('/404', function () {return undefined})
   return router(state.url)
 }
 
-},{"./modulos/brujula/brujula.js":39,"./modulos/cuadro/cuadro.js":40,"./modulos/login/login.js":45,"./modulos/menu_hidden/menu_hidden.js":46,"./seccion/linetime.js":48,"russell-view":27,"wayfarer":32}],38:[function(require,module,exports){
+},{"./modulos/cuadro/cuadro.js":40,"./modulos/login/login.js":45,"./modulos/menu_hidden/menu_hidden.js":46,"./seccion/azimuth.js":48,"./seccion/linetime.js":49,"./seccion/noticias.js":50,"russell-view":27,"wayfarer":32}],38:[function(require,module,exports){
 /* Trabajamos el worker mediante webworkify. Esto resulta mas natural que compilar el worker aparte y llamarlo desde index.html. */
 var work = require('webworkify')
 var worker = work(require('./worker.js'))
@@ -2964,7 +2966,7 @@ var morphdom = require('morphdom')
 var localLinks = require('local-links')
 
 /* El elemento base sobre el que vamos a correr yo.update */
-var el = document.getElementById('container')
+var el = document.getElementById('main')
 /* Por cada evento que recibimos del woker verificamos si existe el elemento base el.
    Si no existe, vaciamos el body y lo inicializamos.
    Si existe, ya podemos correr yo.update.
@@ -2998,6 +3000,7 @@ window.addEventListener('load', function () {
 
 // Escuchamos todos los clicks.
 document.body.addEventListener('click', function (event) {
+    // worker.postMessage({type: 'closeMenu'})
   // handles internal navigation defined as
   // clicks on <a> tags that have `href` that is
   // on the same origin.
@@ -3030,7 +3033,7 @@ document.body.addEventListener('click', function (event) {
   }
 })
 
-},{"./worker.js":50,"local-links":24,"morphdom":25,"webworkify":34}],39:[function(require,module,exports){
+},{"./worker.js":52,"local-links":24,"morphdom":25,"webworkify":34}],39:[function(require,module,exports){
 var yo = require('russell-view')
 // var styles = require('./linetime_css.js')
 
@@ -3043,15 +3046,15 @@ module.exports = function brujula() {
 <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
  <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
  <defs>
-  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_39">
-   <stop offset="0.471375" stop-opacity="0.988281" stop-color="#fd514f"/>
-   <stop offset="0.510437" stop-opacity="0.992188" stop-color="#cd1312"/>
-   <stop offset="1" stop-opacity="0.992188" stop-color="#cd1312"/>
+  <linearGradient id="svg_39" x1="0" y1="0" x2="1" y2="0">
+   <stop stop-color="#fd514f" stop-opacity="0.988281" offset="0.471375"/>
+   <stop stop-color="#cd1312" stop-opacity="0.992188" offset="0.510437"/>
+   <stop stop-color="#cd1312" stop-opacity="0.992188" offset="1"/>
   </linearGradient>
-  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_48">
-   <stop offset="0" stop-opacity="0.988281" stop-color="#aaaaaa"/>
-   <stop offset="0.510437" stop-opacity="0.988281" stop-color="#aaaaaa"/>
-   <stop offset="0.514343" stop-opacity="0.984375" stop-color="#f0f0f0"/>
+  <linearGradient id="svg_48" x1="0" y1="0" x2="1" y2="0">
+   <stop stop-color="#aaaaaa" stop-opacity="0.988281" offset="0"/>
+   <stop stop-color="#aaaaaa" stop-opacity="0.988281" offset="0.510437"/>
+   <stop stop-color="#f0f0f0" stop-opacity="0.984375" offset="0.514343"/>
   </linearGradient>
  </defs>
  <g>
@@ -3066,18 +3069,18 @@ module.exports = function brujula() {
   <text id="svg_16" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="260.308022" x="144.36519" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">S</text>
   <text id="svg_17" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="169.889982" x="234.779331" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">E</text>
   <text id="svg_18" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="171.200242" x="62.480096" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">O</text>
-  <path stroke="#000000" id="svg_28" d="m135.107142,147.156242l13.500001,-103.031249l13.500001,103.031249l-27.000001,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="url(#svg_39)"/>
-  <path stroke="#000000" transform="rotate(-179.46453857421875 148.2474670410156,198.3960113525391) " id="svg_40" d="m134.7499,249.911643l13.497567,-103.031248l13.497567,103.031248l-26.995135,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="url(#svg_48)"/>
+<g transform="rotate(45,150,150)">  <path stroke="#000000" id="svg_28" d="m135.107142,147.156242l13.500001,-103.031249l13.500001,103.031249l-27.000001,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="url(#svg_39)"/>
+  <path stroke="#000000" transform="rotate(-179.46453857421875 148.2474670410156,198.3960113525391) " id="svg_40" d="m134.7499,249.911643l13.497567,-103.031248l13.497567,103.031248l-26.995135,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="url(#svg_48)"/> </g>
   <circle stroke="#000000" id="svg_31" r="7.875" cy="147.375" cx="148.375" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ffffff"/>
  </g>
 </svg>
 
 </div>`	
 }
+
 },{"russell-view":27}],40:[function(require,module,exports){
 var rv = require('russell-view')
 var style = require('./cuadro_css.js')
-
 
 module.exports = function cuadro (titulox,contenido) {
 var titulo = style['titulo']
@@ -3091,7 +3094,7 @@ var cuadro = style['cuadro']
 
 },{"./cuadro_css.js":41,"russell-view":27}],41:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
-var color = '#666'
+var color = '#6389c8'
 module.exports = csjs`
 .cuadro {
 margin: 10px;
@@ -3250,68 +3253,70 @@ var ModCuadro = require('../cuadro/cuadro.js')
 
 module.exports = function menu_hidden (state) {
 var wrapper = style['wrapper']
-var sidebar = style['sidebar']
 var nav = style['nav'] 
 var active = style['active']
 var title = style['title']
 var probando = style['probando']
 var img = style['img']
 var icon = style['icon']
+var content = style['content']
 
 
-  var content = state.isOpen ? style['content'] + " "+ style['isOpen'] : style['content']
-   return rv`<div id='container' class='${wrapper}'>
+  var sidebar = state.isOpen ? style['sidebar'] + " "+ style['isOpen'] : style['sidebar']
+   return rv`<div>
   <div class='${sidebar}'>
     <div class='${img}'>
     </div>
-    <ul class='${nav}'>
+    <ul class="${nav}">
       <li>
-          <a><svg class="${icon}"> <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+          <a href="/noticias"><svg class="${icon}"> <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
               Principal</a>
       </li>
 
-      <li>
-        <a>
+            <li>
+        <a href="/linetime">
 <svg class="${icon}"> <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
     </svg>
 
         Historia</a>
       </li>
       <li>
-        <a class='${active}'>
-<svg class="${icon}">     <path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
-    </svg>
-        Efemérides</a>
-      </li>
-      <li>
-        <a>
+        <a href="/azimuth">
 <svg class="${icon}">     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
     </svg>
-        Geolocalización</a>
+        Brujula</a>
       </li>
       <li>
         <a>
-<svg class="${icon}">     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-    </svg>
-        Centros</a>
-      </li>
-      <li>
-        <a>
-<svg class="${icon}">   <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-    </svg>
-        Eventos</a>
-      </li>
     </ul>
   </div>
-  <div class='${content}'>
   <button data-click='{"type": "menu"}'>menu</button>
-    <h1>CONTENIDO</h1>
-    ${ModCuadro('titulo','blabla','#666')}
-  </div>
 </div>`;
 }
 
-},{"../../store.js":49,"../cuadro/cuadro.js":40,"./menu_hidden_css.js":47,"russell-view":27}],47:[function(require,module,exports){
+
+
+
+
+//       <li>
+//         <a class='${active}'>
+// <svg class="${icon}">     <path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+//     </svg>
+//         Efemérides</a>
+//       </li>
+//       <li>
+
+// <svg class="${icon}">     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+//     </svg>
+//         Centros</a>
+//       </li>
+//       <li>
+//         <a>
+// <svg class="${icon}">   <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+//     </svg>
+//         Eventos</a>
+//       </li>
+},{"../../store.js":51,"../cuadro/cuadro.js":40,"./menu_hidden_css.js":47,"russell-view":27}],47:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 module.exports = csjs`
 
@@ -3320,27 +3325,28 @@ background-image: url('/assets/img/malvinas.jpg');
 padding: 90px;
 }
 
-.wrapper {
-  display: flex;
-  min-height: 100%;
-}
+
 
 .sidebar {
   position: absolute;
+  left: -220px;
   width: 220px;
+  z-index: 999;
+  top: 0;
+  background-color: #ffffff;
+  min-height: 100%;
+
 }
 
 .content {
   flex: 1;
   padding: 30px;
   background: #eee;
-  box-shadow: 0 0 5px black;
-  transform: translate3d(0, 0, 0);
-  transition: transform .3s;
 }
 
-.content.isOpen {
-  transform: translate3d(220px, 0, 0);
+.sidebar.isOpen {
+  transform: translateX(220px);
+  transition: transform .048s;
 }
 
 /* Demo Navigation */
@@ -3356,6 +3362,7 @@ padding: 90px;
 }
 
 .nav li a {
+  text-decoration: none;
   position: relative;
   display: block;
   padding: 15px 15px 15px 50px;
@@ -3395,9 +3402,19 @@ padding: 90px;
 
 },{"csjs-injectify/csjs-inject":6}],48:[function(require,module,exports){
 var rv = require('russell-view')
+var menu = require('../modulos/menu_hidden/menu_hidden.js')
+var compass = require('../modulos/brujula/brujula.js')
+
+module.exports = function (state) {
+  return rv`<div>${menu(state)}${compass(state)}</div>`
+}
+
+},{"../modulos/brujula/brujula.js":39,"../modulos/menu_hidden/menu_hidden.js":46,"russell-view":27}],49:[function(require,module,exports){
+var rv = require('russell-view')
+var menu = require('../modulos/menu_hidden/menu_hidden.js')
 var line = require('../modulos/linetime/linetime.js')
 module.exports = function linetime ( state ) {
-	return rv`<div>
+	return rv`<div>${menu(state)}
 ${line('left','#5b4f35','2000')}
 ${line('right','#323776','2015')}
 ${line('left','#d1652f','2050')}
@@ -3408,7 +3425,25 @@ ${line('left','#6dbacc','4000')}
 
 
 
-},{"../modulos/linetime/linetime.js":42,"russell-view":27}],49:[function(require,module,exports){
+},{"../modulos/linetime/linetime.js":42,"../modulos/menu_hidden/menu_hidden.js":46,"russell-view":27}],50:[function(require,module,exports){
+var rv = require('russell-view')
+var menu = require('../modulos/menu_hidden/menu_hidden.js')
+var noticia = require('../modulos/cuadro/cuadro.js')
+module.exports = function noticias( state ) {
+	return rv`<div>${menu(state)}
+${noticia('asdasdas','asdasdsad')}
+${noticia('asdasdas','asdasdsad')}
+${noticia('asdasdas','asdasdsad')}
+${noticia('asdasdas','asdasdsad')}
+${noticia('asdasdas','asdasdsad')}
+${noticia('asdasdas','asdasdsad')}
+${noticia('asdasdas','asdasdsad')}
+${noticia('asdasdas','asdasdsad')}
+	</div>`
+}
+
+
+},{"../modulos/cuadro/cuadro.js":40,"../modulos/menu_hidden/menu_hidden.js":46,"russell-view":27}],51:[function(require,module,exports){
 var createStore = require('store-emitter')
 var xtend = require('xtend')
 /* Qué vamos a hacer con los eventos que reciba el store.
@@ -3441,7 +3476,7 @@ var store = createStore(modifier,
 )
 module.exports = store
 
-},{"store-emitter":29,"xtend":35}],50:[function(require,module,exports){
+},{"store-emitter":29,"xtend":35}],52:[function(require,module,exports){
 /* Nos permite mantener el estado completo de la aplicacion en un unico objeto que emite eventos ante cualquier modificacion */
 var store = require('./store.js')
 var app = require('./app.js')
@@ -3461,4 +3496,4 @@ self.addEventListener('message', function(ev){store(ev.data)})
  // self.postMessage(store.getState())
 }
 
-},{"./app.js":37,"./store.js":49}]},{},[38]);
+},{"./app.js":37,"./store.js":51}]},{},[38]);
