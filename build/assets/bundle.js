@@ -359,130 +359,7 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-},{"util/":35}],2:[function(require,module,exports){
-var document = require('global/document')
-var hyperx = require('hyperx')
-
-var SVGNS = 'http://www.w3.org/2000/svg'
-var BOOL_PROPS = {
-  autofocus: 1,
-  checked: 1,
-  defaultchecked: 1,
-  disabled: 1,
-  formnovalidate: 1,
-  indeterminate: 1,
-  readonly: 1,
-  required: 1,
-  willvalidate: 1
-}
-var SVG_TAGS = [
-  'svg',
-  'altGlyph', 'altGlyphDef', 'altGlyphItem', 'animate', 'animateColor',
-  'animateMotion', 'animateTransform', 'circle', 'clipPath', 'color-profile',
-  'cursor', 'defs', 'desc', 'ellipse', 'feBlend', 'feColorMatrix',
-  'feComponentTransfer', 'feComposite', 'feConvolveMatrix', 'feDiffuseLighting',
-  'feDisplacementMap', 'feDistantLight', 'feFlood', 'feFuncA', 'feFuncB',
-  'feFuncG', 'feFuncR', 'feGaussianBlur', 'feImage', 'feMerge', 'feMergeNode',
-  'feMorphology', 'feOffset', 'fePointLight', 'feSpecularLighting',
-  'feSpotLight', 'feTile', 'feTurbulence', 'filter', 'font', 'font-face',
-  'font-face-format', 'font-face-name', 'font-face-src', 'font-face-uri',
-  'foreignObject', 'g', 'glyph', 'glyphRef', 'hkern', 'image', 'line',
-  'linearGradient', 'marker', 'mask', 'metadata', 'missing-glyph', 'mpath',
-  'path', 'pattern', 'polygon', 'polyline', 'radialGradient', 'rect',
-  'set', 'stop', 'switch', 'symbol', 'text', 'textPath', 'title', 'tref',
-  'tspan', 'use', 'view', 'vkern'
-]
-
-function belCreateElement (tag, props, children) {
-  var el
-
-  // If an svg tag, it needs a namespace
-  if (SVG_TAGS.indexOf(tag) !== -1) {
-    props.namespace = SVGNS
-  }
-
-  // If we are using a namespace
-  var ns = false
-  if (props.namespace) {
-    ns = props.namespace
-    delete props.namespace
-  }
-
-  // Create the element
-  if (ns) {
-    el = document.createElementNS(ns, tag)
-  } else {
-    el = document.createElement(tag)
-  }
-
-  // Create the properties
-  for (var p in props) {
-    if (props.hasOwnProperty(p)) {
-      var key = p.toLowerCase()
-      var val = props[p]
-      // Normalize className
-      if (key === 'classname') {
-        key = 'class'
-        p = 'class'
-      }
-      // If a property is boolean, set itself to the key
-      if (BOOL_PROPS[key]) {
-        if (val === 'true') val = key
-        else if (val === 'false') continue
-      }
-      // If a property prefers being set directly vs setAttribute
-      if (key.slice(0, 2) === 'on') {
-        el[p] = val
-      } else {
-        if (ns) {
-          el.setAttributeNS(null, p, val)
-        } else {
-          el.setAttribute(p, val)
-        }
-      }
-    }
-  }
-
-  function appendChild (childs) {
-    if (!Array.isArray(childs)) return
-    for (var i = 0; i < childs.length; i++) {
-      var node = childs[i]
-      if (Array.isArray(node)) {
-        appendChild(node)
-        continue
-      }
-
-      if (typeof node === 'number' ||
-        typeof node === 'boolean' ||
-        node instanceof Date ||
-        node instanceof RegExp) {
-        node = node.toString()
-      }
-
-      if (typeof node === 'string') {
-        if (el.lastChild && el.lastChild.nodeName === '#text') {
-          el.lastChild.nodeValue += node
-          continue
-        }
-        node = document.createTextNode(node)
-      }
-
-      if (node && node.nodeType) {
-        el.appendChild(node)
-      }
-    }
-  }
-  appendChild(children)
-
-  return el
-}
-
-module.exports = hyperx(belCreateElement)
-module.exports.createElement = belCreateElement
-
-},{"global/document":22,"hyperx":24}],3:[function(require,module,exports){
-
-},{}],4:[function(require,module,exports){
+},{"util/":31}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -578,7 +455,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],5:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -597,12 +474,12 @@ function csjsInserter() {
 module.exports = csjsInserter;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"csjs":11,"insert-css":26}],6:[function(require,module,exports){
+},{"csjs":9,"insert-css":21}],4:[function(require,module,exports){
 'use strict';
 
 module.exports = require('csjs/get-css');
 
-},{"csjs/get-css":10}],7:[function(require,module,exports){
+},{"csjs/get-css":8}],5:[function(require,module,exports){
 'use strict';
 
 var csjs = require('./csjs');
@@ -611,24 +488,24 @@ module.exports = csjs;
 module.exports.csjs = csjs;
 module.exports.getCss = require('./get-css');
 
-},{"./csjs":5,"./get-css":6}],8:[function(require,module,exports){
+},{"./csjs":3,"./get-css":4}],6:[function(require,module,exports){
 'use strict';
 
 module.exports = require('csjs-inject');
 
-},{"csjs-inject":7}],9:[function(require,module,exports){
+},{"csjs-inject":5}],7:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/csjs');
 
-},{"./lib/csjs":15}],10:[function(require,module,exports){
+},{"./lib/csjs":13}],8:[function(require,module,exports){
 'use strict';
 
 module.exports = require('./lib/get-css');
 
-},{"./lib/get-css":18}],11:[function(require,module,exports){
-arguments[4][7][0].apply(exports,arguments)
-},{"./csjs":9,"./get-css":10,"dup":7}],12:[function(require,module,exports){
+},{"./lib/get-css":16}],9:[function(require,module,exports){
+arguments[4][5][0].apply(exports,arguments)
+},{"./csjs":7,"./get-css":8,"dup":5}],10:[function(require,module,exports){
 'use strict';
 
 /**
@@ -650,7 +527,7 @@ module.exports = function encode(integer) {
   return str;
 };
 
-},{}],13:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 var makeComposition = require('./composition').makeComposition;
@@ -694,7 +571,7 @@ function getClassChain(obj) {
   return acc;
 }
 
-},{"./composition":14}],14:[function(require,module,exports){
+},{"./composition":12}],12:[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -762,7 +639,7 @@ function isComposition(value) {
  */
 function Composition() {}
 
-},{}],15:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 var extractExtends = require('./css-extract-extends');
@@ -842,7 +719,7 @@ function without(obj, unwanted) {
   }, {});
 }
 
-},{"./build-exports":13,"./composition":14,"./css-extract-extends":16,"./css-key":17,"./scopeify":21}],16:[function(require,module,exports){
+},{"./build-exports":11,"./composition":12,"./css-extract-extends":14,"./css-key":15,"./scopeify":19}],14:[function(require,module,exports){
 'use strict';
 
 var makeComposition = require('./composition').makeComposition;
@@ -895,7 +772,7 @@ function getClassName(str) {
   return trimmed[0] === '.' ? trimmed.substr(1) : trimmed;
 }
 
-},{"./composition":14}],17:[function(require,module,exports){
+},{"./composition":12}],15:[function(require,module,exports){
 'use strict';
 
 /**
@@ -905,7 +782,7 @@ function getClassName(str) {
 
 module.exports = ' css ';
 
-},{}],18:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 var cssKey = require('./css-key');
@@ -914,7 +791,7 @@ module.exports = function getCss(csjs) {
   return csjs[cssKey];
 };
 
-},{"./css-key":17}],19:[function(require,module,exports){
+},{"./css-key":15}],17:[function(require,module,exports){
 'use strict';
 
 /**
@@ -932,7 +809,7 @@ module.exports = function hashStr(str) {
   return hash >>> 0;
 };
 
-},{}],20:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 'use strict';
 
 var encode = require('./base62-encode');
@@ -946,7 +823,7 @@ module.exports = function fileScoper(fileSrc) {
   }
 };
 
-},{"./base62-encode":12,"./hash-string":19}],21:[function(require,module,exports){
+},{"./base62-encode":10,"./hash-string":17}],19:[function(require,module,exports){
 'use strict';
 
 var fileScoper = require('./scoped-name');
@@ -1016,312 +893,7 @@ function replaceAnimations(result) {
   return result;
 }
 
-},{"./scoped-name":20}],22:[function(require,module,exports){
-(function (global){
-var topLevel = typeof global !== 'undefined' ? global :
-    typeof window !== 'undefined' ? window : {}
-var minDoc = require('min-document');
-
-if (typeof document !== 'undefined') {
-    module.exports = document;
-} else {
-    var doccy = topLevel['__GLOBAL_DOCUMENT_CACHE@4'];
-
-    if (!doccy) {
-        doccy = topLevel['__GLOBAL_DOCUMENT_CACHE@4'] = minDoc;
-    }
-
-    module.exports = doccy;
-}
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"min-document":3}],23:[function(require,module,exports){
-module.exports = attributeToProperty
-
-var transform = {
-  'class': 'className',
-  'for': 'htmlFor',
-  'http-equiv': 'httpEquiv'
-}
-
-function attributeToProperty (h) {
-  return function (tagName, attrs, children) {
-    for (var attr in attrs) {
-      if (attr in transform) {
-        attrs[transform[attr]] = attrs[attr]
-        delete attrs[attr]
-      }
-    }
-    return h(tagName, attrs, children)
-  }
-}
-
-},{}],24:[function(require,module,exports){
-var attrToProp = require('hyperscript-attribute-to-property')
-
-var VAR = 0, TEXT = 1, OPEN = 2, CLOSE = 3, ATTR = 4
-var ATTR_KEY = 5, ATTR_KEY_W = 6
-var ATTR_VALUE_W = 7, ATTR_VALUE = 8
-var ATTR_VALUE_SQ = 9, ATTR_VALUE_DQ = 10
-var ATTR_EQ = 11, ATTR_BREAK = 12
-
-module.exports = function (h, opts) {
-  h = attrToProp(h)
-  if (!opts) opts = {}
-  var concat = opts.concat || function (a, b) {
-    return String(a) + String(b)
-  }
-
-  return function (strings) {
-    var state = TEXT, reg = ''
-    var arglen = arguments.length
-    var parts = []
-
-    for (var i = 0; i < strings.length; i++) {
-      if (i < arglen - 1) {
-        var arg = arguments[i+1]
-        var p = parse(strings[i])
-        var xstate = state
-        if (xstate === ATTR_VALUE_DQ) xstate = ATTR_VALUE
-        if (xstate === ATTR_VALUE_SQ) xstate = ATTR_VALUE
-        if (xstate === ATTR_VALUE_W) xstate = ATTR_VALUE
-        if (xstate === ATTR) xstate = ATTR_KEY
-        p.push([ VAR, xstate, arg ])
-        parts.push.apply(parts, p)
-      } else parts.push.apply(parts, parse(strings[i]))
-    }
-
-    var tree = [null,{},[]]
-    var stack = [[tree,-1]]
-    for (var i = 0; i < parts.length; i++) {
-      var cur = stack[stack.length-1][0]
-      var p = parts[i], s = p[0]
-      if (s === OPEN && /^\//.test(p[1])) {
-        var ix = stack[stack.length-1][1]
-        if (stack.length > 1) {
-          stack.pop()
-          stack[stack.length-1][0][2][ix] = h(
-            cur[0], cur[1], cur[2].length ? cur[2] : undefined
-          )
-        }
-      } else if (s === OPEN) {
-        var c = [p[1],{},[]]
-        cur[2].push(c)
-        stack.push([c,cur[2].length-1])
-      } else if (s === ATTR_KEY || (s === VAR && p[1] === ATTR_KEY)) {
-        var key = ''
-        var copyKey
-        for (; i < parts.length; i++) {
-          if (parts[i][0] === ATTR_KEY) {
-            key = concat(key, parts[i][1])
-          } else if (parts[i][0] === VAR && parts[i][1] === ATTR_KEY) {
-            if (typeof parts[i][2] === 'object' && !key) {
-              for (copyKey in parts[i][2]) {
-                if (parts[i][2].hasOwnProperty(copyKey) && !cur[1][copyKey]) {
-                  cur[1][copyKey] = parts[i][2][copyKey]
-                }
-              }
-            } else {
-              key = concat(key, parts[i][2])
-            }
-          } else break
-        }
-        if (parts[i][0] === ATTR_EQ) i++
-        var j = i
-        for (; i < parts.length; i++) {
-          if (parts[i][0] === ATTR_VALUE || parts[i][0] === ATTR_KEY) {
-            if (!cur[1][key]) cur[1][key] = strfn(parts[i][1])
-            else cur[1][key] = concat(cur[1][key], parts[i][1])
-          } else if (parts[i][0] === VAR
-          && (parts[i][1] === ATTR_VALUE || parts[i][1] === ATTR_KEY)) {
-            if (!cur[1][key]) cur[1][key] = strfn(parts[i][2])
-            else cur[1][key] = concat(cur[1][key], parts[i][2])
-          } else {
-            if (key.length && !cur[1][key] && i === j
-            && (parts[i][0] === CLOSE || parts[i][0] === ATTR_BREAK)) {
-              // https://html.spec.whatwg.org/multipage/infrastructure.html#boolean-attributes
-              // empty string is falsy, not well behaved value in browser
-              cur[1][key] = key.toLowerCase()
-            }
-            break
-          }
-        }
-      } else if (s === ATTR_KEY) {
-        cur[1][p[1]] = true
-      } else if (s === VAR && p[1] === ATTR_KEY) {
-        cur[1][p[2]] = true
-      } else if (s === CLOSE) {
-        if (selfClosing(cur[0]) && stack.length) {
-          var ix = stack[stack.length-1][1]
-          stack.pop()
-          stack[stack.length-1][0][2][ix] = h(
-            cur[0], cur[1], cur[2].length ? cur[2] : undefined
-          )
-        }
-      } else if (s === VAR && p[1] === TEXT) {
-        if (p[2] === undefined || p[2] === null) p[2] = ''
-        else if (!p[2]) p[2] = concat('', p[2])
-        if (Array.isArray(p[2][0])) {
-          cur[2].push.apply(cur[2], p[2])
-        } else {
-          cur[2].push(p[2])
-        }
-      } else if (s === TEXT) {
-        cur[2].push(p[1])
-      } else if (s === ATTR_EQ || s === ATTR_BREAK) {
-        // no-op
-      } else {
-        throw new Error('unhandled: ' + s)
-      }
-    }
-
-    if (tree[2].length > 1 && /^\s*$/.test(tree[2][0])) {
-      tree[2].shift()
-    }
-
-    if (tree[2].length > 2
-    || (tree[2].length === 2 && /\S/.test(tree[2][1]))) {
-      throw new Error(
-        'multiple root elements must be wrapped in an enclosing tag'
-      )
-    }
-    if (Array.isArray(tree[2][0]) && typeof tree[2][0][0] === 'string'
-    && Array.isArray(tree[2][0][2])) {
-      tree[2][0] = h(tree[2][0][0], tree[2][0][1], tree[2][0][2])
-    }
-    return tree[2][0]
-
-    function parse (str) {
-      var res = []
-      if (state === ATTR_VALUE_W) state = ATTR
-      for (var i = 0; i < str.length; i++) {
-        var c = str.charAt(i)
-        if (state === TEXT && c === '<') {
-          if (reg.length) res.push([TEXT, reg])
-          reg = ''
-          state = OPEN
-        } else if (c === '>' && !quot(state)) {
-          if (state === OPEN) {
-            res.push([OPEN,reg])
-          } else if (state === ATTR_KEY) {
-            res.push([ATTR_KEY,reg])
-          } else if (state === ATTR_VALUE && reg.length) {
-            res.push([ATTR_VALUE,reg])
-          }
-          res.push([CLOSE])
-          reg = ''
-          state = TEXT
-        } else if (state === TEXT) {
-          reg += c
-        } else if (state === OPEN && /\s/.test(c)) {
-          res.push([OPEN, reg])
-          reg = ''
-          state = ATTR
-        } else if (state === OPEN) {
-          reg += c
-        } else if (state === ATTR && /[\w-]/.test(c)) {
-          state = ATTR_KEY
-          reg = c
-        } else if (state === ATTR && /\s/.test(c)) {
-          if (reg.length) res.push([ATTR_KEY,reg])
-          res.push([ATTR_BREAK])
-        } else if (state === ATTR_KEY && /\s/.test(c)) {
-          res.push([ATTR_KEY,reg])
-          reg = ''
-          state = ATTR_KEY_W
-        } else if (state === ATTR_KEY && c === '=') {
-          res.push([ATTR_KEY,reg],[ATTR_EQ])
-          reg = ''
-          state = ATTR_VALUE_W
-        } else if (state === ATTR_KEY) {
-          reg += c
-        } else if ((state === ATTR_KEY_W || state === ATTR) && c === '=') {
-          res.push([ATTR_EQ])
-          state = ATTR_VALUE_W
-        } else if ((state === ATTR_KEY_W || state === ATTR) && !/\s/.test(c)) {
-          res.push([ATTR_BREAK])
-          if (/[\w-]/.test(c)) {
-            reg += c
-            state = ATTR_KEY
-          } else state = ATTR
-        } else if (state === ATTR_VALUE_W && c === '"') {
-          state = ATTR_VALUE_DQ
-        } else if (state === ATTR_VALUE_W && c === "'") {
-          state = ATTR_VALUE_SQ
-        } else if (state === ATTR_VALUE_DQ && c === '"') {
-          res.push([ATTR_VALUE,reg],[ATTR_BREAK])
-          reg = ''
-          state = ATTR
-        } else if (state === ATTR_VALUE_SQ && c === "'") {
-          res.push([ATTR_VALUE,reg],[ATTR_BREAK])
-          reg = ''
-          state = ATTR
-        } else if (state === ATTR_VALUE_W && !/\s/.test(c)) {
-          state = ATTR_VALUE
-          i--
-        } else if (state === ATTR_VALUE && /\s/.test(c)) {
-          res.push([ATTR_BREAK],[ATTR_VALUE,reg])
-          reg = ''
-          state = ATTR
-        } else if (state === ATTR_VALUE || state === ATTR_VALUE_SQ
-        || state === ATTR_VALUE_DQ) {
-          reg += c
-        }
-      }
-      if (state === TEXT && reg.length) {
-        res.push([TEXT,reg])
-        reg = ''
-      } else if (state === ATTR_VALUE && reg.length) {
-        res.push([ATTR_VALUE,reg])
-        reg = ''
-      } else if (state === ATTR_VALUE_DQ && reg.length) {
-        res.push([ATTR_VALUE,reg])
-        reg = ''
-      } else if (state === ATTR_VALUE_SQ && reg.length) {
-        res.push([ATTR_VALUE,reg])
-        reg = ''
-      } else if (state === ATTR_KEY) {
-        res.push([ATTR_KEY,reg])
-        reg = ''
-      }
-      return res
-    }
-  }
-
-  function strfn (x) {
-    if (typeof x === 'function') return x
-    else if (typeof x === 'string') return x
-    else if (x && typeof x === 'object') return x
-    else return concat('', x)
-  }
-}
-
-function quot (state) {
-  return state === ATTR_VALUE_SQ || state === ATTR_VALUE_DQ
-}
-
-var hasOwn = Object.prototype.hasOwnProperty
-function has (obj, key) { return hasOwn.call(obj, key) }
-
-var closeRE = RegExp('^(' + [
-  'area', 'base', 'basefont', 'bgsound', 'br', 'col', 'command', 'embed',
-  'frame', 'hr', 'img', 'input', 'isindex', 'keygen', 'link', 'meta', 'param',
-  'source', 'track', 'wbr',
-  // SVG TAGS
-  'animate', 'animateTransform', 'circle', 'cursor', 'desc', 'ellipse',
-  'feBlend', 'feColorMatrix', 'feComponentTransfer', 'feComposite',
-  'feConvolveMatrix', 'feDiffuseLighting', 'feDisplacementMap',
-  'feDistantLight', 'feFlood', 'feFuncA', 'feFuncB', 'feFuncG', 'feFuncR',
-  'feGaussianBlur', 'feImage', 'feMergeNode', 'feMorphology',
-  'feOffset', 'fePointLight', 'feSpecularLighting', 'feSpotLight', 'feTile',
-  'feTurbulence', 'font-face-format', 'font-face-name', 'font-face-uri',
-  'glyph', 'glyphRef', 'hkern', 'image', 'line', 'missing-glyph', 'mpath',
-  'path', 'polygon', 'polyline', 'rect', 'set', 'stop', 'tref', 'use', 'view',
-  'vkern'
-].join('|') + ')(?:[\.#][a-zA-Z0-9\u007F-\uFFFF_:-]+)*$')
-function selfClosing (tag) { return closeRE.test(tag) }
-
-},{"hyperscript-attribute-to-property":23}],25:[function(require,module,exports){
+},{"./scoped-name":18}],20:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -1346,7 +918,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],26:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var inserted = {};
 
 module.exports = function (css, options) {
@@ -1370,7 +942,7 @@ module.exports = function (css, options) {
     }
 };
 
-},{}],27:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 /*!
  * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
  *
@@ -1409,7 +981,7 @@ module.exports = function isPlainObject(o) {
   return true;
 };
 
-},{"isobject":28}],28:[function(require,module,exports){
+},{"isobject":23}],23:[function(require,module,exports){
 /*!
  * isobject <https://github.com/jonschlinkert/isobject>
  *
@@ -1424,7 +996,7 @@ module.exports = function isObject(val) {
     && !Array.isArray(val);
 };
 
-},{}],29:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 function isHTMLElement(obj) {
     return obj && (typeof obj === 'object') &&
       (obj.nodeType === 1) && (typeof obj.style === 'object') &&
@@ -1601,7 +1173,7 @@ module.exports = {
     isActive: active
 };
 
-},{}],30:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 // Create a range object for efficently rendering strings to elements.
 var range;
 
@@ -2174,7 +1746,7 @@ function morphdom(fromNode, toNode, options) {
 
 module.exports = morphdom;
 
-},{}],31:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /**
 * Create an event emitter with namespaces
 * @name createNamespaceEmitter
@@ -2287,7 +1859,19 @@ module.exports = function createNamespaceEmitter () {
   return emitter
 }
 
-},{}],32:[function(require,module,exports){
+},{}],27:[function(require,module,exports){
+// Inspired on es6-template-tags
+module.exports = function russellView (literals, ...substs) {
+  return literals.raw.reduce(function reducelit (acc, lit, i) {
+    var subst = substs[i - 1]
+    if (Array.isArray(subst)) {
+      subst = subst.join('')
+    }
+    return acc + subst + lit
+  })
+}
+
+},{}],28:[function(require,module,exports){
 
 /**
  * An Array.prototype.slice.call(arguments) alternative
@@ -2322,7 +1906,7 @@ module.exports = function (args, slice, sliceEnd) {
 }
 
 
-},{}],33:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 var createEmitter = require('namespace-emitter')
 var isPlainObject = require('is-plain-object')
 var extend = require('xtend')
@@ -2461,14 +2045,14 @@ module.exports = function createStore (modifier, initialState) {
   }
 }
 
-},{"is-plain-object":27,"namespace-emitter":31,"xtend":39}],34:[function(require,module,exports){
+},{"is-plain-object":22,"namespace-emitter":26,"xtend":35}],30:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],35:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -3058,7 +2642,7 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":34,"_process":4,"inherits":25}],36:[function(require,module,exports){
+},{"./support/isBuffer":30,"_process":2,"inherits":20}],32:[function(require,module,exports){
 const assert = require('assert')
 const sliced = require('sliced')
 const trie = require('./trie')
@@ -3120,7 +2704,7 @@ function Wayfarer (dft) {
   }
 }
 
-},{"./trie":37,"assert":1,"sliced":32}],37:[function(require,module,exports){
+},{"./trie":33,"assert":1,"sliced":28}],33:[function(require,module,exports){
 const mutate = require('xtend/mutable')
 const assert = require('assert')
 const xtend = require('xtend')
@@ -3237,7 +2821,7 @@ Trie.prototype.mount = function (route, trie) {
   }
 }
 
-},{"assert":1,"xtend":39,"xtend/mutable":40}],38:[function(require,module,exports){
+},{"assert":1,"xtend":35,"xtend/mutable":36}],34:[function(require,module,exports){
 var bundleFn = arguments[3];
 var sources = arguments[4];
 var cache = arguments[5];
@@ -3308,7 +2892,7 @@ module.exports = function (fn, options) {
     return worker;
 };
 
-},{}],39:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -3329,7 +2913,7 @@ function extend() {
     return target
 }
 
-},{}],40:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -3348,154 +2932,54 @@ function extend(target) {
     return target
 }
 
-},{}],41:[function(require,module,exports){
-var bel = require('bel') // turns template tag into DOM elements
-var morphdom = require('morphdom') // efficiently diffs + morphs two DOM elements
-var defaultEvents = require('./update-events.js') // default events to be copied when dom elements update
-
-module.exports = bel
-
-// TODO move this + defaultEvents to a new module once we receive more feedback
-module.exports.update = function (fromNode, toNode, opts) {
-  if (!opts) opts = {}
-  if (opts.events !== false) {
-    if (!opts.onBeforeMorphEl) opts.onBeforeMorphEl = copier
-  }
-
-  return morphdom(fromNode, toNode, opts)
-
-  // morphdom only copies attributes. we decided we also wanted to copy events
-  // that can be set via attributes
-  function copier (f, t) {
-    // copy events:
-    var events = opts.events || defaultEvents
-    for (var i = 0; i < events.length; i++) {
-      var ev = events[i]
-      if (t[ev]) { // if new element has a whitelisted attribute
-        f[ev] = t[ev] // update existing element
-      } else if (f[ev]) { // if existing element has it and new one doesnt
-        f[ev] = undefined // remove it from existing element
-      }
-    }
-    // copy values for form elements
-    if (f.nodeName === 'INPUT' || f.nodeName === 'TEXTAREA' || f.nodeName === 'SELECT') {
-      if (t.getAttribute('value') === null) t.value = f.value
-    }
-  }
-}
-
-},{"./update-events.js":42,"bel":2,"morphdom":30}],42:[function(require,module,exports){
-module.exports = [
-  // attribute events (can be set with attributes)
-  'onclick',
-  'ondblclick',
-  'onmousedown',
-  'onmouseup',
-  'onmouseover',
-  'onmousemove',
-  'onmouseout',
-  'ondragstart',
-  'ondrag',
-  'ondragenter',
-  'ondragleave',
-  'ondragover',
-  'ondrop',
-  'ondragend',
-  'onkeydown',
-  'onkeypress',
-  'onkeyup',
-  'onunload',
-  'onabort',
-  'onerror',
-  'onresize',
-  'onscroll',
-  'onselect',
-  'onchange',
-  'onsubmit',
-  'onreset',
-  'onfocus',
-  'onblur',
-  'oninput',
-  // other common events
-  'oncontextmenu',
-  'onfocusin',
-  'onfocusout'
-]
-
-},{}],43:[function(require,module,exports){
-var yo = require('yo-yo')
+},{}],37:[function(require,module,exports){
+var rv = require('russell-view')
 var wayfarer = require('wayfarer')
 var login = require('./modulos/login/login.js')
 var menu = require('./modulos/menu_hidden/menu_hidden.js')
+var cuadro = require('./modulos/cuadro/cuadro.js')
+var linetime = require('./seccion/linetime.js')
+var brujula = require('./modulos/brujula/brujula.js')
 var router = wayfarer('/404')
-module.exports = function (state) {
-  router.on('/', function () {return (function () {
-          function appendChild (el, childs) {
-            for (var i = 0; i < childs.length; i++) {
-              var node = childs[i];
-              if (Array.isArray(node)) {
-                appendChild(el, node)
-                continue
-              }
-              if (typeof node === "number" ||
-                typeof node === "boolean" ||
-                node instanceof Date ||
-                node instanceof RegExp) {
-                node = node.toString()
-              }
-
-              if (typeof node === "string") {
-                if (el.lastChild && el.lastChild.nodeName === "#text") {
-                  el.lastChild.nodeValue += node
-                  continue
-                }
-                node = document.createTextNode(node)
-              }
-
-              if (node && node.nodeType) {
-                el.appendChild(node)
-              }
-            }
-          }
-          var bel0 = document.createElement("h1")
-appendChild(bel0, ["Hola"])
-          return bel0
-        }())})
-  router.on('/menu', function () {return menu(state)})
-  router.on('/login', function(){return login('blah')})
+module.exports = function app(state) {
+  router.on('/', function () {return rv`<div id='container'><h1> <a href='/login'>login</a> <a href='/brujula'>brujula</a> <a href='/linetime'>linetime</a> <a href='/cuadro'>login</a> <a href='/menu'>menu</a></h1></div>`})
+  router.on('/menu', function (){return menu(state)})
+  router.on('/login', function () {return login(state)})
+  router.on('/linetime', function () {return linetime(state)})
+  router.on('/brujula', function () {return brujula(state)})
+  router.on('/cuadro', function () {return cuadro('titulo','blabla','#00bcd4')})
   router.on('/404', function () {return undefined})
   return router(state.url)
 }
 
-},{"./modulos/login/login.js":46,"./modulos/menu_hidden/menu_hidden.js":47,"wayfarer":36,"yo-yo":41}],44:[function(require,module,exports){
+},{"./modulos/brujula/brujula.js":39,"./modulos/cuadro/cuadro.js":40,"./modulos/login/login.js":45,"./modulos/menu_hidden/menu_hidden.js":46,"./seccion/linetime.js":48,"russell-view":27,"wayfarer":32}],38:[function(require,module,exports){
 /* Trabajamos el worker mediante webworkify. Esto resulta mas natural que compilar el worker aparte y llamarlo desde index.html. */
 var work = require('webworkify')
 var worker = work(require('./worker.js'))
-var yo = require('yo-yo')
+var morphdom = require('morphdom')
 
 /* app, es nuestra vista principal. Contiene ademas la logica para elegir la vista en funcion de la url en el estado. */
-var app = require('./app.js')
 
 /* Permite identificar los links locales facilmente y sin lidiar con diferencias entre navegadores. */
 var localLinks = require('local-links')
 
 /* El elemento base sobre el que vamos a correr yo.update */
-var el = document.getElementById('content')
-
+var el = document.getElementById('container')
 /* Por cada evento que recibimos del woker verificamos si existe el elemento base el.
    Si no existe, vaciamos el body y lo inicializamos.
    Si existe, ya podemos correr yo.update.
 */
-worker.onmessage = function (ev) {
-    var newel = app(ev.data)
+worker.onmessage = function onmsg(ev) {
+    var newel = ev.data.view
     var url = ev.data.url
   // if (!el) {
-  //       el = newel
-  //   document.body.innerHTML = ''
-  //   return document.body.appendChild(el)
+  //       var elemento = document.createElement('div')
+  //         elemento.innerHTML = newel
+  //         el = elemento.firstChild
+  //   document.body.appendChild(el)
   // }
-requestAnimationFrame( function () { 
-yo.update(el, newel)
+requestAnimationFrame( function render() { 
+morphdom(el, newel)
 })
 /* Si la url de la barra de navegacion no coincide con la recibida, la actualizamos. */
   if (location.pathname !== url) {
@@ -3546,7 +3030,167 @@ document.body.addEventListener('click', function (event) {
   }
 })
 
-},{"./app.js":43,"./worker.js":50,"local-links":29,"webworkify":38,"yo-yo":41}],45:[function(require,module,exports){
+},{"./worker.js":50,"local-links":24,"morphdom":25,"webworkify":34}],39:[function(require,module,exports){
+var yo = require('russell-view')
+// var styles = require('./linetime_css.js')
+
+module.exports = function brujula() {
+// var circle = styles['circle'];
+// var titulo = styles['titulo'];
+
+ return yo`<div>
+
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <defs>
+  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_39">
+   <stop offset="0.471375" stop-opacity="0.988281" stop-color="#fd514f"/>
+   <stop offset="0.510437" stop-opacity="0.992188" stop-color="#cd1312"/>
+   <stop offset="1" stop-opacity="0.992188" stop-color="#cd1312"/>
+  </linearGradient>
+  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_48">
+   <stop offset="0" stop-opacity="0.988281" stop-color="#aaaaaa"/>
+   <stop offset="0.510437" stop-opacity="0.988281" stop-color="#aaaaaa"/>
+   <stop offset="0.514343" stop-opacity="0.984375" stop-color="#f0f0f0"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <circle stroke="#000000" id="svg_3" r="143.413788" cy="149.000014" cx="150.000014" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#364e66"/>
+  <circle stroke="#000000" id="svg_5" r="121.485565" cy="148.999997" cx="150.000003" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ffffff"/>
+  <text stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" id="svg_6" y="92.104944" x="146.921513" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">N</text>
+  <path transform="rotate(54.018157958984375 73.19783020019528,214.08299255371094) " id="svg_8" d="m62.791571,223.188462l10.406257,-18.21095l10.406257,18.21095l-20.812514,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#bfbfbf"/>
+  <path transform="rotate(-41.87788391113281 219.62501525878906,218.312515258789) " id="svg_10" d="m209.218762,227.417996l10.40626,-18.21095l10.40626,18.21095l-20.81252,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#bfbfbf"/>
+  <path id="svg_14" transform="rotate(131.8031768798828 75.27355194091795,85.04252624511719) " d="m64.867299,94.148001l10.40626,-18.21095l10.40625,18.21095l-20.81251,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#bfbfbf"/>
+  <path id="svg_15" transform="rotate(-128.53736877441406 226.3134307861328,83.46419525146483) " d="m215.907164,92.569672l10.40626,-18.21095l10.40626,18.21095l-20.81252,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" stroke="#000000" fill="#bfbfbf"/>
+  <text id="svg_16" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="260.308022" x="144.36519" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">S</text>
+  <text id="svg_17" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="169.889982" x="234.779331" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">E</text>
+  <text id="svg_18" stroke="#000000" transform="matrix(1.1448106559748388,0,0,1.1448106559748388,-18.833407423652282,-44.50138986468988) " font-weight="normal" font-style="normal" xml:space="preserve" text-anchor="middle" font-family="serif" font-size="24" y="171.200242" x="62.480096" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#3f3f3f">O</text>
+  <path stroke="#000000" id="svg_28" d="m135.107142,147.156242l13.500001,-103.031249l13.500001,103.031249l-27.000001,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="url(#svg_39)"/>
+  <path stroke="#000000" transform="rotate(-179.46453857421875 148.2474670410156,198.3960113525391) " id="svg_40" d="m134.7499,249.911643l13.497567,-103.031248l13.497567,103.031248l-26.995135,0z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="url(#svg_48)"/>
+  <circle stroke="#000000" id="svg_31" r="7.875" cy="147.375" cx="148.375" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="#ffffff"/>
+ </g>
+</svg>
+
+</div>`	
+}
+},{"russell-view":27}],40:[function(require,module,exports){
+var rv = require('russell-view')
+var style = require('./cuadro_css.js')
+
+
+module.exports = function cuadro (titulox,contenido) {
+var titulo = style['titulo']
+var contenidox = style['contenido']
+var cuadro = style['cuadro']
+ return rv`<div class="${cuadro}">
+<div class="${titulo}">${titulox}</div>
+<div class="${contenidox}">${contenido}</div>
+</div>`	
+}
+
+},{"./cuadro_css.js":41,"russell-view":27}],41:[function(require,module,exports){
+var csjs = require('csjs-injectify/csjs-inject');
+var color = '#666'
+module.exports = csjs`
+.cuadro {
+margin: 10px;
+ border-style: solid;
+ border-width: 0.1em;
+border-color: #E4E4E4;
+    box-shadow: 0px 2px 10px -5px #888888;
+}
+.titulo {
+font-family: arial;
+padding: 10px;
+text-align: center;
+color: white;
+font-size: 20px;
+background-color: ${color};
+}
+
+.contenido {
+font-family: arial;
+padding: 10px;
+color: rgba(0,0,0,.54);
+line-height: 18px;
+font-size: 15px;
+}
+`;
+},{"csjs-injectify/csjs-inject":6}],42:[function(require,module,exports){
+var yo = require('russell-view')
+var styles = require('./linetime_css.js')
+
+module.exports = function linetime(lado,color,fecha) {
+var circle = styles['circle'];
+var titulo = styles['titulo'];
+
+if ( lado === "left") {
+ return yo`<div style="float:left;">
+<div class="${circle}">
+<svg width="130" height="130">
+ <g>
+  <ellipse stroke="#000000" ry="63.499999" rx="63.499999" id="svg_6" cy="65.500001" cx="64.500001" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="${color}"/>
+ </g>
+</svg>
+</div>
+
+<div style="float:left;">
+<svg width="40" height="192">
+ <g>
+  <rect stroke="#000000" id="svg_6" height="192" width="16" y="0" x="11" stroke-width="0" fill="${color}"/>
+  <polygon stroke="#000000" transform="rotate(-179.82810974121094 13.647021293640137,98.49549865722655) " stroke-width="0" points="25.247710149608952,98.49549736149544 16.38557325423965,108.39902366764778 2.0463336359660964,104.6162172711634 2.0463336359660964,92.37477745182747 16.38557325423965,88.5919710553431 25.247710149608952,98.49549736149544 " strokeWidth="0" strokecolor="#000000" fill="${color}" edge="20.275875" orient="x" sides="5" shape="regularPoly" id="svg_8" cy="104" cx="33"/>
+ </g>
+</svg>
+</div>
+
+<div class="${titulo}" style="color:${color};">${fecha}</div>
+</div>`	
+}
+
+if ( lado === "right") {
+ return yo`<div style="float:left;">
+<div class="${titulo}" style="color:${color};">${fecha}</div>
+
+<div style="float:left;">
+<svg width="40" height="192">
+ <g>
+   <rect stroke="#000000" id="svg_6" height="192" width="16" y="0" x="11" stroke-width="0" fill="${color}"/>
+  <polygon stroke="#000000" transform="rotate(-0.6391886472702026 23.647022247314553,98.49549865722663) " stroke-width="0" points="35.247711181640625,98.49549865722656 26.38557243347168,108.3990249633789 12.046333312988281,104.61621856689453 12.046333312988281,92.3747787475586 26.38557243347168,88.59197235107422 35.247711181640625,98.49549865722656 " strokeWidth="0" strokecolor="#000000" fill="${color}" edge="20.275875" orient="x" sides="5" shape="regularPoly" id="svg_8" cy="104" cx="33"/>
+ </g>
+</svg>
+</div>
+
+<div class="${circle}">
+<svg width="130" height="130">
+ <g>
+  <ellipse stroke="#000000" ry="63.499999" rx="63.499999" id="svg_6" cy="65.500001" cx="64.500001" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="0" fill="${color}"/>
+ </g>
+</svg>
+</div>
+
+
+</div>`	
+}
+
+}
+},{"./linetime_css.js":43,"russell-view":27}],43:[function(require,module,exports){
+var csjs = require('csjs-injectify/csjs-inject');
+module.exports = csjs`
+
+.circle {
+	margin: 30px;
+    text-align: center;
+    float: left;
+    width: 173px;
+}
+.titulo {
+    padding: 64px;
+    float: left;
+    font-size: 47px;
+}
+`;
+},{"csjs-injectify/csjs-inject":6}],44:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
 
 module.exports = csjs`
@@ -3564,105 +3208,47 @@ module.exports = csjs`
 
 `;
 
-},{"csjs-injectify/csjs-inject":8}],46:[function(require,module,exports){
-var yo = require('yo-yo')
+},{"csjs-injectify/csjs-inject":6}],45:[function(require,module,exports){
+var rv = require('russell-view')
 var styles = require('./login.csjs.js')
 
 var mc = styles['mdl-card']
 var mct = styles['mdl-card__title']
 
 module.exports = function login (text) {
- return (function () {
-          function appendChild (el, childs) {
-            for (var i = 0; i < childs.length; i++) {
-              var node = childs[i];
-              if (Array.isArray(node)) {
-                appendChild(el, node)
-                continue
-              }
-              if (typeof node === "number" ||
-                typeof node === "boolean" ||
-                node instanceof Date ||
-                node instanceof RegExp) {
-                node = node.toString()
-              }
-
-              if (typeof node === "string") {
-                if (el.lastChild && el.lastChild.nodeName === "#text") {
-                  el.lastChild.nodeValue += node
-                  continue
-                }
-                node = document.createTextNode(node)
-              }
-
-              if (node && node.nodeType) {
-                el.appendChild(node)
-              }
-            }
-          }
-          var bel15 = document.createElement("div")
-bel15.setAttribute("id", "container")
-var bel14 = document.createElement("div")
-bel14.setAttribute("class", "center")
-var bel13 = document.createElement("div")
-bel13.setAttribute("class", "login")
-var bel12 = document.createElement("div")
-bel12.setAttribute("class", "demo-card-square " + arguments[3] + " mdl-shadow--2dp")
-var bel1 = document.createElement("div")
-bel1.setAttribute("class", arguments[2] + " ")
-var bel0 = document.createElement("h2")
-bel0.setAttribute("class", arguments[0] + "-text")
-appendChild(bel0, [arguments[1]])
-appendChild(bel1, ["\n    ",bel0,"\n  "])
-var bel9 = document.createElement("div")
-bel9.setAttribute("class", "mdl-card__supporting-text")
-var bel8 = document.createElement("form")
-bel8.setAttribute("action", "#")
-var bel4 = document.createElement("div")
-bel4.setAttribute("class", "mdl-textfield mdl-js-textfield mdl-textfield--floating-label")
-var bel2 = document.createElement("input")
-bel2.setAttribute("type", "text")
-bel2.setAttribute("id", "sample3")
-bel2.setAttribute("class", "mdl-textfield__input")
-var bel3 = document.createElement("label")
-bel3.setAttribute("class", "mdl-textfield__label")
-bel3.setAttribute("htmlFor", "sample3")
-appendChild(bel3, ["Usuario"])
-appendChild(bel4, ["\n    ",bel2,"\n    ",bel3,"\n  "])
-var bel7 = document.createElement("div")
-bel7.setAttribute("class", "mdl-textfield mdl-js-textfield mdl-textfield--floating-label")
-var bel5 = document.createElement("input")
-bel5.setAttribute("type", "text")
-bel5.setAttribute("id", "sample3")
-bel5.setAttribute("class", "mdl-textfield__input")
-var bel6 = document.createElement("label")
-bel6.setAttribute("class", "mdl-textfield__label")
-bel6.setAttribute("htmlFor", "sample3")
-appendChild(bel6, ["Contraseña"])
-appendChild(bel7, ["\n    ",bel5,"\n    ",bel6,"\n  "])
-appendChild(bel8, ["\n  ",bel4,"\n    ",bel7,"\n"])
-appendChild(bel9, ["\n",bel8,"\n  "])
-var bel11 = document.createElement("div")
-bel11.setAttribute("class", "mdl-card__actions mdl-card--border")
-var bel10 = document.createElement("a")
-bel10.setAttribute("class", "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect")
-appendChild(bel10, ["\n     Login\n    "])
-appendChild(bel11, ["\n    ",bel10,"\n  "])
-appendChild(bel12, ["\n  ",bel1,"\n  ",bel9,"\n  ",bel11,"\n"])
-appendChild(bel13, [bel12])
-appendChild(bel14, [bel13])
-appendChild(bel15, [bel14])
-          return bel15
-        }(mct,text,mct,mc))	
+ return rv`<div id='container'><div class="center"><div class="login"><div class="demo-card-square ${mc} mdl-shadow--2dp">
+  <div class="${mct} ${mc}--expand">
+    <h2 class="${mct}-text">${text}</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+<form action="#">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sample3">
+    <label class="mdl-textfield__label" for="sample3">Usuario</label>
+  </div>
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="sample3">
+    <label class="mdl-textfield__label" for="sample3">Contraseña</label>
+  </div>
+</form>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+     Login
+    </a>
+  </div>
+</div></div></div></div>`	
 }
 
 
-},{"./login.csjs.js":45,"yo-yo":41}],47:[function(require,module,exports){
-var yo = require('yo-yo')
-var styles = require('./menu_hidden_css.js')
-var style = styles();
+},{"./login.csjs.js":44,"russell-view":27}],46:[function(require,module,exports){
+var rv = require('russell-view')
+var style = require('./menu_hidden_css.js')
 var store = require('../../store.js')
+var ModCuadro = require('../cuadro/cuadro.js')
 
+
+module.exports = function menu_hidden (state) {
 var wrapper = style['wrapper']
 var sidebar = style['sidebar']
 var nav = style['nav'] 
@@ -3672,119 +3258,62 @@ var probando = style['probando']
 var img = style['img']
 var icon = style['icon']
 
-module.exports = function menu_hidden (state) {
+
   var content = state.isOpen ? style['content'] + " "+ style['isOpen'] : style['content']
-   return (function () {
-          function appendChild (el, childs) {
-            for (var i = 0; i < childs.length; i++) {
-              var node = childs[i];
-              if (Array.isArray(node)) {
-                appendChild(el, node)
-                continue
-              }
-              if (typeof node === "number" ||
-                typeof node === "boolean" ||
-                node instanceof Date ||
-                node instanceof RegExp) {
-                node = node.toString()
-              }
+   return rv`<div id='container' class='${wrapper}'>
+  <div class='${sidebar}'>
+    <div class='${img}'>
+    </div>
+    <ul class='${nav}'>
+      <li>
+          <a><svg class="${icon}"> <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              Principal</a>
+      </li>
 
-              if (typeof node === "string") {
-                if (el.lastChild && el.lastChild.nodeName === "#text") {
-                  el.lastChild.nodeValue += node
-                  continue
-                }
-                node = document.createTextNode(node)
-              }
+      <li>
+        <a>
+<svg class="${icon}"> <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
+    </svg>
 
-              if (node && node.nodeType) {
-                el.appendChild(node)
-              }
-            }
-          }
-          var bel30 = document.createElement("div")
-bel30.setAttribute("class", arguments[11])
-var bel26 = document.createElement("div")
-bel26.setAttribute("class", arguments[9])
-var bel0 = document.createElement("div")
-bel0.setAttribute("class", arguments[0])
-appendChild(bel0, ["\n    "])
-var bel25 = document.createElement("ul")
-bel25.setAttribute("class", arguments[8])
-var bel4 = document.createElement("li")
-var bel3 = document.createElement("a")
-var bel2 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-bel2.setAttributeNS(null, "class", arguments[1])
-var bel1 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-bel1.setAttributeNS(null, "d", "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z")
-appendChild(bel2, [" ",bel1])
-appendChild(bel3, [bel2,"\n              Principal"])
-appendChild(bel4, ["\n          ",bel3,"\n      "])
-var bel8 = document.createElement("li")
-var bel7 = document.createElement("a")
-var bel6 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-bel6.setAttributeNS(null, "class", arguments[2])
-var bel5 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-bel5.setAttributeNS(null, "d", "M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z")
-appendChild(bel6, [" ",bel5,"\n    "])
-appendChild(bel7, ["\n",bel6,"\n\n        Historia"])
-appendChild(bel8, ["\n        ",bel7,"\n      "])
-var bel12 = document.createElement("li")
-var bel11 = document.createElement("a")
-bel11.setAttribute("class", arguments[4])
-var bel10 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-bel10.setAttributeNS(null, "class", arguments[3])
-var bel9 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-bel9.setAttributeNS(null, "d", "M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z")
-appendChild(bel10, ["     ",bel9,"\n    "])
-appendChild(bel11, ["\n",bel10,"\n        Efemérides"])
-appendChild(bel12, ["\n        ",bel11,"\n      "])
-var bel16 = document.createElement("li")
-var bel15 = document.createElement("a")
-var bel14 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-bel14.setAttributeNS(null, "class", arguments[5])
-var bel13 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-bel13.setAttributeNS(null, "d", "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z")
-appendChild(bel14, ["     ",bel13,"\n    "])
-appendChild(bel15, ["\n",bel14,"\n        Geolocalización"])
-appendChild(bel16, ["\n        ",bel15,"\n      "])
-var bel20 = document.createElement("li")
-var bel19 = document.createElement("a")
-var bel18 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-bel18.setAttributeNS(null, "class", arguments[6])
-var bel17 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-bel17.setAttributeNS(null, "d", "M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z")
-appendChild(bel18, ["     ",bel17,"\n    "])
-appendChild(bel19, ["\n",bel18,"\n        Centros"])
-appendChild(bel20, ["\n        ",bel19,"\n      "])
-var bel24 = document.createElement("li")
-var bel23 = document.createElement("a")
-var bel22 = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-bel22.setAttributeNS(null, "class", arguments[7])
-var bel21 = document.createElementNS("http://www.w3.org/2000/svg", "path")
-bel21.setAttributeNS(null, "d", "M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z")
-appendChild(bel22, ["   ",bel21,"\n    "])
-appendChild(bel23, ["\n",bel22,"\n        Eventos"])
-appendChild(bel24, ["\n        ",bel23,"\n      "])
-appendChild(bel25, ["\n      ",bel4,"\n\n      ",bel8,"\n      ",bel12,"\n      ",bel16,"\n      ",bel20,"\n      ",bel24,"\n    "])
-appendChild(bel26, ["\n    ",bel0,"\n    ",bel25,"\n  "])
-var bel29 = document.createElement("div")
-bel29.setAttribute("class", arguments[10])
-var bel27 = document.createElement("button")
-bel27.setAttribute("data-click", "{\"type\": \"menu\"}")
-appendChild(bel27, ["menu"])
-var bel28 = document.createElement("h1")
-appendChild(bel28, ["CONTENIDO"])
-appendChild(bel29, ["\n  ",bel27,"\n    ",bel28,"\n  "])
-appendChild(bel30, ["\n  ",bel26,"\n  ",bel29,"\n"])
-          return bel30
-        }(img,icon,icon,icon,active,icon,icon,icon,nav,sidebar,content,wrapper));
+        Historia</a>
+      </li>
+      <li>
+        <a class='${active}'>
+<svg class="${icon}">     <path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86L22 5.72zM7.88 3.39L6.6 1.86 2 5.71l1.29 1.53 4.59-3.85zM12.5 8H11v6l4.75 2.85.75-1.23-4-2.37V8zM12 4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+    </svg>
+        Efemérides</a>
+      </li>
+      <li>
+        <a>
+<svg class="${icon}">     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+    </svg>
+        Geolocalización</a>
+      </li>
+      <li>
+        <a>
+<svg class="${icon}">     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+    </svg>
+        Centros</a>
+      </li>
+      <li>
+        <a>
+<svg class="${icon}">   <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+        Eventos</a>
+      </li>
+    </ul>
+  </div>
+  <div class='${content}'>
+  <button data-click='{"type": "menu"}'>menu</button>
+    <h1>CONTENIDO</h1>
+    ${ModCuadro('titulo','blabla','#666')}
+  </div>
+</div>`;
 }
 
-},{"../../store.js":49,"./menu_hidden_css.js":48,"yo-yo":41}],48:[function(require,module,exports){
+},{"../../store.js":49,"../cuadro/cuadro.js":40,"./menu_hidden_css.js":47,"russell-view":27}],47:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
-module.exports = function () {
-  return csjs`
+module.exports = csjs`
 
 .img {
 background-image: url('/assets/img/malvinas.jpg');
@@ -3862,9 +3391,24 @@ padding: 90px;
   width: 34px;
 }
 
-`;
+`
+
+},{"csjs-injectify/csjs-inject":6}],48:[function(require,module,exports){
+var rv = require('russell-view')
+var line = require('../modulos/linetime/linetime.js')
+module.exports = function linetime ( state ) {
+	return rv`<div>
+${line('left','#5b4f35','2000')}
+${line('right','#323776','2015')}
+${line('left','#d1652f','2050')}
+${line('right','#b1c482','3000')}
+${line('left','#6dbacc','4000')}
+	</div>`
 }
-},{"csjs-injectify/csjs-inject":8}],49:[function(require,module,exports){
+
+
+
+},{"../modulos/linetime/linetime.js":42,"russell-view":27}],49:[function(require,module,exports){
 var createStore = require('store-emitter')
 var xtend = require('xtend')
 /* Qué vamos a hacer con los eventos que reciba el store.
@@ -3897,16 +3441,17 @@ var store = createStore(modifier,
 )
 module.exports = store
 
-},{"store-emitter":33,"xtend":39}],50:[function(require,module,exports){
+},{"store-emitter":29,"xtend":35}],50:[function(require,module,exports){
 /* Nos permite mantener el estado completo de la aplicacion en un unico objeto que emite eventos ante cualquier modificacion */
 var store = require('./store.js')
+var app = require('./app.js')
 
 /* Exportamos el modulo para que pueda ser importado con webworkify. Esto nos permite manejar todo en un unico bundle de browserify sin necesidad de compilar el worker aparte. */
 module.exports = function (self) {
 
 /* Ante cualquier tipo de modificacion en el estado, enviamos el nuevo estado al UI thread para que actualice las vistas. */
 store.on('*', function ( action, state, old ) { 
-  self.postMessage(state)
+  self.postMessage({view: app(state), url: state.url})
 })
 
 /* Ante cualquier evento proveniente del UI thread actualizamos el estado con los nuevos datos. */
@@ -3916,4 +3461,4 @@ self.addEventListener('message', function(ev){store(ev.data)})
  // self.postMessage(store.getState())
 }
 
-},{"./store.js":49}]},{},[44]);
+},{"./app.js":37,"./store.js":49}]},{},[38]);

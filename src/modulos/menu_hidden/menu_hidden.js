@@ -1,25 +1,26 @@
 var rv = require('russell-view')
 var style = require('./menu_hidden_css.js')
 var store = require('../../store.js')
+var ModCuadro = require('../cuadro/cuadro.js')
 
 
 module.exports = function menu_hidden (state) {
 var wrapper = style['wrapper']
-var sidebar = style['sidebar']
 var nav = style['nav'] 
 var active = style['active']
 var title = style['title']
 var probando = style['probando']
 var img = style['img']
 var icon = style['icon']
+var content = style['content']
 
 
-  var content = state.isOpen ? style['content'] + " "+ style['isOpen'] : style['content']
-   return rv`<div id='container' class='${wrapper}'>
+  var sidebar = state.isOpen ? style['sidebar'] + " "+ style['isOpen'] : style['sidebar']
+   return rv`<div>
   <div class='${sidebar}'>
     <div class='${img}'>
     </div>
-    <ul class='${nav}'>
+    <ul class="${nav}">
       <li>
           <a><svg class="${icon}"> <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
               Principal</a>
@@ -58,9 +59,6 @@ var icon = style['icon']
       </li>
     </ul>
   </div>
-  <div class='${content}'>
   <button data-click='{"type": "menu"}'>menu</button>
-    <h1>CONTENIDO</h1>
-  </div>
 </div>`;
 }
