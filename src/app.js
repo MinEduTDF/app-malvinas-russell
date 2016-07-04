@@ -5,6 +5,7 @@ var menu = require('./modulos/menu_hidden/menu_hidden.js')
 var cuadro = require('./modulos/cuadro/cuadro.js')
 var linetime = require('./seccion/linetime.js')
 var azimuth = require('./seccion/azimuth.js')
+var noticias = require('./seccion/noticias.js')
 var router = wayfarer('/404')
 module.exports = function app(state) {
   // router.on('/', function () {return menu(state)})
@@ -13,6 +14,7 @@ module.exports = function app(state) {
   router.on('/linetime', function () {return linetime(state)})
   router.on('/brujula', function () {return brujula(state)})
   router.on('/cuadro', function () {return cuadro('titulo','blabla','#00bcd4')})
+  router.on('/noticias', function () {return noticias(state)})
   router.on('/404', function () {return undefined})
   return router(state.url)
 }

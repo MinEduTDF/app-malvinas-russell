@@ -1,5 +1,5 @@
 var csjs = require('csjs');
-var color = '#666'
+var color = '#6389c8'
 module.exports = csjs`
 .cuadro {
 margin: 10px;

@@ -48,6 +48,7 @@ padding: 90px;
 }
 
 .nav li a {
+  text-decoration: none;
   position: relative;
   display: block;
   padding: 15px 15px 15px 50px;

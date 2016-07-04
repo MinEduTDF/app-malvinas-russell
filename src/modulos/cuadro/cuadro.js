@@ -1,7 +1,6 @@
 var rv = require('russell-view')
 var style = require('./cuadro_css.js')
 
-
 module.exports = function cuadro (titulox,contenido) {
 var titulo = style['titulo']
 var contenidox = style['contenido']
