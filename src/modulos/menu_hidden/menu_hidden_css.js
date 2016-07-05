@@ -10,13 +10,15 @@ padding: 90px;
 
 .sidebar {
   position: absolute;
-  left: -220px;
   width: 220px;
   z-index: 999;
   top: 0;
   background-color: #ffffff;
   min-height: 100%;
+  transform: translateX(-220px);
+  transition: transform .096s;
 
+  
 }
 
 .content {
@@ -26,14 +28,12 @@ padding: 90px;
 }
 
 .sidebar.isOpen {
-  transform: translateX(220px);
-  transition: transform .048s;
+  transform: translateX(0px);
+  transition: transform .096s;
   box-shadow: 0 0 5px black;
 }
 
-.content.isOpen {
-  transform: translateX(220px);
-}
+
 
 /* Demo Navigation */
 .title {
