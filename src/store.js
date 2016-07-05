@@ -9,7 +9,7 @@ var reducers = {
     return xtend(state, {isOpen: !state.isOpen})
     },
   setUrl: function setUrl(action, state) {
-    return xtend(state, {url: action.payload})
+    return xtend(state, {url: action.payload, isOpen: false})
   },
   closeMenu: function closeMenu(action, state) {
     if(state.isOpen)
@@ -28,8 +28,14 @@ var store = function (reducers, initialState) {
   var state = initialState
   return function(action) {
     var type = action.type
+    if (reducers[type]) {
     state = reducers[type](action, state) || state
     return state
+    }
+    else {
+      console.log('there is no reducer of type ', type)
+        return state
+    }
   }
 }
 var blah = store(reducer(reducers), initialState)

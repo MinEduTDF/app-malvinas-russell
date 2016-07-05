@@ -50,7 +50,7 @@ document.body.addEventListener('click', function (event) {
     // instead, post the new URL to our worker
     // which will trigger compute a new vDom
     // based on that new URL state
-    worker.postMessage({type: 'setUrl', payload: pathname})
+    return worker.postMessage({type: 'setUrl', payload: pathname})
   }
 
   // this is for other "onClick" type events we want to
@@ -62,7 +62,10 @@ document.body.addEventListener('click', function (event) {
   // {type: "decrement"}
   // but could contain any serializable payload
   // describing the action that occured
-  worker.postMessage({type: 'closeMenu'})
+  // worker.postMessage({type: 'closeMenu'})
+  if (!event.target.dataset.type) {
+    return worker.postMessage({type: 'closeMenu'})
+  }
   var click = {type: event.target['dataset'].type} //JSON.parse(event.target['dataset'].click)
   if (click) {
     event.preventDefault()
