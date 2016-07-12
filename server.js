@@ -4,7 +4,8 @@ var hyperstream = require('hyperstream')
 var app = require('./src/app.js')
 var store = require('./src/store.js')
 var httpProxy = require('http-proxy')
-var proxy = httpProxy.createProxyServer({target: 'http://elmalvinense.com'})
+// var proxy = httpProxy.createProxyServer({target: 'http://elmalvinense.com'})
+var proxycake = httpProxy.createProxyServer({target: 'http://192.168.1.64'})
 var request = require('request')
 
 var ecstatic = require('ecstatic')
@@ -15,8 +16,8 @@ var http = require('http')
 var server = http.createServer(function (req, res) {
   if (req.url.match('assets')) return st(req, res)
   if (req.url.match('api')) {
-    req.url = req.url.split('/').pop()
-    return proxy.web(req, res)
+    req.url = '/cake/Web-OvnionPanel-Back' + req.url
+    return proxycake.web(req, res)
   }
   if (req.url.match('elmalvinense')) {
     return request('http://elmalvinense.com/elmalvinense.xml').pipe(res) 
