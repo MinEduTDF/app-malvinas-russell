@@ -23,7 +23,9 @@ padding: 90px;
   background-color: #ffffff;
   min-height: 100%;
   transform: translateX(-220px);
-  transition: transform .096s;
+  transition: transform 1s ease-in-out;
+  transition: box-shadow 1s ease-in;
+  box-shadow: 0 0 0 100vw rgba(0,0,0,0);
 
   
 }
@@ -36,8 +38,7 @@ padding: 90px;
 
 .sidebar.isOpen {
   transform: translateX(0px);
-  transition: transform .096s;
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 0 0 100vw rgba(0,0,0,.8);
 }
 
 
