@@ -16,18 +16,14 @@ padding: 90px;
 }
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   width: 220px;
   z-index: 999;
   top: 0;
   background-color: #ffffff;
   min-height: 100%;
   transform: translateX(-220px);
-  transition: transform 1s ease-in-out;
-  transition: box-shadow 1s ease-in;
-  box-shadow: 0 0 0 100vw rgba(0,0,0,0);
-
-  
+  transition: transform 0.40s ease-in-out;  
 }
 
 .content {
@@ -38,7 +34,7 @@ padding: 90px;
 
 .sidebar.isOpen {
   transform: translateX(0px);
-  box-shadow: 0 0 0 100vw rgba(0,0,0,.8);
+  box-shadow: 0 0 0 100vw rgba(0,0,0,0.7);
 }
 
 

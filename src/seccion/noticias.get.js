@@ -16,7 +16,7 @@ var req = http.request(options, (res) => {
   // console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
   res.setEncoding('binary');
   res.pipe(parser).on('end', function () {
-    parser.done().items.forEach(function (item){return store({type: 'news', payload: item})})})
+    parser.done().items.forEach(function (item){ return store({type: 'news', payload: item})})})
   })
 
 req.on('error', (e) => {

@@ -14281,11 +14281,14 @@ module.exports = function cuadro (state) {
 var titulo = style['titulo']
 var contenidox = style['contenido']
 var cuadro = style['cuadro']
+var tiempo = style['tiempo']
+var btn = style['btn']
+var divbtn = style ['divbtn']
  return rv`<div class="${cuadro}">
 <div class="${titulo}">${state.title}</div>
+<div class="${tiempo}">${state.pubdate}</div>
 <div class="${contenidox}">${state.description}</div>
-<div>${state.pubdate}</div>
-<div>${state.link}</div>
+<div class="${divbtn}"><a class="${btn}" href="${state.link}" target="_blank">Ver mas</a></div>
 </div>`	
 }
 
@@ -14300,6 +14303,14 @@ margin: 10px;
 border-color: #E4E4E4;
     box-shadow: 0px 2px 10px -5px #888888;
 }
+
+.tiempo {
+padding: 7px;
+font-size: 15px;
+color: #969696;
+background-color: #f3f3f3
+}
+
 .titulo {
 font-family: arial;
 padding: 10px;
@@ -14314,7 +14325,22 @@ font-family: arial;
 padding: 10px;
 color: rgba(0,0,0,.54);
 line-height: 18px;
-font-size: 15px;
+font-size: 17px;
+background: white;
+}
+
+.divbtn {
+	width: 100%;
+    padding: 10px;
+    text-align: right;
+}
+
+.btn {
+    background: #6389c8;
+    padding: 6px;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
 }
 `;
 },{"csjs-injectify/csjs-inject":14}],86:[function(require,module,exports){
@@ -14458,18 +14484,14 @@ padding: 90px;
 }
 
 .sidebar {
-  position: absolute;
+  position: fixed;
   width: 220px;
   z-index: 999;
   top: 0;
   background-color: #ffffff;
   min-height: 100%;
   transform: translateX(-220px);
-  transition: transform 1s ease-in-out;
-  transition: box-shadow 1s ease-in;
-  box-shadow: 0 0 0 100vw rgba(0,0,0,0);
-
-  
+  transition: transform 0.40s ease-in-out;  
 }
 
 .content {
@@ -14480,7 +14502,7 @@ padding: 90px;
 
 .sidebar.isOpen {
   transform: translateX(0px);
-  box-shadow: 0 0 0 100vw rgba(0,0,0,.8);
+  box-shadow: 0 0 0 100vw rgba(0,0,0,0.7);
 }
 
 
@@ -14672,15 +14694,16 @@ var options = {
   hostname: '192.168.99.100',
   port: 8000,
   path: '/elmalvinense',
-  method: 'GET'
+  method: 'GET',
+  // encoding: 'iso-9959-1'
 };
 
 var req = http.request(options, (res) => {
   // console.log(`STATUS: ${res.statusCode}`);
   // console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-  res.setEncoding('utf8');
+  res.setEncoding('binary');
   res.pipe(parser).on('end', function () {
-    parser.done().items.forEach(function (item){store({type: 'news', payload: item})})})
+    parser.done().items.forEach(function (item){ return store({type: 'news', payload: item})})})
   })
 
 req.on('error', (e) => {
