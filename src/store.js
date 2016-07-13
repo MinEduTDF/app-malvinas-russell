@@ -2,6 +2,7 @@ var xtend = require('xtend')
 var  initialState = {
   isOpen: false,
   url: '/',
+  news: [],
   timeline: [
    {
             "id": 1,
@@ -75,6 +76,9 @@ var reducers = {
   },
   timeline: function timeline(action, state) {
       return xtend(state, state.timeline.push(action.payload))
+  },
+  news: function news(action, state) {
+      return xtend(state, state.news.push(action.payload))
   }
 }
 var reducer = function (reducers) {
