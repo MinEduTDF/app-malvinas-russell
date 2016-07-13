@@ -3,7 +3,7 @@ var store = require('../store.js')
 var select = require('json-select')
 
 var options = {
-  hostname: 'localhost',
+  hostname: '192.168.99.100',
   port: 8000,
   path: '/api/articles?category_id=1',//la ruta tiene que incluir api en algun lado
   method: 'GET',
