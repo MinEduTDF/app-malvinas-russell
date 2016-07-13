@@ -24,7 +24,6 @@
     "JSONStream": "^1.1.1",
     "csjs": "^1.0.3",
     "ecstatic": "^1.4.1",
-    "feedme": "^0.3.0",
     "http-proxy": "^1.14.0",
     "hyperstream": "^1.2.2",
     "json-select": "^2.2.0",
