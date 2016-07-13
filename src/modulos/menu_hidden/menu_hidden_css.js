@@ -7,6 +7,13 @@ padding: 90px;
 }
 
 
+.menu {
+    padding: 16px;
+    background: rgba(0, 0, 0, 0);
+    width: 0;
+    position: absolute;
+    cursor: pointer;
+}
 
 .sidebar {
   position: absolute;
