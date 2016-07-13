@@ -7,15 +7,16 @@ var options = {
   hostname: '192.168.99.100',
   port: 8000,
   path: '/elmalvinense',
-  method: 'GET'
+  method: 'GET',
+  // encoding: 'iso-9959-1'
 };
 
 var req = http.request(options, (res) => {
   // console.log(`STATUS: ${res.statusCode}`);
   // console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-  res.setEncoding('utf8');
+  res.setEncoding('binary');
   res.pipe(parser).on('end', function () {
-    parser.done().items.forEach(function (item){store({type: 'news', payload: item})})})
+    parser.done().items.forEach(function (item){return store({type: 'news', payload: item})})})
   })
 
 req.on('error', (e) => {
