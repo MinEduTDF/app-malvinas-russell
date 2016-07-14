@@ -32,8 +32,14 @@ nT( function render() {
 window.addEventListener('popstate', function () {
   worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
+
+function changeWidth() {
+  worker.postMessage({type: 'changeWidth', payload: window.innerWidth})
+}
+window.addEventListener('resize', changeWidth)
 window.addEventListener('load', function () {
   // worker.postMessage({type: 'hydrate', payload: JSON.parse(window.state.innerText)})
+  changeWidth()
   worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
 

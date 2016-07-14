@@ -79,7 +79,10 @@ var reducers = {
   },
   news: function news(action, state) {
       return xtend(state, state.news.push(action.payload))
-  }
+  },
+  changeWidth: function changewidth(action, state) {
+    return xtend(state, {windowWidth: action.payload})
+        }
 }
 var reducer = function (reducers) {
   return reducers
