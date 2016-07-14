@@ -12,6 +12,7 @@ var noticiasget = require('./seccion/noticias.get.js')
 // var eventosget = require('./seccion/eventos.get.js')
 var router = wayfarer('/404')
 module.exports = function app(state) {
+  console.log(state.windowWidth)
   // router.on('/', function () {return menu(state)})
   // router.on('/', function (){return login(state)})
   router.on('/', function() {noticiasget(); return noticias(state)})
