@@ -6,7 +6,7 @@ var circle = styles['circle'];
 var titulo = styles['titulo'];
 var color = RandomColor()
 return yo`<div><svg
-  viewBox="0 0 1200 200"
+  viewBox="250 0 600 200"
   preserveAspectRatio="xMinYMin meet" 
   id="svg3184"
   xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@ return yo`<div><svg
        y="21"
        x="675"
        id="image3398"
-       xlink:href="http://localhost:8000/assets/img/malvinas.jpg"
+       xlink:href="http://192.168.99.100:8000/assets/img/malvinas.jpg"
        height="150"
        width="150"
        style="-webkit-clip-path: url(#clip); clip-path: url(#clip)" />

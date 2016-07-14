@@ -14294,7 +14294,7 @@ var divbtn = style ['divbtn']
 
 },{"./cuadro_css.js":85,"russell-view":55}],85:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
-var color = '#6389c8'
+var color = '#63a3c8'
 module.exports = csjs`
 .cuadro {
 margin: 10px;
@@ -14305,10 +14305,11 @@ border-color: #E4E4E4;
 }
 
 .tiempo {
-padding: 7px;
-font-size: 15px;
-color: #969696;
-background-color: #f3f3f3
+	padding-left: 15px;
+    padding-top: 15px;
+    font-size: 15px;
+    color: #638bc8;
+    background-color: #f9f9f9;
 }
 
 .titulo {
@@ -14322,21 +14323,23 @@ background-color: ${color};
 
 .contenido {
 font-family: arial;
-padding: 10px;
+padding: 15px;
 color: rgba(0,0,0,.54);
 line-height: 18px;
 font-size: 17px;
-background: white;
+background: #f9f9f9;
 }
 
 .divbtn {
 	width: 100%;
-    padding: 10px;
     text-align: right;
+    padding-right: 12px;
+    padding-bottom: 19px;
+    background: #f9f9f9;
 }
 
 .btn {
-    background: #6389c8;
+    background: #63a3c8;
     padding: 6px;
     text-decoration: none;
     color: white;
@@ -14567,7 +14570,7 @@ var circle = styles['circle'];
 var titulo = styles['titulo'];
 var color = RandomColor()
 return yo`<div><svg
-  viewBox="0 0 1200 200"
+  viewBox="250 0 600 200"
   preserveAspectRatio="xMinYMin meet" 
   id="svg3184"
   xmlns="http://www.w3.org/2000/svg">
@@ -14601,7 +14604,7 @@ return yo`<div><svg
        y="21"
        x="675"
        id="image3398"
-       xlink:href="http://localhost:8000/assets/img/malvinas.jpg"
+       xlink:href="http://192.168.99.100:8000/assets/img/malvinas.jpg"
        height="150"
        width="150"
        style="-webkit-clip-path: url(#clip); clip-path: url(#clip)" />
@@ -14728,7 +14731,7 @@ var menu = require('../modulos/menu_hidden/menu_hidden.js')
 var line = require('../modulos/timeline/timeline.js')
 module.exports = function timeline ( state ) {
 	return rv`<div>${menu(state)}
-  <div style="width:60%">
+  <div style="width:100%">
 ${state.timeline.map(line)}
   </div>
 	</div>`

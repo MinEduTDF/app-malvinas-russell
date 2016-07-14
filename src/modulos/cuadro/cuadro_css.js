@@ -1,5 +1,5 @@
 var csjs = require('csjs');
-var color = '#6389c8'
+var color = '#63a3c8'
 module.exports = csjs`
 .cuadro {
 margin: 10px;
@@ -10,10 +10,11 @@ border-color: #E4E4E4;
 }
 
 .tiempo {
-padding: 7px;
-font-size: 15px;
-color: #969696;
-background-color: #f3f3f3
+	padding-left: 15px;
+    padding-top: 15px;
+    font-size: 15px;
+    color: #638bc8;
+    background-color: #f9f9f9;
 }
 
 .titulo {
@@ -27,21 +28,23 @@ background-color: ${color};
 
 .contenido {
 font-family: arial;
-padding: 10px;
+padding: 15px;
 color: rgba(0,0,0,.54);
 line-height: 18px;
 font-size: 17px;
-background: white;
+background: #f9f9f9;
 }
 
 .divbtn {
 	width: 100%;
-    padding: 10px;
     text-align: right;
+    padding-right: 12px;
+    padding-bottom: 19px;
+    background: #f9f9f9;
 }
 
 .btn {
-    background: #6389c8;
+    background: #63a3c8;
     padding: 6px;
     text-decoration: none;
     color: white;
