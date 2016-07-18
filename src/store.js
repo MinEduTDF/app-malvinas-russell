@@ -87,7 +87,10 @@ var reducers = {
   },
   changeWidth: function changewidth(action, state) {
     return xtend(state, {windowWidth: action.payload})
-        }
+  },
+  hydrate: function hydrate(action, state) {
+    return xtend(state, action.payload)
+  }
 }
 
 var reducer = function (reducers) {

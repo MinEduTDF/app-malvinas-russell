@@ -25,12 +25,13 @@ var server = http.createServer(function (req, res) {
   }
   store({type: 'setUrl', payload: req.url})
   var state = store.getState()
+  var hyd = JSON.stringify(state)
     var elem =  app(state)
   read('index.html').pipe(hyperstream({
       '#main': elem,
-      // '#state': {
-      //   _text: JSON.parse(JSON.stringify(state))
-      // }
+      '#state': {
+        _html: "window.state =" + hyd
+      }
     })).pipe(res)
 })
 server.listen(8000)
