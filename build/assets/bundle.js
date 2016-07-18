@@ -14140,6 +14140,7 @@ var noticiasget = require('./seccion/noticias.get.js')
 // var eventosget = require('./seccion/eventos.get.js')
 var router = wayfarer('/404')
 module.exports = function app(state) {
+
   // router.on('/', function () {return menu(state)})
   // router.on('/', function (){return login(state)})
   router.on('/', function() {noticiasget(); return noticias(state)})
@@ -14186,8 +14187,14 @@ nT( function render() {
 window.addEventListener('popstate', function () {
   worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
+
+function changeWidth() {
+  worker.postMessage({type: 'changeWidth', payload: window.innerWidth})
+}
+window.addEventListener('resize', changeWidth)
 window.addEventListener('load', function () {
   // worker.postMessage({type: 'hydrate', payload: JSON.parse(window.state.innerText)})
+  changeWidth()
   worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
 
@@ -14294,7 +14301,7 @@ var divbtn = style ['divbtn']
 
 },{"./cuadro_css.js":85,"russell-view":55}],85:[function(require,module,exports){
 var csjs = require('csjs-injectify/csjs-inject');
-var color = '#6389c8'
+var color = '#63a3c8'
 module.exports = csjs`
 .cuadro {
 margin: 10px;
@@ -14305,10 +14312,11 @@ border-color: #E4E4E4;
 }
 
 .tiempo {
-padding: 7px;
-font-size: 15px;
-color: #969696;
-background-color: #f3f3f3
+	padding-left: 15px;
+    padding-top: 15px;
+    font-size: 15px;
+    color: #638bc8;
+    background-color: #f9f9f9;
 }
 
 .titulo {
@@ -14322,21 +14330,23 @@ background-color: ${color};
 
 .contenido {
 font-family: arial;
-padding: 10px;
+padding: 15px;
 color: rgba(0,0,0,.54);
 line-height: 18px;
 font-size: 17px;
-background: white;
+background: #f9f9f9;
 }
 
 .divbtn {
 	width: 100%;
-    padding: 10px;
     text-align: right;
+    padding-right: 12px;
+    padding-bottom: 19px;
+    background: #f9f9f9;
 }
 
 .btn {
-    background: #6389c8;
+    background: #63a3c8;
     padding: 6px;
     text-decoration: none;
     color: white;
@@ -14562,12 +14572,25 @@ padding: 90px;
 var yo = require('russell-view')
 var styles = require('./timeline_css.js')
 
-module.exports = function timeline(state) {
+module.exports = function timeline(state,index) {
 var circle = styles['circle'];
 var titulo = styles['titulo'];
 var color = RandomColor()
+
+
+//LEFT ******************** //
+var left = { line: 'transform="rotate(180 600 100)"',
+time: '670',
+img: 'transform="translate(-280)"'}
+
+var right = { line: '', time: '370', img: '' }
+var side = left
+if (index % 2 === 0) {
+  side = right;
+} 
+console.log(side)
 return yo`<div><svg
-  viewBox="0 0 1200 200"
+  viewBox="320 0 600 200"
   preserveAspectRatio="xMinYMin meet" 
   id="svg3184"
   xmlns="http://www.w3.org/2000/svg">
@@ -14581,10 +14604,10 @@ return yo`<div><svg
          fill="transparent" />
          </clippath>
 </defs>
-  <g id="main">
+  <g id="main" >
   
     <g
-       id="g3037">
+       id="g3037" ${side.line}>
       <rect
          width="16"
          height="200"
@@ -14597,22 +14620,23 @@ return yo`<div><svg
          id="svg_8"
          fill=${color} />
     </g>
+    <g ${side.img}>
     <image
        y="21"
        x="675"
        id="image3398"
-       xlink:href="http://localhost:8000/assets/img/malvinas.jpg"
+       xlink:href="http://192.168.99.100:8000/assets/img/malvinas.jpg"
        height="150"
        width="150"
        style="-webkit-clip-path: url(#clip); clip-path: url(#clip)" />
-
+    </g>
     <text
        x="300"
        y="130"
        id="text3130"
        xml:space="preserve"
        style="font-size:80.08296204px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
-         x="300"
+         x="${side.time}"
          y="130"
          id="tspan3132"
          fill=${color}>${state.title}</tspan></text>
@@ -14727,8 +14751,15 @@ var rv = require('russell-view')
 var menu = require('../modulos/menu_hidden/menu_hidden.js')
 var line = require('../modulos/timeline/timeline.js')
 module.exports = function timeline ( state ) {
+var width = ""
+
+console.log(state.windowWidth)
+	// width = "width:60%"
+if (state.windowWidth > 500) {
+	width = "width:500px"
+}
 	return rv`<div>${menu(state)}
-  <div style="width:60%">
+  <div style="${width}">
 ${state.timeline.map(line)}
   </div>
 	</div>`
@@ -14818,7 +14849,10 @@ var reducers = {
   },
   news: function news(action, state) {
       return xtend(state, state.news.push(action.payload))
-  }
+  },
+  changeWidth: function changewidth(action, state) {
+    return xtend(state, {windowWidth: action.payload})
+        }
 }
 var reducer = function (reducers) {
   return reducers

@@ -4,7 +4,6 @@ var router = routes()
 var menu = require('./modulos/menu_hidden/menu_hidden.js')
 var timeline = require('./seccion/timeline.js')
 var azimuth = require('./seccion/azimuth.js')
-// var noticias = require('./seccion/noticias.js')
 var noticiasget = require('./seccion/noticias.get.js')
 
 router.addRoute('/', noticiasget)
