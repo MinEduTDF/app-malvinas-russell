@@ -1,12 +1,13 @@
 var yo = require('russell-view')
 var styles = require('./timeline_css.js')
+var dominant = require('dominant-color')
+    
 
 
 module.exports = function timeline(state,index) {
 var circle = styles['circle'];
 var titulo = styles['titulo'];
 var color = '#666'
-
 
 //LEFT ******************** //
 var left = { line: 'transform="rotate(180 600 100)"',
