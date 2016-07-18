@@ -30,6 +30,7 @@
     "json-select": "^2.2.0",
     "local-links": "^1.4.0",
     "request": "^2.72.0",
+    "routes": "^2.1.0",
     "russell-view": "^1.0.0",
     "store-emitter": "^2.2.0",
     "wayfarer": "^6.1.4",

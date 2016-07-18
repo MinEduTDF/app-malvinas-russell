@@ -4,7 +4,7 @@ var styles = require('./timeline_css.js')
 module.exports = function timeline(state) {
 var circle = styles['circle'];
 var titulo = styles['titulo'];
-var color = RandomColor()
+var color = '#666'
 return yo`<div><svg
   viewBox="0 0 1200 200"
   preserveAspectRatio="xMinYMin meet" 

@@ -14,6 +14,7 @@ var st = ecstatic(path.join(__dirname, 'build'))
 var http = require('http')
 
 var server = http.createServer(function (req, res) {
+  if (req.url.match('/favicon.ico')) return
   if (req.url.match('assets')) return st(req, res)
   if (req.url.match('api')) {
     req.url = '/cake/Web-OvnionPanel-Back' + req.url
@@ -22,13 +23,14 @@ var server = http.createServer(function (req, res) {
   if (req.url.match('elmalvinense')) {
     return request('http://elmalvinense.com/elmalvinense.xml').pipe(res) 
   }
-  var state = store({type: 'setUrl', payload: req.url})
+  store({type: 'setUrl', payload: req.url})
+  var state = store.getState()
     var elem =  app(state)
   read('index.html').pipe(hyperstream({
       '#main': elem,
-      '#state': {
-        _text: JSON.parse(JSON.stringify(state))
-      }
+      // '#state': {
+      //   _text: JSON.parse(JSON.stringify(state))
+      // }
     })).pipe(res)
 })
 server.listen(8000)
