@@ -17,8 +17,6 @@ var side = left
 if (index % 2 === 0) {
   side = right;
 } 
-console.log(side)
->>>>>>> 234a6c225953fc84c641794f609b61666fc05518
 return yo`<div><svg
   viewBox="320 0 600 200"
   preserveAspectRatio="xMinYMin meet" 
