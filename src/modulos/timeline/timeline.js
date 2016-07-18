@@ -53,7 +53,7 @@ return yo`<div><svg
        y="21"
        x="675"
        id="image3398"
-       xlink:href="http://192.168.99.100:8000/assets/img/malvinas.jpg"
+       xlink:href=${state.img}
        height="150"
        width="150"
        style="-webkit-clip-path: url(#clip); clip-path: url(#clip)" />
