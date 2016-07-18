@@ -7,7 +7,7 @@ var noticias = require('./noticias.js')
 module.exports = function getnews(state) { 
   if (state.news.length !== 0) return noticias(state)
 var options = {
-  hostname: 'localhost',
+  hostname: '192.168.99.100',
   port: 8000,
   path: '/elmalvinense',
   method: 'GET'

@@ -1,5 +1,5 @@
 var csjs = require('csjs');
-var color = '#63a3c8'
+
 module.exports = csjs`
 .cuadro {
 margin: 10px;
@@ -23,7 +23,6 @@ padding: 10px;
 text-align: center;
 color: white;
 font-size: 20px;
-background-color: ${color};
 }
 
 .contenido {
@@ -44,7 +43,6 @@ background: #f9f9f9;
 }
 
 .btn {
-    background: #63a3c8;
     padding: 6px;
     text-decoration: none;
     color: white;
