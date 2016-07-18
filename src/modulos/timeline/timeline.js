@@ -1,6 +1,7 @@
 var yo = require('russell-view')
 var styles = require('./timeline_css.js')
 
+
 module.exports = function timeline(state,index) {
 var circle = styles['circle'];
 var titulo = styles['titulo'];
@@ -10,14 +11,17 @@ var color = '#666'
 //LEFT ******************** //
 var left = { line: 'transform="rotate(180 600 100)"',
 time: '670',
-img: 'transform="translate(-280)"'}
+img: 'x="380" y="30" width="150" height="150"'}
 
-var right = { line: '', time: '370', img: '' }
+var right = { line: '', time: '370', img: 'x="700" y="30" width="150" height="150"' }
 var side = left
 if (index % 2 === 0) {
   side = right;
 } 
-return yo`<div><svg
+
+return yo`<div>
+
+<svg
   viewBox="320 0 600 200"
   preserveAspectRatio="xMinYMin meet" 
   id="svg3184"
@@ -48,16 +52,15 @@ return yo`<div><svg
          id="svg_8"
          fill=${color} />
     </g>
-    <g ${side.img}>
-    <image
-       y="21"
-       x="675"
-       id="image3398"
-       xlink:href=${state.img}
-       height="150"
-       width="150"
-       style="-webkit-clip-path: url(#clip); clip-path: url(#clip)" />
-    </g>
+
+
+<foreignobject ${side.img}>
+    <body xmlns="http://www.w3.org/1999/xhtml">
+    <div class="${circle}" style="background: url(${state.img}) no-repeat; background-position: 50% 50%;"></div>
+    </body>
+ 
+  </foreignobject>
+
     <text
        x="300"
        y="130"
@@ -72,28 +75,13 @@ return yo`<div><svg
 </svg>
 </div>`	
 }
-
-function RandomColor() {
-    var letters = '0123456789ABCDEF'.split('');
-    var color = '#';
-    for (var i = 0; i < 6; i++ ) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    	lum = "-0.3";
-    	hex = color;
-
-    	hex = String(hex).replace(/[^0-9a-f]/gi, '');
-	if (hex.length < 6) {
-		hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-	}
-	lum = lum || 0;
-
-	var rgb = "#", c, i;
-	for (i = 0; i < 3; i++) {
-		c = parseInt(hex.substr(i*2,2), 16);
-		c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-		rgb += ("00"+c).substr(c.length);
-	}
-
-	return rgb;
-}
+    // <g ${side.img}>
+    // <image
+    //    y="21"
+    //    x="675"
+    //    id="image3398"
+    //    xlink:href=${state.img}
+    //    height="150"
+    //    width="150"
+    //    style="-webkit-clip-path: url(#clip); clip-path: url(#clip); background-position: 50% 50%;" />
+    // </g>

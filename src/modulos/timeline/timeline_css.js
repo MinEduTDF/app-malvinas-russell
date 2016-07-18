@@ -2,10 +2,11 @@ var csjs = require('csjs');
 module.exports = csjs`
 
 .circle {
-	margin: 30px;
-    text-align: center;
-    float: left;
-    width: 173px;
+	width: 100%;
+	height: 100%;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
 }
 .titulo {
     padding: 64px;
