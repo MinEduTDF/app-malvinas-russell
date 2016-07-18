@@ -38,12 +38,12 @@ document.body.addEventListener('click', function (event) {
     return worker.postMessage({type: 'setUrl', payload: pathname})
   }
 
-  if (!event.target.dataset.type) {
+  if (!event.target.dataset || !event.target.dataset.type) {
     return worker.postMessage({type: 'closeMenu'})
   }
-  var click = {type: event.target['dataset'].type} //JSON.parse(event.target['dataset'].click)
+  var click = event.target['dataset'].type //JSON.parse(event.target['dataset'].click)
   if (click) {
     event.preventDefault()
-    return worker.postMessage(click)
+    return worker.postMessage({type: click})
   }
 })

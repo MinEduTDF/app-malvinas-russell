@@ -73,7 +73,7 @@ var reducers = {
     return xtend(state, {url: action.payload, isOpen: false})
   },
   closeMenu: function closeMenu(action, state) {
-    if(state.isOpen)
+    // if(state.isOpen)
       return xtend(state, {isOpen: false})
   },
   timeline: function timeline(action, state) {
