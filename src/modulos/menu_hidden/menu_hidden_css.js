@@ -17,8 +17,8 @@ padding: 90px;
 
 .sidebar {
   position: fixed;
+  z-index:10;
   width: 220px;
-  z-index: 999;
   top: 0;
   background-color: #ffffff;
   min-height: 100%;
@@ -34,9 +34,23 @@ padding: 90px;
 
 .sidebar.isOpen {
   transform: translateX(0px);
-  box-shadow: 0 0 0 100vw rgba(0,0,0,0.7);
 }
 
+.black {
+  position: relative;
+  z-index: 1;
+}
+
+.black.isOpen {
+  background-color: rgba(0, 0, 0, 0.74);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+}
 
 
 /* Demo Navigation */
@@ -49,6 +63,10 @@ padding: 90px;
   color: #eee;
   border-bottom: 1px solid #222;
   background: #2a2a2a;
+}
+
+.nav {
+  background-color: white;
 }
 
 .nav li a {

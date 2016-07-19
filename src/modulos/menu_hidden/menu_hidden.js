@@ -15,10 +15,12 @@ var icon = style['icon']
 var content = style['content']
 var menu = style['menu']
 
+var black = state.isOpen ? style['black'] +" "+style['isOpen'] :style['black']
 
   var sidebar = state.isOpen ? style['sidebar'] + " "+ style['isOpen'] : style['sidebar']
    return rv`<div>
   <div class='${sidebar}'>
+
     <div class='${img}'>
     </div>
     <ul class="${nav}">
@@ -40,10 +42,9 @@ var menu = style['menu']
     </svg>
         Brujula</a>
       </li>
-      <li>
-        <a>
     </ul>
   </div>
+  <div class='${black}'></div>
 <div class="${menu}"  data-type="menu"></div>
 <div style="width:30px;">
 <svg  viewBox="0 0 500 500">
