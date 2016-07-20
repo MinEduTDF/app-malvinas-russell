@@ -2,10 +2,17 @@ var csjs = require('csjs');
 
 module.exports = csjs`
 .cuadro {
-margin: 10px;
- border-style: solid;
- border-width: 0.1em;
-border-color: #E4E4E4;
+    position: relative;
+    background-color:white;
+    float: left;
+    width: 100%;
+    min-width: 259px;
+    max-width: 317px;
+    height: 344px;
+    margin: 10px;
+    border-style: solid;
+    border-width: 0.1em;
+    border-color: #E4E4E4;
     box-shadow: 0px 2px 10px -5px #888888;
 }
 
@@ -13,33 +20,31 @@ border-color: #E4E4E4;
 	padding-left: 15px;
     padding-top: 15px;
     font-size: 15px;
-    color: #638bc8;
-    background-color: #f9f9f9;
 }
 
 .titulo {
-font-family: arial;
-padding: 10px;
-text-align: center;
-color: white;
-font-size: 20px;
+    font-family: serif;
+    padding-left: 14px;
+    padding-bottom: 16px;
+    padding-top: 35px;
+    color: white;
+    font-size: 22px;
 }
 
 .contenido {
-font-family: arial;
-padding: 15px;
-color: rgba(0,0,0,.54);
-line-height: 18px;
-font-size: 17px;
-background: #f9f9f9;
+font-family: serif;
+    padding: 15px;
+    color: rgba(0, 0, 0, 0.69);
+    line-height: 24px;
+    font-size: 18px;
 }
 
 .divbtn {
-	width: 100%;
-    text-align: right;
     padding-right: 12px;
     padding-bottom: 19px;
-    background: #f9f9f9;
+    position: absolute;
+    right: 0;
+    bottom: 0;
 }
 
 .btn {

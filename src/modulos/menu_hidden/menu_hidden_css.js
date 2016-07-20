@@ -9,8 +9,10 @@ padding: 90px;
 
 .menu {
     padding: 16px;
+    left: 14px;
+    top: 8px;
     background: rgba(0, 0, 0, 0);
-    width: 0;
+    width: 0px;
     position: absolute;
     cursor: pointer;
 }
@@ -104,6 +106,14 @@ padding: 90px;
   float:left; 
   height: 32px;
   width: 34px;
+}
+.svgmenu {
+  width: 30px;
+}
+.menubarra {
+  padding: 10px;
+  padding-left: 17px;
+  background-color: #6389c8;
 }
 
 `

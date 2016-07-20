@@ -14,6 +14,9 @@ var img = style['img']
 var icon = style['icon']
 var content = style['content']
 var menu = style['menu']
+var menubarra = style['menubarra']
+var svgmenu = style['svgmenu']
+
 
 var black = state.isOpen ? style['black'] +" "+style['isOpen'] :style['black']
 
@@ -46,10 +49,11 @@ var black = state.isOpen ? style['black'] +" "+style['isOpen'] :style['black']
   </div>
   <div class='${black}'></div>
 <div class="${menu}"  data-type="menu"></div>
-<div style="width:30px;">
+<div class="${menubarra}">
+<div class="${svgmenu}">
 <svg  viewBox="0 0 500 500">
 <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-fill="#6389c8" stroke="none">
+fill="white" stroke="none">
 <path d="M565 4151 c-90 -22 -173 -90 -215 -176 -33 -69 -34 -199 -2 -265 34
 -71 75 -113 144 -151 l63 -34 2005 0 2005 0 50 25 c64 31 124 91 155 155 35
 72 35 198 0 270 -31 64 -91 124 -155 155 l-50 25 -1985 2 c-1092 0 -1998 -2
@@ -64,7 +68,7 @@ l50 -25 2005 0 2005 0 50 25 c64 31 124 91 155 155 35 72 35 198 0 270 -31 64
 </g>
 </svg>
 </div>
-
+</div>
 
 </div>`;
 }
