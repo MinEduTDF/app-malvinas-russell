@@ -4,6 +4,7 @@ var noticia = require('../modulos/cuadro/cuadro.js')
 module.exports = function noticias( state ) {
 
 return rv`<div>${menu(state)}
-		${state.news.map(noticia)}
+		${state.news.map(noticia,state)}	
 	</div>`
+
 }

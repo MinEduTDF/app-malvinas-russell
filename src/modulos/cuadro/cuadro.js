@@ -9,6 +9,7 @@ var tiempo = style['tiempo']
 var btn = style['btn']
 var divbtn = style ['divbtn']
 
+var appstate = this
 
 var color1 = '#175f8a'
 var color2 = '#f08030' 
@@ -18,10 +19,25 @@ var color = color1
 if (index % 2 === 0) {
   color = color2;
 }
- return rv`<div class="${cuadro}">
 
+var width = ""
+if (appstate.windowWidth > 690) {
+var width = "float: left; width: 47%; height: 344px;"
+} 
 
+if (appstate.windowWidth > 850) {
+var width = "float: left; width: 47.5%; height: 344px;"
+} 
 
+if (appstate.windowWidth > 1108) {
+var width = "float: left; width: 31.5%; height: 344px;"
+}
+
+if (appstate.windowWidth > 1170) {
+var width = "float: left; width: 31.6%; height: 344px;"
+}
+
+ return rv`<div class="${cuadro}" style="${width}">
 <div class="${titulo}" style="background-color: ${color};">${state.title}</div>
 <div class="${tiempo}" style="color: ${color}">
 <div style="width:25px; float:left;">

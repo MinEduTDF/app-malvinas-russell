@@ -1,15 +1,11 @@
 var csjs = require('csjs');
-
 module.exports = csjs`
+
 .cuadro {
     position: relative;
     background-color:white;
-    float: left;
-    width: 100%;
-    min-width: 259px;
-    max-width: 317px;
-    height: 344px;
     margin: 10px;
+    padding: 10px;
     border-style: solid;
     border-width: 0.1em;
     border-color: #E4E4E4;
@@ -25,6 +21,7 @@ module.exports = csjs`
 .titulo {
     font-family: serif;
     padding-left: 14px;
+    padding-right: 14px;
     padding-bottom: 16px;
     padding-top: 35px;
     color: white;
@@ -32,19 +29,22 @@ module.exports = csjs`
 }
 
 .contenido {
-font-family: serif;
+    font-family: serif;
     padding: 15px;
     color: rgba(0, 0, 0, 0.69);
     line-height: 24px;
     font-size: 18px;
+    padding-bottom: 15%;
 }
 
 .divbtn {
-    padding-right: 12px;
-    padding-bottom: 19px;
+    width: 100%;
     position: absolute;
-    right: 0;
+    padding: 10px;
+    text-align: right;
+    left: 0;
     bottom: 0;
+    padding-bottom: 17px;
 }
 
 .btn {
@@ -52,5 +52,4 @@ font-family: serif;
     text-decoration: none;
     color: white;
     font-size: 15px;
-}
-`;
+}`;

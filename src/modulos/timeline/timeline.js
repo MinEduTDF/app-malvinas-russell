@@ -1,20 +1,18 @@
 var yo = require('russell-view')
 var styles = require('./timeline_css.js')
-var dominant = require('dominant-color')
-    
-
 
 module.exports = function timeline(state,index) {
 var circle = styles['circle'];
 var titulo = styles['titulo'];
-var color = '#666'
 
 //LEFT ******************** //
 var left = { line: 'transform="rotate(180 600 100)"',
 time: '670',
-img: 'x="380" y="30" width="150" height="150"'}
+img: 'x="380" y="30" width="150" height="150"',
+color: '#175f8a'
+}
 
-var right = { line: '', time: '370', img: 'x="700" y="30" width="150" height="150"' }
+var right = { line: '', time: '370', img: 'x="700" y="30" width="150" height="150"', color:'#f08030' }
 var side = left
 if (index % 2 === 0) {
   side = right;
@@ -47,17 +45,17 @@ return yo`<div>
          x="592"
          y="0"
          id="svg_6"
-         fill=${color} />
+         fill=${side.color} />
       <polygon
          points="608 90, 618 100, 608 110"
          id="svg_8"
-         fill=${color} />
+         fill=${side.color} />
     </g>
 
 
 <foreignobject ${side.img}>
     <body xmlns="http://www.w3.org/1999/xhtml">
-    <div class="${circle}" style="background: url(${state.img}) no-repeat; background-position: 50% 50%;"></div>
+    <div class="${circle}" style="background: url(${state.img}) no-repeat; background-position: 50% 50%;  box-shadow: 0px 0px 1px 11px ${side.color};"></div>
     </body>
  
   </foreignobject>
@@ -71,7 +69,7 @@ return yo`<div>
          x="${side.time}"
          y="130"
          id="tspan3132"
-         fill=${color}>${state.title}</tspan></text>
+         fill=${side.color}>${state.title}</tspan></text>
   </g>
 </svg>
 </div>`	
