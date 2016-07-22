@@ -1,4 +1,4 @@
-FROM node:0.10.46
+FROM node:latest
 
 
 # Clona el repositorio 
