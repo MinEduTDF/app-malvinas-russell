@@ -22,6 +22,7 @@
   "homepage": "https://github.com/MinEduTDF/app-malvinas-russell#readme",
   "dependencies": {
     "JSONStream": "^1.1.1",
+    "azimuth": "^0.1.0",
     "csjs": "^1.0.3",
     "dominant-color": "0.0.1",
     "ecstatic": "^1.4.1",
@@ -30,6 +31,7 @@
     "hyperstream": "^1.2.2",
     "json-select": "^2.2.0",
     "local-links": "^1.4.0",
+    "morphdom": "^2.0.1",
     "request": "^2.72.0",
     "routes": "^2.1.0",
     "russell-view": "^1.0.0",
