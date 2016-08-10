@@ -55,7 +55,7 @@ return yo`<div>
 
 <foreignobject ${side.img}>
     <body xmlns="http://www.w3.org/1999/xhtml">
-    <div class="${circle}" style="background: url(${state.img}) no-repeat; background-position: 50% 50%;  box-shadow: 0px 0px 1px 11px ${side.color};"></div>
+    <div class="${circle}" style="background: url(${state.img}) no-repeat; background-position: 50% 50%; border: 12px solid ${side.color};"></div>
     </body>
  
   </foreignobject>
