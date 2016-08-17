@@ -7,10 +7,11 @@ var width = "width:100%"
 if (state.windowWidth > 500) {
 	width = "width:500px;"
 }
+
 	return rv`<div>${menu(state)}
 	<div style="width:100%; text-align:center;">
   <div style="${width} display: inline-block;">
-${state.timeline.map(line)}
+${state.timeline.map(line,state)}
   </div>
   	</div>
 	</div>`

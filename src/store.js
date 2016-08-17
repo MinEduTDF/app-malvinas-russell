@@ -15,7 +15,8 @@ var  initialState = {
             "url": "http://www.elhistoriador.com.ar/articulos/conquista_y_colonia/la_bula_intercaetera_legitima_ocupacion_espanola_de_las_indias_occidentales.php",
             "status": 1,
             "created": "2016-06-14T11:14:19+0000",
-            "modified": "2016-06-14T11:14:19+0000"
+            "modified": "2016-06-14T11:14:19+0000",
+            "dialogOpen": false
         },
         {
             "id": 2,
@@ -26,7 +27,8 @@ var  initialState = {
             "url": "http://www.fileane.com/espagnol/tratado_de_tordesillas.htm",
             "status": 1,
             "created": "2016-06-30T13:00:00+0000",
-            "modified": "2016-06-30T13:00:00+0000"
+            "modified": "2016-06-30T13:00:00+0000",
+            "dialogOpen": false
         },
         {
             "id": 3,
@@ -37,7 +39,8 @@ var  initialState = {
             "url": "https://www.wdl.org/es/item/3082/",
             "status": 1,
             "created": "2016-06-30T13:00:00+0000",
-            "modified": "2016-06-30T13:00:00+0000"
+            "modified": "2016-06-30T13:00:00+0000",
+            "dialogOpen": false
         },
         {
             "id": 4,
@@ -48,7 +51,8 @@ var  initialState = {
             "url": "http://www.abc.es/espana/20130806/abci-gibraltar-tratado-utrecht-201308061405.html",
             "status": 1,
             "created": "2016-06-30T13:00:00+0000",
-            "modified": "2016-06-30T13:00:00+0000"
+            "modified": "2016-06-30T13:00:00+0000",
+            "dialogOpen": false
         },
         {
             "id": 5,
@@ -59,7 +63,8 @@ var  initialState = {
             "url": "http://www.unla.edu.ar/documentos/observatorios/malvinas/manual.pdf",
             "status": 1,
             "created": "2016-06-30T13:00:00+0000",
-            "modified": "2016-06-30T13:00:00+0000"
+            "modified": "2016-06-30T13:00:00+0000",
+            "dialogOpen": false
         }
        ] 
 
@@ -69,6 +74,15 @@ var reducers = {
   menu: function menu(action, state) {
     return xtend(state, {isOpen: !state.isOpen})
     },
+  dialogOpen: function dialogOpen(action, state) {
+    state.timeline[action.payload].dialogOpen = true
+    return state
+    },
+  dialogClose: function dialogClose(action, state) {
+    state.timeline[action.payload].dialogOpen = false
+    return state
+    },
+    
   setUrl: function setUrl(action, state) {
     return xtend(state, {url: action.payload, isOpen: false})
   },

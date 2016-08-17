@@ -1,9 +1,13 @@
 var yo = require('russell-view')
 var styles = require('./timeline_css.js')
-
+var dialog = require('../dialog/dialog.js')
 module.exports = function timeline(state,index) {
+
 var circle = styles['circle'];
 var titulo = styles['titulo'];
+var globalstate = this
+var index = index
+
 
 //LEFT ******************** //
 var left = { line: 'transform="rotate(180 600 100)"',
@@ -18,8 +22,12 @@ if (index % 2 === 0) {
   side = right;
 } 
 
-return yo`<div>
+if (state.dialogOpen) {
+    return yo`${dialog(state,globalstate,index)}`
+}
 
+return yo`
+<div>
 <svg
   viewBox="320 0 600 200"
   preserveAspectRatio="xMinYMin meet" 
@@ -55,7 +63,7 @@ return yo`<div>
 
 <foreignobject ${side.img}>
     <body xmlns="http://www.w3.org/1999/xhtml">
-    <div class="${circle}" style="background: url(${state.img}) no-repeat; background-position: 50% 50%; border: 12px solid ${side.color};"></div>
+    <div data-type="dialogOpen" data-payload="${index}" class="${circle}" style="background: url(${state.img}) no-repeat; background-position: 50% 50%; border: 12px solid ${side.color};"></div>
     </body>
  
   </foreignobject>

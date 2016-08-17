@@ -44,6 +44,6 @@ document.body.addEventListener('click', function (event) {
   var click = event.target['dataset'].type //JSON.parse(event.target['dataset'].click)
   if (click) {
     event.preventDefault()
-    return worker.postMessage({type: click})
+    return worker.postMessage({type: click, payload: event.target.dataset.payload})
   }
 })
