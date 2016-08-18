@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "node server.js & watchify src/index.js -o build/assets/bundle.js"
+    "watch": "cp node_modules/sw-toolbox/sw-toolbox.js build/assets/js/ && cp src/sw.js build/ && node server.js & watchify src/index.js -o build/assets/bundle.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +36,7 @@
     "routes": "^2.1.0",
     "russell-view": "^1.0.0",
     "store-emitter": "^2.2.0",
+    "sw-toolbox": "^3.2.1",
     "wayfarer": "^6.1.4",
     "xtend": "^4.0.1"
   },
@@ -43,6 +44,7 @@
     "browserify": "^13.0.0",
     "csjs-injectify": "^1.0.0",
     "es6-templates": "^0.2.2",
+    "sw-toolbox": "^3.2.1",
     "watchify": "^3.7.0",
     "webworkify": "^1.2.1"
   },

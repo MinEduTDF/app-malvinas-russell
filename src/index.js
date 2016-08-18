@@ -4,6 +4,8 @@ var morphdom = require('morphdom')
 var nT = requestAnimationFrame
 var localLinks = require('local-links')
 
+navigator.serviceWorker.register('./sw.js')
+
 var el = document.getElementById('main')
 
 var url
