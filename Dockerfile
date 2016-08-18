@@ -7,4 +7,4 @@ WORKDIR /app-malvinas-russell
 RUN npm install --no-dev 
 
 
-CMD ["npm", "start"] 
+CMD ["npm", "run watch"] 
