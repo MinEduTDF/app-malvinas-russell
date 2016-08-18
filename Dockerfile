@@ -5,4 +5,4 @@ FROM node:latest
 RUN git clone https://github.com/MinEduTDF/app-malvinas-russell /app-malvinas-russell
 WORKDIR /app-malvinas-russell
 RUN npm install --no-dev 
-RUN npm run watch
+CMD ["npm","run","watch"]
