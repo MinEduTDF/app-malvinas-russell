@@ -14,6 +14,7 @@ var st = ecstatic(path.join(__dirname, 'build'))
 var http = require('http')
 
 var server = http.createServer(function (req, res) {
+  if (req.url.match('manifest.json')) return st(req,res)
   if (req.url.match('sw.js')) return st(req,res)
   if (req.url.match('assets')) return st(req, res)
   if (req.url.match('api')) {
