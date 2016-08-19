@@ -21,7 +21,7 @@
   importScripts('assets/js/sw-toolbox.js');
 
   // Turn on debug logging, visible in the Developer Tools' console.
-  global.toolbox.options.debug = true;
+  // global.toolbox.options.debug = true;
 
   // Set up a handler for HTTP GET requests:
   // - /\.ytimg\.com\// will match any requests whose URL contains 'ytimg.com'.
