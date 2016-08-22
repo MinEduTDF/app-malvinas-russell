@@ -13,7 +13,6 @@ module.exports = function (state) {
   lng: 73.924471,
   elv: 562
 });
-	console.log(az)
   return rv`<div>${menu(state)}${compass(state)}</div>`
 
 }

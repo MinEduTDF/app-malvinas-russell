@@ -18,11 +18,13 @@ var menubarra = style['menubarra']
 var svgmenu = style['svgmenu']
 
 
-var black = state.isOpen ? style['black'] +" "+style['isOpen'] :style['black']
-
-  var sidebar = state.isOpen ? style['sidebar'] + " "+ style['isOpen'] : style['sidebar']
+var black = state.isOpen && state.started ? style['black'] +" "+style['isOpen'] :style['black']
+  var sidebar = ''
+  if (state.started) {
+  sidebar = state.isOpen ? style['isOpen'] : style['isClosed']
+  }
    return rv`<div>
-  <div class='${sidebar}'>
+  <div class='${style['sidebar']  + " " + sidebar}'>
 
     <div class='${img}'>
     </div>

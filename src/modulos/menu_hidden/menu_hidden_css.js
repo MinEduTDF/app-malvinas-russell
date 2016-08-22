@@ -24,9 +24,16 @@ padding: 90px;
   top: 0;
   background-color: #ffffff;
   min-height: 100%;
-  transform: translateX(-220px);
-  transition: transform 0.40s ease-in-out;  
+  transform: translateX(-100%);
+  will-change: transform;
+  transform: translateX(-100%);
 }
+.sidebar.isClosed {
+  transform: translateX(-100%);
+  transition: transform 130ms ease-out;  
+  will-change: transform;
+}
+
 
 .content {
   flex: 1;
@@ -35,7 +42,9 @@ padding: 90px;
 }
 
 .sidebar.isOpen {
-  transform: translateX(0px);
+  transform: none;
+  transition: transform 330ms ease-in;  
+  will-change: transform;
 }
 
 .black {

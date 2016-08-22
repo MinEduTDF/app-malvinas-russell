@@ -1,6 +1,7 @@
 var createStore = require('store-emitter')
 var xtend = require('xtend')
 var  initialState = {
+  started: false,
   isOpen: false,
   url: '/',
   news: [],
@@ -72,7 +73,7 @@ var  initialState = {
 
 var reducers = {
   menu: function menu(action, state) {
-    return xtend(state, {isOpen: !state.isOpen})
+    return xtend(state, {isOpen: !state.isOpen, started: true})
     },
   dialogOpen: function dialogOpen(action, state) {
     state.timeline[action.payload].dialogOpen = true

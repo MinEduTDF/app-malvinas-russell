@@ -11,10 +11,11 @@ var el = document.getElementById('main')
 var url
 worker.onmessage = function onmsg(ev) {
   url = ev.data.url
-  if (location.pathname !== url) {
+  
+nT( function render() { 
+if (location.pathname !== url) {
     history.pushState(null, null, url)
   }
-nT( function render() { 
   morphdom(el, ev.data.view)
 })
 }
@@ -29,7 +30,7 @@ window.addEventListener('resize', changeWidth)
 window.addEventListener('load', function () {
   worker.postMessage({type: 'hydrate', payload: window.state})
   changeWidth()
-  worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
+  // worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
 
 
