@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "cp node_modules/sw-toolbox/sw-toolbox.js build/assets/js/ && cp src/sw.js build/ && node server.js & watchify src/index.js -o build/assets/bundle.js"
+    "watch": "cp node_modules/sw-toolbox/sw-toolbox.js build/assets/js/ && cp src/sw.js build/ && node server.js & watchify src/index.js -o build/assets/bundle.js",
+    "build": "cp node_modules/sw-toolbox/sw-toolbox.js build/assets/js/ && cp src/sw.js build/ && browserify -p [ csjs-extractify --extension _css.js -o build/assets/css/main.css ] src/index.js -o build/assets/bundle.js"
+
   },
   "repository": {
     "type": "git",
@@ -24,6 +26,7 @@
     "JSONStream": "^1.1.1",
     "azimuth": "^0.1.0",
     "csjs": "^1.0.3",
+    "csjs-extractify": "^1.0.0-alpha.0",
     "dominant-color": "0.0.1",
     "ecstatic": "^1.4.1",
     "feedme": "^0.3.0",
@@ -50,7 +53,6 @@
   },
   "browserify": {
     "transform": [
-      "csjs-injectify",
       "es6-templates"
     ]
   }
