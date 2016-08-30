@@ -35,6 +35,7 @@
     "json-select": "^2.2.0",
     "local-links": "^1.4.0",
     "morphdom": "^2.0.1",
+    "oppressor": "0.0.1",
     "request": "^2.72.0",
     "routes": "^2.1.0",
     "russell-view": "^1.0.0",
