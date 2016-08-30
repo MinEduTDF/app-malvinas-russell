@@ -1,0 +1,14 @@
+{
+  "staticFileGlobs": [
+    "build/index.html",
+    "build/manifest.json",
+    "build/assets/**/*"
+  ],
+  "stripPrefix": "build/",
+  "runtimeCaching": [
+    {
+      "urlPattern": "/\/elmalvinense/",
+      "handler": "networkFirst"
+    }
+  ]
+}
