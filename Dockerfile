@@ -5,6 +5,7 @@ ADD package.json /app-malvinas-russell/
 WORKDIR /app-malvinas-russell
 RUN npm install
 ADD server.js /app-malvinas-russell/
+ADD sw-precache-config.json /app-malvinas-russell/
 ADD src/  /app-malvinas-russell/src/
 ADD build/ /app-malvinas-russell/build/
 RUN npm run build
