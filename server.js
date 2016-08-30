@@ -7,6 +7,7 @@ var httpProxy = require('http-proxy')
 // var proxy = httpProxy.createProxyServer({target: 'http://elmalvinense.com'})
 var proxycake = httpProxy.createProxyServer({target: 'http://192.168.1.64'})
 var request = require('request')
+var oppressor = require('oppressor')
 
 var ecstatic = require('ecstatic')
 var st = ecstatic(path.join(__dirname, 'build'))
@@ -15,7 +16,7 @@ var http = require('http')
 
 var server = http.createServer(function (req, res) {
   if (req.url.match('manifest.json')) return st(req,res)
-  if (req.url.match('sw.js')) return st(req,res)
+  if (req.url.match('service-worker.js')) return st(req,res)
   if (req.url.match('assets')) return st(req, res)
   if (req.url.match('api')) {
     req.url = '/cake/Web-OvnionPanel-Back' + req.url
@@ -33,7 +34,7 @@ var server = http.createServer(function (req, res) {
       '#state': {
         _html: "window.state =" + hyd
       }
-    })).pipe(res)
+    })).pipe(oppressor(req)).pipe(res)
 })
 server.listen(8000)
 
