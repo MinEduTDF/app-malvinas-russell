@@ -1,5 +1,6 @@
 {
   "staticFileGlobs": [
+    "build/",
     "build/manifest.json",
     "build/assets/**/*"
   ],
@@ -8,6 +9,10 @@
     {
       "urlPattern": "/\/elmalvinense/",
       "handler": "networkFirst"
+    },
+    { 
+      "urlPattern": "*",
+      "handler": "cacheFirst"
     }
   ]
 }
