@@ -8,6 +8,8 @@ var httpProxy = require('http-proxy')
 var proxycake = httpProxy.createProxyServer({target: 'http://192.168.1.64'})
 var request = require('request')
 var oppressor = require('oppressor')
+var feedme = require('feedme')
+var parser = new feedme(true)
 
 var ecstatic = require('ecstatic')
 var st = ecstatic(path.join(__dirname, 'build'))
@@ -23,7 +25,13 @@ var server = http.createServer(function (req, res) {
     return proxycake.web(req, res)
   }
   if (req.url.match('elmalvinense')) {
-    return request('http://elmalvinense.com/elmalvinense.xml').pipe(res) 
+    request({encoding: 'binary', url:'http://elmalvinense.com/elmalvinense.xml'})
+      .on('data', function (d) {parser.write(d)}) 
+      .on('end', function () {parser.end()})
+    parser.on('end', function () {res.end(JSON.stringify(parser.done().items))})
+return 
+    // parser.on('end', function () {
+    // res.end()})
   }
   res.setHeader('Content-Type', 'text/html');
 

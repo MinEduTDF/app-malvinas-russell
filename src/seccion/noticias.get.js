@@ -1,30 +1,11 @@
-var http = require('http')
+var request = require('request')
 var store = require('../store.js')
-var feedme = require('feedme')
-var parser = new feedme(true)
 var noticias = require('./noticias.js')
 
 module.exports = function getnews(state) { 
   if (state.news.length !== 0) return noticias(state)
-var options = {
-  port: 8000,
-  path: '/elmalvinense',
-  method: 'GET'
-};
-
-var req = http.request(options, (res) => {
-  console.log(`STATUS: ${res.statusCode}`);
-  console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
-  res.setEncoding('binary');
-  res.pipe(parser).on('end', function () {
-    var items = parser.done().items
-    return store({type: 'news', payload: items})
-    
-    // parser.done().items.forEach(function (obj) {return store({type: 'news', payload: obj})})
-  })
+return request('http://localhost:8000/elmalvinense', (err, res, body) => {
+if (err) return console.log(err)
+    store({type: 'news', payload: JSON.parse(body)})
 })
-req.on('error', (e) => {
-  console.log(`problem with request: ${e.message}`);
-});
-req.end()
-return noticias(store.getState())}
+}
