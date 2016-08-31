@@ -1,5 +1,6 @@
 var rv = require('russell-view')
 var style = require('./cuadro_css.js')
+var csjs = require('csjs')
 
 module.exports = function cuadro (state,index) {
 var titulo = style['titulo']
@@ -22,22 +23,23 @@ if (index % 2 === 0) {
 
 var width = ""
 if (appstate.windowWidth > 690) {
-var width = "float: left; width: 47%; height: 344px;"
+width = "float: left; width: 47%; height: 344px;"
 } 
 
 if (appstate.windowWidth > 850) {
-var width = "float: left; width: 47.5%; height: 344px;"
+width = "float: left; width: 47.5%; height: 344px;"
 } 
 
 if (appstate.windowWidth > 1108) {
-var width = "float: left; width: 31.5%; height: 344px;"
+width = "float: left; width: 31.5%; height: 344px;"
 }
 
 if (appstate.windowWidth > 1170) {
-var width = "float: left; width: 31.6%; height: 344px;"
+width = "float: left; width: 31.6%; height: 344px;"
 }
 
  return rv`<div class="${cuadro}" style="${width}">
+ <style type='text/css'>${csjs.getCss(style)}</style>
 <div class="${titulo}" style="background-color: ${color};">${state.title}</div>
 <div class="${tiempo}" style="color: ${color}">
 <div style="width:25px; float:left;">
