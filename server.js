@@ -25,6 +25,8 @@ var server = http.createServer(function (req, res) {
   if (req.url.match('elmalvinense')) {
     return request('http://elmalvinense.com/elmalvinense.xml').pipe(res) 
   }
+  res.setHeader('Content-Type', 'text/html');
+
   store({type: 'setUrl', payload: req.url})
   var state = store.getState()
   var hyd = JSON.stringify(state)
