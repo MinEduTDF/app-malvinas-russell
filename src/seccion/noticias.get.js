@@ -7,7 +7,7 @@ module.exports = function getnews(state) {
     return noticias(state)
   } else {
     store({type: 'getingNews', payload: true})
-    request('http://localhost:8000/elmalvinense', function (err, res, body) {
+    request('http://malvinas.ovnion.com/elmalvinense', function (err, res, body) {
       if (err) return console.log(err)
       store({type: 'news', payload: JSON.parse(body)})
       store({type: 'getingNews', payload: false})
