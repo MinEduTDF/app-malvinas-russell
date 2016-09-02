@@ -12,7 +12,15 @@ var feedme = require('feedme')
 var parser = new feedme(true)
 
 var ecstatic = require('ecstatic')
-var st = ecstatic({root: path.join(__dirname, 'build'), gzip: true})
+var st = ecstatic({
+  root: path.join(__dirname, 'build'), 
+  gzip: true, 
+  cache: 3600*24*365,
+  headers: {
+    'Cache-Control': 'public, max-age=31536000',
+    Expires: new Date().setFullYear(new Date().getFullYear() + 1)
+  }
+})
 
 var http = require('http')
 
