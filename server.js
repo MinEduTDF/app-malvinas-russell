@@ -12,7 +12,7 @@ var feedme = require('feedme')
 var parser = new feedme(true)
 
 var ecstatic = require('ecstatic')
-var st = ecstatic(path.join(__dirname, 'build'))
+var st = ecstatic({root: path.join(__dirname, 'build'), gzip: true})
 
 var http = require('http')
 
@@ -29,9 +29,9 @@ var server = http.createServer(function (req, res) {
       .on('data', function (d) {parser.write(d)}) 
       .on('end', function () {parser.end()})
     parser.on('end', function () {res.end(JSON.stringify(parser.done().items))})
-return 
     // parser.on('end', function () {
     // res.end()})
+    return
   }
   res.setHeader('Content-Type', 'text/html');
 
