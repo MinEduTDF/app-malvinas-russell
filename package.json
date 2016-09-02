@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "cp node_modules/sw-toolbox/sw-toolbox.js build/assets/js/ && cp src/sw.js build/ && node server.js & watchify src/index.js -o build/assets/bundle.js",
     "precache": "sw-precache --config=sw-precache-config.json --root=build",
-    "build": "npm run precache && browserify -p [ csjs-extractify --extension _css.js -o build/assets/css/main.css ] src/index.js -o build/assets/bundle.js"
+    "build": "npm run precache && browserify -p [ csjs-extractify --extension _css.js -o build/assets/css/main.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle.js | gzip -c > build/assets/bundle.js.gz"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,7 @@
     "sw-toolbox": "^3.2.1",
     "uglify-js": "^2.7.3",
     "wayfarer": "^6.1.4",
+    "xhr": "^2.2.2",
     "xtend": "^4.0.1"
   },
   "devDependencies": {
@@ -58,5 +59,8 @@
     "transform": [
       "es6-templates"
     ]
+  },
+  "browser": {
+    "request": "xhr"
   }
 }

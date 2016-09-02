@@ -3,7 +3,6 @@ var store = require('../store.js')
 var noticias = require('./noticias.js')
 
 module.exports = function getnews(state) { 
-  console.log(state)
   if (state.news.length !== 0 || state.getingNews === true) {
     return noticias(state)
   } else {
@@ -12,6 +11,7 @@ module.exports = function getnews(state) {
       if (err) return console.log(err)
       store({type: 'news', payload: JSON.parse(body)})
       store({type: 'getingNews', payload: false})
+      return noticias(state)
   })
 }
 }
