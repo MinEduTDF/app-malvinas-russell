@@ -85,7 +85,7 @@ padding: 90px;
   position: relative;
   display: block;
   padding: 15px 15px 15px 50px;
-  font-size: 13px;
+  font-size: 16px;
   color: #adadad;
   font-weight: bold;
 }
@@ -126,3 +126,4 @@ padding: 90px;
 }
 
 `
+
