@@ -21,12 +21,17 @@ var st = ecstatic({
     Expires: new Date().setFullYear(new Date().getFullYear() + 1)
   }
 })
+var st2 = ecstatic({
+  root: path.join(__dirname, 'build'), 
+  gzip: true,
+  cache: 0
+})
 
 var http = require('http')
 
 var server = http.createServer(function (req, res) {
   if (req.url.match('manifest.json')) return st(req,res)
-  if (req.url.match('service-worker.js')) return st(req,res)
+  if (req.url.match('service-worker.js')) return st2(req,res)
   if (req.url.match('assets')) return st(req, res)
   if (req.url.match('api')) {
     req.url = '/cake/Web-OvnionPanel-Back' + req.url
