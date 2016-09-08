@@ -37,7 +37,6 @@ var server = http.createServer(function (req, res) {
     return proxycake.web(req, res)
   }
   if (req.url.match('elmalvinense')) {
-    console.log('matched elmalvinense')
     var parser = new feedme(true)
     request({encoding: 'binary', url:'http://elmalvinense.com/elmalvinense.xml'})
       .on('data', function (d) {parser.write(d)}) 
@@ -51,7 +50,6 @@ var server = http.createServer(function (req, res) {
     res.setHeader('Content-Type', 'text/html');
   store({type: 'setUrl', payload: req.url})
   if (req.url.match('/')) {
-    console.log('matched /')
    request('http://localhost:8000/elmalvinense', function (req, res, body) {
      var payload = JSON.parse(body)
     store({type: 'news', payload: payload}) 
