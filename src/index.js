@@ -75,6 +75,9 @@ if (location.pathname !== url) {
   morphdom(el, ev.data.view)
 })
 }
+window.addEventListener('deviceorientation', function (o) {
+  worker.postMessage({type: 'deviceorientation', payload: o.alpha})
+})
 window.addEventListener('popstate', function () {
   worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
@@ -84,6 +87,7 @@ function changeWidth() {
 }
 window.addEventListener('resize', changeWidth)
 window.addEventListener('load', function () {
+  // URL.revokeObjectURL(worker.objectURL);
   worker.postMessage({type: 'hydrate', payload: window.state})
   changeWidth()
   // worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})

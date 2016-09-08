@@ -1,6 +1,7 @@
 var createStore = require('store-emitter')
 var xtend = require('xtend')
 var  initialState = {
+  otientation: 0,
   started: false,
   isOpen: false,
   url: '/',
@@ -105,6 +106,9 @@ var reducers = {
   },
   hydrate: function hydrate(action, state) {
     return xtend(state, action.payload)
+  },
+  deviceorientation: function deviceorientation(action, state) {
+    return xtend(state, {orientation: action.payload})
   }
 }
 
