@@ -9,7 +9,6 @@ var proxycake = httpProxy.createProxyServer({target: 'http://192.168.1.64'})
 var request = require('request')
 var oppressor = require('oppressor')
 var feedme = require('feedme')
-var parser = new feedme(true)
 
 var ecstatic = require('ecstatic')
 var st = ecstatic({
@@ -38,26 +37,40 @@ var server = http.createServer(function (req, res) {
     return proxycake.web(req, res)
   }
   if (req.url.match('elmalvinense')) {
+    console.log('matched elmalvinense')
+    var parser = new feedme(true)
     request({encoding: 'binary', url:'http://elmalvinense.com/elmalvinense.xml'})
       .on('data', function (d) {parser.write(d)}) 
       .on('end', function () {parser.end()})
-    parser.on('end', function () {res.end(JSON.stringify(parser.done().items))})
+      .on('error', function (err) {console.log(err)})
+    return parser.on('end', function () {return res.end(JSON.stringify(parser.done().items))})
     // parser.on('end', function () {
     // res.end()})
-    return
+    
   }
-  res.setHeader('Content-Type', 'text/html');
-
+    res.setHeader('Content-Type', 'text/html');
   store({type: 'setUrl', payload: req.url})
-  var state = store.getState()
+  if (req.url.match('/')) {
+    console.log('matched /')
+   request('http://localhost:8000/elmalvinense', function (req, res, body) {
+     var payload = JSON.parse(body)
+    store({type: 'news', payload: payload}) 
+
+
+    return render(store.getState())
+    })
+  }
+    function render(state) {
+  // var state = store.getState()
   var hyd = JSON.stringify(state)
-    var elem =  app(state)
+  var elem =  app(state)
   read('index.html').pipe(hyperstream({
       '#main': elem,
       '#state': {
         _html: "window.state =" + hyd
       }
-    })).pipe(oppressor(req)).pipe(res)
+  })).pipe(oppressor(req)).pipe(res)
+}
 })
 server.listen(8000)
 
