@@ -7,6 +7,24 @@ var  initialState = {
   url: '/',
   news: [],
   getingNews: false,
+  azimuth: [
+  {
+            "id": 1,
+            "img": "/assets/img/azimuth/puerto_argentino.jpg"
+            "coordenadas": "51°41 57°51"
+        },
+        {
+            "id": 2,
+            "img": "/assets/img/azimuth/cementerio_darwin.jpg"
+            "coordenadas": "51°48 58°59"
+        },
+        {
+            "id": 3,
+            "img": "/assets/img/azimuth/crucero.jpg"
+            "coordenadas": "55°24 61°32"
+        }
+
+  ]
   timeline: [
    {
             "id": 1,
