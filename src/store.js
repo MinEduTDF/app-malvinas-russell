@@ -24,7 +24,7 @@ var  initialState = {
             "coordenadas": "55°24 61°32"
         }
 
-  ]
+  ],
   timeline: [
    {
             "id": 1,
