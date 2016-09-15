@@ -40,17 +40,16 @@ if (appstate.windowWidth > 1170) {
 width = "float: left; width: 31.6%; "
 }
 var az = azimuth.azimuth(
-    {lat: state.position.lat, lng: state.position.lng, elv: 0},
-    {lat: -51.6921, lng: -57.8589, elv: 0}
-    )
+    {lat: this.position.lat, lng: this.position.lng, elv: 0},
+    state.coordenadas    )
 var sh = Math.round(az.azimuth)
-var angulo =  state.orientation + sh
+var angulo =  this.orientation + sh
 var distancia = Math.round(az.distance / 1000)
-var brujula = state.orientation ? compass({angulo: angulo}) : ''
-
+var brujula = this.orientation ? compass({angulo: angulo}) : ''
  return rv`<div class="${cuadro}" style="${width}">
  <style type='text/css'>${csjs.getCss(style)}</style>
-<div class="${titulo}" style="background-color: ${color};">Titulo</div>
+<img src="${state.img}">
+<div class="${titulo}" style="background-color: ${color};">${state.title}</div>
 <div class="${contenidox}">${brujula}</div>
 <div>Rumbo: ${sh}º</div>
 <div>Distancia: ${distancia}km</div>

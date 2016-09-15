@@ -2,7 +2,7 @@ var createStore = require('store-emitter')
 var xtend = require('xtend')
 var  initialState = {
   flash: '',
-  otientation: 0,
+  orientation: 0,
   position: '',
   started: false,
   isOpen: false,
@@ -12,18 +12,25 @@ var  initialState = {
   azimuth: [
   {
             "id": 1,
+            "title": "Puerto Argentino",
             "img": "/assets/img/azimuth/puerto_argentino.jpg",
-            "coordenadas": "51°41 57°51"
+            "coordenadas": {lat: -51.6921, lng: -57.8589, elv: 0}
         },
         {
             "id": 2,
+            "title": "Cementerio de Darwin",
             "img": "/assets/img/azimuth/cementerio_darwin.jpg",
-            "coordenadas": "51°48 58°59"
-        },
+            "coordenadas": {lat: -51.796792, lng: -58.940663, elv: 0}        },
         {
             "id": 3,
+            "title": "Hundimiento del Crucero Gral. Belgrano",
             "img": "/assets/img/azimuth/crucero.jpg",
-            "coordenadas": "55°24 61°32"
+            "coordenadas": {lat: -55.4, lng: -61.533333, elv: 0}        },
+        {
+          "id": 4,
+          "title": "Ushuaia",
+          "img": "",
+          "coordenadas": {lat: -54.807222, lng: -68.304444, elv: 0}
         }
 
   ],
