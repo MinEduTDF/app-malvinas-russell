@@ -1,7 +1,9 @@
 var createStore = require('store-emitter')
 var xtend = require('xtend')
 var  initialState = {
+  flash: '',
   otientation: 0,
+  position: '',
   started: false,
   isOpen: false,
   url: '/',
@@ -109,6 +111,12 @@ var reducers = {
   },
   deviceorientation: function deviceorientation(action, state) {
     return xtend(state, {orientation: action.payload})
+  },
+  position: function position(action, state) {
+    return xtend(state, {position: action.payload})
+  },
+  flash: function flash(action, state) {
+    return xtend(state, {flash: action.payload})
   }
 }
 

@@ -44,10 +44,12 @@ if ('serviceWorker' in navigator) {
               // It's the perfect time to display a "New content is available; please refresh."
               // message in the page's interface.
               console.log('New or updated content is available.');
+              // worker.postMessage({type: 'flash', payload: 'Hay disponible nuevo contenido!'})
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a "Content is cached for offline use." message.
-              console.log('Content is now available offline!');
+              console.log('Content iis now available offline!');
+            // worker.postMessage({type: 'flash', payload: 'Listo para trabajar offline!'})
             }
             break;
 
@@ -75,9 +77,16 @@ if (location.pathname !== url) {
   morphdom(el, ev.data.view)
 })
 }
-window.addEventListener('deviceorientation', function (o) {
+window.addEventListener('deviceorientationabsolute', function (o) {
   worker.postMessage({type: 'deviceorientation', payload: o.alpha})
 })
+// if ("geolocation" in navigator) {
+    /* geolocation is available */
+
+// }
+// else {
+//     [> geolocaiton IS NOT available <]
+// }
 window.addEventListener('popstate', function () {
   worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
@@ -87,9 +96,13 @@ function changeWidth() {
 }
 window.addEventListener('resize', changeWidth)
 window.addEventListener('load', function () {
-  // URL.revokeObjectURL(worker.objectURL);
+  URL.revokeObjectURL(worker.objectURL);
   worker.postMessage({type: 'hydrate', payload: window.state})
   changeWidth()
+  navigator.geolocation.watchPosition(function (p) {
+    worker.postMessage(
+      {type: 'position', payload: {lat: p.coords.latitude, lng: p.coords.longitude}})
+  })
   // worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
 
