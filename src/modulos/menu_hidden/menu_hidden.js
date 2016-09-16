@@ -31,7 +31,16 @@ var black = state.isOpen && state.started ? style['black'] +" "+style['isOpen'] 
     <ul class="${nav}">
       <li>
           <a href="/"><svg class="${icon}"> <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-              Principal</a>
+              Inicio</a>
+      </li>
+      <li>
+          <a href="/mensajes"><svg class="${icon}"> <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              Mensajes en el tiempo</a>
+      </li>
+
+      <li>
+          <a href="/noticias"><svg class="${icon}"> <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              Noticias</a>
       </li>
 
             <li>

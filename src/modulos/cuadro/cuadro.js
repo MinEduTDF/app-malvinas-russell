@@ -43,6 +43,7 @@ width = "float: left; width: 31.6%; height: 344px;"
 <div class="${titulo}" style="background-color: ${color};">${state.title}</div>
 <div class="${tiempo}" style="color: ${color}">
 <div style="width:25px; float:left;">
+<img src="${state.img}">
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
 <g>

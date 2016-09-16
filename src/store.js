@@ -1,6 +1,6 @@
 var createStore = require('store-emitter')
 var xtend = require('xtend')
-console.log('hi from store')
+console.log('hi from store2 w')
 var  initialState = {
   flash: '',
   orientation: 0,
@@ -96,7 +96,33 @@ var  initialState = {
             "modified": "2016-06-30T13:00:00+0000",
             "dialogOpen": false
         }
-       ] 
+       ],
+      mensajes:
+        [{id: 1,
+          title: 'Jose Purcelli',
+         img: 'assets/img/mensajes/1.jpg'
+        },
+        {id: 2,
+          title: 'Maria Belen',
+          img: 'assets/img/mensajes/2.jpg'
+        },
+        {id: 3,
+          title: 'Nestor Ramos y Monica',
+          img: 'assets/img/mensajes/3.jpg'
+        },
+        {id: 4,
+          title: 'Pablo Bolzan',
+          img: 'assets/img/mensajes/4.jpg'
+        },
+        {id: 5,
+          title: 'Rogelio Kurt',
+          img: 'assets/img/mensajes/5.jpg'
+        },
+        {id: 6,
+          title: 'Sandra Paciaroni',
+          img: 'assets/img/mensajes/6.jpg'
+        }
+        ]  
 
 }
 
