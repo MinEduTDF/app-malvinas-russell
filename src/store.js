@@ -1,5 +1,6 @@
 var createStore = require('store-emitter')
 var xtend = require('xtend')
+console.log('hi from store')
 var  initialState = {
   flash: '',
   orientation: 0,
@@ -13,7 +14,7 @@ var  initialState = {
   {
             "id": 1,
             "title": "Puerto Argentino",
-            "img": "/assets/img/azimuth/puerto_argentino.jpg",
+            "img": "/assets/img/azimuth/puerto_arg.jpg",
             "coordenadas": {lat: -51.6921, lng: -57.8589, elv: 0}
         },
         {

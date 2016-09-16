@@ -1,9 +1,10 @@
 var work = require('webworkify')
 var worker = work(require('./worker.js'))
+URL.revokeObjectURL(worker.objectURL);
 var morphdom = require('morphdom')
 var nT = requestAnimationFrame
 var localLinks = require('local-links')
-
+console.log('hi from index')
 /**
  * Copyright 2015 Google Inc. All rights reserved.
  *
@@ -96,7 +97,6 @@ function changeWidth() {
 }
 window.addEventListener('resize', changeWidth)
 window.addEventListener('load', function () {
-  URL.revokeObjectURL(worker.objectURL);
   worker.postMessage({type: 'hydrate', payload: window.state})
   changeWidth()
   navigator.geolocation.watchPosition(function (p) {

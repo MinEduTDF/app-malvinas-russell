@@ -23,7 +23,10 @@ var st = ecstatic({
 var st2 = ecstatic({
   root: path.join(__dirname, 'build'), 
   gzip: true,
-  cache: 0
+  cache: 0,
+  headers: {
+    'Cache-Control': 'no-cache'
+  }
 })
 
 var http = require('http')
