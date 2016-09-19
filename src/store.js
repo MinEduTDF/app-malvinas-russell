@@ -1,6 +1,5 @@
 var createStore = require('store-emitter')
 var xtend = require('xtend')
-console.log('hi from store2 w')
 var  initialState = {
   flash: '',
   orientation: 0,
