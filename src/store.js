@@ -28,8 +28,9 @@ var  initialState = {
             "coordenadas": {lat: -55.4, lng: -61.533333, elv: 0}        },
         {
           "id": 4,
-          "title": "Ushuaia",
+          "title": "Ushuaia, Capital de Malvinas",
           "img": "",
+          "description": "Tus brazos se abren esperando incansable el abrazo de tu hermano Puerto argentino, la llegada de hombres de cientos de años que esperan el día de la paz y la unión, mujeres que vieron cientos de nevadas sin ver el final de la disputa encallada, encallada en rocas de costas bravías que acogieron soldados, halcones y marinos cobijando al alma y  el paño Argentino.\nSalud Ushuaia! Capital de Malvinas!",
           "coordenadas": {lat: -54.807222, lng: -68.304444, elv: 0}
         }
 

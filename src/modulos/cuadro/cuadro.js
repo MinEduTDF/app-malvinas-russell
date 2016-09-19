@@ -40,10 +40,10 @@ width = "float: left; width: 31.6%; height: 344px;"
 
  return rv`<div class="${cuadro}" style="${width}">
  <style type='text/css'>${csjs.getCss(style)}</style>
+${state.img ? `<img src="${state.img}" width:'100%'>` : ''}
 <div class="${titulo}" style="background-color: ${color};">${state.title}</div>
-<div class="${tiempo}" style="color: ${color}">
+${state.pubdate ? `<div class="${tiempo}" style="color: ${color}">
 <div style="width:25px; float:left;">
-<img src="${state.img}">
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
 <g>
@@ -77,8 +77,8 @@ width = "float: left; width: 31.6%; height: 344px;"
 </svg>
 </div>
 
-<div style="padding:5px;">${state.pubdate}</div></div>
-<div class="${contenidox}">${state.description}</div>
-<div class="${divbtn}"><a class="${btn}" style="background-color: ${color};" href="${state.link}" target="_blank">Ver mas</a></div>
+<div style="padding:5px;">${state.pubdate}</div></div>`:''}
+${state.description ? `<div class="${contenidox}">${state.description}</div>` : ''}
+${state.link ? `<div class="${divbtn}"><a class="${btn}" style="background-color: ${color};" href="${state.link}" target="_blank">Ver mas</a></div>` : ''}
 </div>`	
 }
