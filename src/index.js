@@ -4,7 +4,7 @@ URL.revokeObjectURL(worker.objectURL);
 var morphdom = require('morphdom')
 var nT = requestAnimationFrame
 var localLinks = require('local-links')
-console.log('test a')
+console.log('test b')
 /**
  * Copyright 2015 Google Inc. All rights reserved.
  *
