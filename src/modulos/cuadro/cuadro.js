@@ -40,7 +40,7 @@ width = "float: left; width: 31.6%; height: 344px;"
 
  return rv`<div class="${cuadro}" style="${width}">
  <style type='text/css'>${csjs.getCss(style)}</style>
-${state.img ? `<img src="${state.img}" width:'100%'>` : ''}
+${state.img ? `<img src="${state.img}" style="width:100%;">` : ''}
 <div class="${titulo}" style="background-color: ${color};">${state.title}</div>
 ${state.pubdate ? `<div class="${tiempo}" style="color: ${color}">
 <div style="width:25px; float:left;">

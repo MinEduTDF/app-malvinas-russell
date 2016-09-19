@@ -48,7 +48,7 @@ var distancia = Math.round(az.distance / 1000)
 var brujula = this.orientation ? compass({angulo: angulo}) : ''
  return rv`<div class="${cuadro}" style="${width}">
  <style type='text/css'>${csjs.getCss(style)}</style>
-<img src="${state.img}">
+<img src="${state.img}" style="width:100%;">
 <div class="${titulo}" style="background-color: ${color};">${state.title}</div>
 <div class="${contenidox}">${state.description || ''}${brujula}</div>
 <div>Rumbo: ${sh}º</div>
