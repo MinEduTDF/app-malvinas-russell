@@ -12,7 +12,7 @@ var tiempo = style['tiempo']
 var btn = style['btn']
 var divbtn = style ['divbtn']
 
-var appstate = state
+var appstate = this
 
 var color1 = '#175f8a'
 var color2 = '#f08030' 
