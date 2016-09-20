@@ -5,9 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "version": "uuidgen > .amrversion",
+    "clean": "rm build/index.html build/assets/*.js build/assets/*.js.gz",
+    "makeindex": "node makeindex.js `cat .amrversion`",
     "watch": "cp node_modules/sw-toolbox/sw-toolbox.js build/assets/js/ && cp src/sw.js build/ && node server.js & watchify src/index.js -o build/assets/bundle.js",
     "precache": "sw-precache --config=sw-precache-config.json --root=build",
-    "build": "npm run precache && browserify -p [ csjs-extractify --extension _css.js -o build/assets/css/main.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle.js | gzip -c > build/assets/bundle.js.gz"
+    "build": "npm run precache && npm run clean && npm run version && npm run makeindex && browserify -p [ csjs-extractify --extension _css.js -o build/assets/css/main.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
   },
   "repository": {
     "type": "git",
