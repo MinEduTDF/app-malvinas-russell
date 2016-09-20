@@ -11,8 +11,9 @@ var cuadro = style['cuadro']
 var tiempo = style['tiempo']
 var btn = style['btn']
 var divbtn = style ['divbtn']
+var calculo = style['calculo']
 
-var appstate = state
+var appstate = this
 
 var color1 = '#175f8a'
 var color2 = '#f08030' 
@@ -48,10 +49,14 @@ var distancia = Math.round(az.distance / 1000)
 var brujula = this.orientation ? compass({angulo: angulo}) : ''
  return rv`<div class="${cuadro}" style="${width}">
  <style type='text/css'>${csjs.getCss(style)}</style>
-<img src="${state.img}" style="width:100%;">
-<div class="${titulo}" style="background-color: ${color};">${state.title}</div>
+${state.img ? `<img src="${state.img}" style="width:100%;">` : ''}
+<div  style="padding: 5px; background-color: ${color};"></div>
+<div class="${titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</div>
+<hr style="border: 1px dashed #dedede"/>
 <div class="${contenidox}">${state.description || ''}${brujula}</div>
-<div>Rumbo: ${sh}º</div>
-<div>Distancia: ${distancia}km</div>
+<div class="${calculo}">Rumbo: ${sh}º</div>
+<div class="${calculo}">Distancia: ${distancia}km</div>
 </div>`	
 }
+
+

@@ -23,7 +23,7 @@ module.exports = csjs`
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: 16px;
-    padding-top: 35px;
+    padding-top: 25px;
     color: white;
     font-size: 22px;
 }
@@ -50,6 +50,6 @@ module.exports = csjs`
 .btn {
     padding: 6px;
     text-decoration: none;
-    color: white;
+    color: #828282;
     font-size: 15px;
 }`;

@@ -23,9 +23,10 @@ module.exports = csjs`
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: 16px;
-    padding-top: 35px;
+    padding-top: 14px;
     color: white;
     font-size: 22px;
+    text-align:center;
 }
 
 .contenido {
@@ -53,4 +54,15 @@ module.exports = csjs`
     text-decoration: none;
     color: white;
     font-size: 15px;
-}`;
+}
+
+.calculo {
+border: 1px solid white;
+    font-family: sans-serif;
+    font-size: 16px;
+    text-align: center;
+    background-color: #efecec;
+    color: #464646;
+    padding: 10px;
+}
+`;
