@@ -1,6 +1,5 @@
 {
   "staticFileGlobs": [
-    "build/",
     "build/manifest.json",
     "build/assets/**/*"
   ],
@@ -14,5 +13,6 @@
       "urlPattern": "*",
       "handler": "cacheFirst"
     }
-  ]
+  ],
+    "dontCacheBustUrlsMatching": "assets"
 }

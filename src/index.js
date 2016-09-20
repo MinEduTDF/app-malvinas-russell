@@ -4,7 +4,7 @@ URL.revokeObjectURL(worker.objectURL);
 var morphdom = require('morphdom')
 var nT = requestAnimationFrame
 var localLinks = require('local-links')
-
+console.log('r')
 /**
  * Copyright 2015 Google Inc. All rights reserved.
  *
@@ -44,12 +44,12 @@ if ('serviceWorker' in navigator) {
               // have been added to the cache.
               // It's the perfect time to display a "New content is available; please refresh."
               // message in the page's interface.
-              window.alert('New or updated content is available.');
+              console.log('New or updated content is available.');
               // worker.postMessage({type: 'flash', payload: 'Hay disponible nuevo contenido!'})
             } else {
               // At this point, everything has been precached.
               // It's the perfect time to display a "Content is cached for offline use." message.
-              window.alert('Content iis now available offline!');
+              console.log('Content is now available offline!');
             // worker.postMessage({type: 'flash', payload: 'Listo para trabajar offline!'})
             }
             break;

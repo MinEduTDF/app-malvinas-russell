@@ -51,6 +51,9 @@ var server = http.createServer(function (req, res) {
     
   }
     res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 'no-cache')
+    res.setHeader('Max-Age', '0')
+    res.setHeader('Expires', Date.now())
   store({type: 'setUrl', payload: req.url})
   if (req.url.match('/')) {
    request('http://localhost:8000/elmalvinense', function (req, res, body) {
