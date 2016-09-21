@@ -4,7 +4,7 @@ var ng = require('./seccion/noticias.get.js')
 
 module.exports = function (self) {
 self.addEventListener('message', function(ev){
-  if (ev.data.type === 'setUrl' && ev.data.payload === '/') ng() 
+  if (ev.data.type === 'setUrl' && ev.data.payload === '/noticias') ng() 
   store(ev.data)
 })
 store.on('*', function (action, state, oldstate) {

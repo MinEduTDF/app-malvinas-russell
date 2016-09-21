@@ -55,7 +55,7 @@ var server = http.createServer(function (req, res) {
     res.setHeader('Max-Age', '0')
     res.setHeader('Expires', Date.now())
   store({type: 'setUrl', payload: req.url})
-  if (req.url.match('/')) {
+  if (req.url.match('/noticias')) {
    request('http://localhost:8000/elmalvinense', function (req, res, body) {
      var payload = JSON.parse(body)
     store({type: 'news', payload: payload}) 
@@ -64,6 +64,7 @@ var server = http.createServer(function (req, res) {
     return render(store.getState())
     })
   }
+  if (req.url.match('/')) return render(store.getState())
     function render(state) {
   // var state = store.getState()
   var hyd = JSON.stringify(state)
