@@ -60,7 +60,7 @@ var server = http.createServer(function (req, res) {
   //   return render(store.getState())
   //   })
   // }
-  if (req.url.match('/')) return render(store.getState())
+  return render(store.getState())
     function render(state) {
      res.setHeader('Content-Type', 'text/html');
     res.setHeader('Cache-Control', 'no-cache')
