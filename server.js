@@ -50,10 +50,6 @@ var server = http.createServer(function (req, res) {
     // res.end()})
     
   }
-    res.setHeader('Content-Type', 'text/html');
-    res.setHeader('Cache-Control', 'no-cache')
-    res.setHeader('Max-Age', '0')
-    res.setHeader('Expires', Date.now())
   store({type: 'setUrl', payload: req.url})
   if (req.url.match('/noticias')) {
    request('http://localhost:8000/elmalvinense', function (req, res, body) {
@@ -66,7 +62,11 @@ var server = http.createServer(function (req, res) {
   }
   if (req.url.match('/')) return render(store.getState())
     function render(state) {
-  // var state = store.getState()
+     res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 'no-cache')
+    res.setHeader('Max-Age', '0')
+    res.setHeader('Expires', Date.now())
+ // var state = store.getState()
   var hyd = JSON.stringify(state)
   var elem =  app(state)
   read('index.html').pipe(hyperstream({
