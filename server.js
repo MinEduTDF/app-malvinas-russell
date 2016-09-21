@@ -51,15 +51,15 @@ var server = http.createServer(function (req, res) {
     
   }
   store({type: 'setUrl', payload: req.url})
-  if (req.url.match('/noticias')) {
-   request('http://localhost:8000/elmalvinense', function (req, res, body) {
-     var payload = JSON.parse(body)
-    store({type: 'news', payload: payload}) 
+  // if (req.url.match('/noticias')) {
+  //  request('http://localhost:8000/elmalvinense', function (req, res, body) {
+  //    var payload = JSON.parse(body)
+  //   store({type: 'news', payload: payload}) 
 
 
-    return render(store.getState())
-    })
-  }
+  //   return render(store.getState())
+  //   })
+  // }
   if (req.url.match('/')) return render(store.getState())
     function render(state) {
      res.setHeader('Content-Type', 'text/html');

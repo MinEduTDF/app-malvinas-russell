@@ -31,7 +31,7 @@ module.exports = csjs`
 .contenido {
     font-family: serif;
     padding: 15px;
-    color: rgba(0, 0, 0, 0.69);
+    color: rgba(0, 0, 0, 1);
     line-height: 24px;
     font-size: 18px;
     padding-bottom: 15%;
@@ -52,4 +52,4 @@ module.exports = csjs`
     text-decoration: none;
     color: #828282;
     font-size: 15px;
-}`;
+()}`;
