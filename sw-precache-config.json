@@ -1,5 +1,10 @@
 {
   "staticFileGlobs": [
+    "build",
+    "build/mensajes",
+    "build/noticias",
+    "build/historia",
+    "build/azimuth",
     "build/manifest.json",
     "build/assets/**/*"
   ],
@@ -11,7 +16,7 @@
     },
     { 
       "urlPattern": "*",
-      "handler": "cacheFirst"
+      "handler": "networkFirst"
     }
   ],
     "dontCacheBustUrlsMatching": "assets"
