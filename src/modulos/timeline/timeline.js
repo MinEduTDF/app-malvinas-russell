@@ -63,7 +63,7 @@ return yo`
 
 <foreignobject ${side.img}>
     <body xmlns="http://www.w3.org/1999/xhtml">
-    <div data-type="dialogOpen" data-payload="${index}" class="${circle}" style="background: url(${state.img}) no-repeat; background-position: 50% 50%; border: 12px solid ${side.color};"></div>
+    <div data-type="dialogOpen" data-payload="${index}" class="${circle}" style="background: url(${state.img || 'assets/img/malvinas.jpg'}) no-repeat; background-position: 50% 50%; border: 12px solid ${side.color};"></div>
     </body>
  
   </foreignobject>
