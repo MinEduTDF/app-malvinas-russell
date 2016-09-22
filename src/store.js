@@ -51,7 +51,7 @@ var  initialState = {
         {
             "id": 2,
             "category_id": 1,
-            "title": "1494 - Tratado de Tordesillas",
+            "title": "1494",
             "body": "El 7 de junio de 1494 se reunieron en Tordesillas  España y Portugal  llegaron a un acuerdo según el cual se trasladaba la antigua lí nea divisoria de los territorios descubiertos a 370 leguas al oeste de las islas de Cabo Verde, coincidiendo con el meridiano situado a 46º 37' longitud oeste. De esta manera, y sin saberlo, gran parte del futuro Brasil quedaba dentro de la influencia portuguesa y el resto de América bajo la influencia castellana.",
             "img": "/assets/img/ltiempo/1494.jpg",
             "url": "http://www.fileane.com/espagnol/tratado_de_tordesillas.htm",
