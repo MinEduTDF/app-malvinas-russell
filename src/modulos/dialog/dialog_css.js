@@ -17,9 +17,8 @@ module.exports = csjs`
 .btn {
     padding: 6px;
     text-decoration: none;
-    color: white;
+    color: #828282;
     font-size: 15px;
-    background-color: rgb(240, 128, 48);
 }
 
 .divbtn {
@@ -32,11 +31,13 @@ module.exports = csjs`
 }
 
 .title {
-font-size: 35px;
+    font-family: serif;
+    padding-left: 14px;
+    padding-right: 14px;
+    padding-bottom: 16px;
+    padding-top: 25px;
     color: white;
-    background: rgb(240, 128, 48);
-    padding: 4px;
-        margin-bottom: 4px;
+    font-size: 22px;
 }
 
 .body {

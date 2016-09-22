@@ -15,18 +15,28 @@ var width = "50%"
 var width = "100%"
 }
 
+var color1 = '#175f8a'
+var color2 = '#f08030' 
+ 
+
+var color = color1
+if (index % 2 === 0) {
+  color = color2;
+}
+
 
 return yo`<div>
 <div class="${back}">
 	<div class="${dialog}">
 
-<div class="${title}">Año ${state.title}</div>
-<img style="width:${width};" src="${state.img}" />
+<div  style="padding: 5px; background-color: ${color};"></div>
+<div class="${title}" style="color: #565656; background-color:#f7f6f6;">Año ${state.title}</div>
+<hr style="border: 1px dashed #dedede"/>
+<img style="width:${width}; padding:10px;" src="${state.img}" /><br>
 <div class="${body}">${state.body}</div>
-<div class="${divbtn}">
-<a class="${btn}" href="${state.url}" target="_blank">Ver mas</a>
-<a class="${btn}" href="#" data-type="dialogClose" data-payload="${index}" target="_blank">Cerrar</a>
-</div>
+
+<div class="${divbtn}" style="color: ${color}">[<a class="${btn}" href="${state.url}" target="_blank">Ver mas ...</a>]
+[<a class="${btn}" href="#" data-type="dialogClose" data-payload="${index}" target="_blank">Cerrar</a>]</div>
 </div>
 </div>`	
 }
