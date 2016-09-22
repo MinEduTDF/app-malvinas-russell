@@ -5,6 +5,13 @@ file.end(makeindex(process.argv[2]))
 function makeindex (version) {
 return `<html><head>
 <meta charset="UTF-8">
+<!-- Chrome, Firefox OS and Opera -->
+<meta name="theme-color" content="#6389c8">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#6389c8">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
 <link rel="manifest" href="manifest.json">
