@@ -8,9 +8,9 @@ padding: 90px;
 
 
 .menu {
-    padding: 16px;
-    left: 14px;
-    top: 8px;
+    padding: 23px;
+    left: 11px;
+    top: 3px;
     background: rgba(0, 0, 0, 0);
     width: 0px;
     position: fixed;
@@ -110,11 +110,11 @@ padding: 90px;
 }
 
 .icon {
-  fill: #6182C2;
-  margin-top: -6px;
-  float:left; 
-  height: 32px;
-  width: 34px;
+    fill: #6182C2;
+    margin-top: -7px;
+    float: left;
+    height: 27px;
+    padding-right: 9px;
 }
 .svgmenu {
   width: 30px;
