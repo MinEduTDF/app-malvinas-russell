@@ -13,12 +13,12 @@ padding: 90px;
     top: 8px;
     background: rgba(0, 0, 0, 0);
     width: 0px;
-    position: absolute;
+    position: fixed;
     cursor: pointer;
 }
 
 .sidebar {
-  position: fixed;
+  position: absolute;
   z-index:10;
   width: 220px;
   top: 0;
@@ -56,7 +56,7 @@ padding: 90px;
   background-color: rgba(0, 0, 0, 0.74);
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   margin: 0;
@@ -84,8 +84,8 @@ padding: 90px;
   text-decoration: none;
   position: relative;
   display: block;
-  padding: 15px 15px 15px 50px;
-  font-size: 16px;
+  padding: 15px 15px 15px 13px;
+  font-size: 14px;
   color: #adadad;
   font-weight: bold;
 }
