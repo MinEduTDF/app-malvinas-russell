@@ -62,7 +62,7 @@ var server = http.createServer(function (req, res) {
   // }
   return render(store.getState())
     function render(state) {
-     res.setHeader('Content-Type', 'text/html');
+     res.setHeader('Content-Type', 'text/html; charset=UTF-8');
     res.setHeader('Cache-Control', 'no-cache')
     res.setHeader('Max-Age', '0')
     res.setHeader('Expires', Date.now())
