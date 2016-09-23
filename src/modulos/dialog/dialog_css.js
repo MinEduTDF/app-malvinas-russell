@@ -45,7 +45,9 @@ module.exports = csjs`
 }
 
 .dialog {
-    margin-top: 3%;
+    height: 80%;
+    overflow: auto;
+    margin-top: 50px;
     margin-left: 10%;
     margin-right: 10%;
     padding-top: 4px;
