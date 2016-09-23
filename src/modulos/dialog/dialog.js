@@ -1,4 +1,5 @@
 var yo = require('russell-view')
+var csjs = require('csjs')
 var styles = require('./dialog_css.js')
 module.exports = function dialog (state,globalstate,index) {
 
@@ -26,6 +27,7 @@ if (index % 2 === 0) {
 
 
 return yo`<div>
+ <style type='text/css'>${csjs.getCss(styles)}</style>
 <div class="${back}">
 	<div class="${dialog}">
 

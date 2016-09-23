@@ -22,8 +22,41 @@ return `<html><head>
 <meta name="msapplication-starturl" content="/">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="assets/css/style.css">
-<link rel="stylesheet" href="assets/css/main.css">
+<style type='text/css'>* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 12px/1 'Montserrat', sans-serif;
+  color: #333;
+  background: #eaeaea;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* Demo Description */
+h1 {
+    background-color: #e0e0e0;
+    padding: 20px;
+    color: #565656;
+    font-weight: 400;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 400;
+  color: #999;
+}
+</style>
 <title>Malvinas</title>
 </head>
 

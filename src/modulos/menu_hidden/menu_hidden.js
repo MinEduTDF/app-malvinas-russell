@@ -2,6 +2,7 @@ var rv = require('russell-view')
 var style = require('./menu_hidden_css.js')
 var store = require('../../store.js')
 var ModCuadro = require('../cuadro/cuadro.js')
+var csjs = require('csjs')
 
 
 module.exports = function menu_hidden (state) {
@@ -24,6 +25,7 @@ var black = state.isOpen && state.started ? style['black'] +" "+style['isOpen'] 
   sidebar = state.isOpen ? style['isOpen'] : style['isClosed']
   }
    return rv`<div>
+ <style type='text/css'>${csjs.getCss(style)}</style>
   <div class='${style['sidebar']  + " " + sidebar}'>
 
     <div class='${img}'>

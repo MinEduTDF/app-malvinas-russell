@@ -1,6 +1,7 @@
 var yo = require('russell-view')
 var styles = require('./timeline_css.js')
 var dialog = require('../dialog/dialog.js')
+var csjs = require('csjs')
 module.exports = function timeline(state,index) {
 
 var circle = styles['circle'];
@@ -28,6 +29,7 @@ if (state.dialogOpen) {
 
 return yo`
 <div>
+ <style type='text/css'>${csjs.getCss(styles)}</style>
 <svg
   viewBox="320 0 600 200"
   preserveAspectRatio="xMinYMin meet" 
