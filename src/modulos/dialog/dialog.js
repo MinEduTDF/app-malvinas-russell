@@ -30,11 +30,10 @@ return yo`<div>
  <style type='text/css'>${csjs.getCss(styles)}</style>
 <div class="${back}">
 	<div class="${dialog}">
-
+${state.img ? `<img style="width:${width}; padding:10px;" src="${state.img}" />` : ''}
 <div  style="padding: 5px; background-color: ${color};"></div>
 <div class="${title}" style="color: #565656; background-color:#f7f6f6;">Año ${state.title}</div>
 <hr style="border: 1px dashed #dedede"/>
-<img style="width:${width}; padding:10px;" src="${state.img}" /><br>
 <div class="${body}">${state.body}</div>
 
 <div class="${divbtn}" style="color: ${color}">[<a class="${btn}" href="${state.url}" target="_blank">Ver mas ...</a>]
