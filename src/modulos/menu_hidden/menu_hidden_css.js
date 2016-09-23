@@ -23,7 +23,8 @@ padding: 90px;
   width: 220px;
   top: 0;
   background-color: #ffffff;
-  min-height: 100%;
+  height: 100%;
+  overflow-y: auto;
   transform: translateX(-100%);
   will-change: transform;
   transform: translateX(-100%);
@@ -81,6 +82,7 @@ padding: 90px;
 }
 
 .nav li a {
+  border-bottom: 1px dashed #dedede;
   text-decoration: none;
   position: relative;
   display: block;
