@@ -7,8 +7,9 @@ var texto = `<p>Nuestras Malvinas es el  lugar donde nos encontrarnos todos los 
 </p><p>Esta aplicación es una idea del Centro de Excombatientes de Malvinas en Ushuaia, creado y desarrollado por Amigos de Malvinas pertenecientes a la Dirección de Ciencia y Tecnología del Ministerio de Educación de la Provincia de Tierra del Fuego.</p>
 <p>Todas las fotografías exhibidas en esta Aplicación fueron provistas por el Centro de Excombatientes de Malvinas en Ushuaia, con quienes se han compartido las mismas a través de las redes sociales. Si alguien siente que se vulneran sus derechos, solicitamos nos lo hagan saber al e-mail cemushuaia@hotmail.com teléfono + 54 2901 432 472 para comunicarnos con él. Muchas gracias.</p>
 <p>Bienvenidos, argentinos de todos los lugares del Mundo y de todos los tiempos, niños, jóvenes, adultos y ancianos.</p>`
+  var fixit = state.isOpen ? `position: fixed; overflow: hidden;` : '' 
 return rv`<div>${menu(state)}
-		${noticia({title: 'Inicio', description: texto})}	
-	</div>`
+	<div style='${fixit}'>	${noticia({title: 'Inicio', description: texto})}	
+	</div></div>`
 
 }
