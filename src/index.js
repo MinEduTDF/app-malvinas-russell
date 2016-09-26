@@ -78,6 +78,11 @@ if (location.pathname !== url) {
   morphdom(el, ev.data.view)
 })
 }
+window.addEventListener('deviceorientation', function (o) {
+  if (!o.absolute) return
+  worker.postMessage({type: 'deviceorientation', payload: o.alpha})
+})
+
 window.addEventListener('deviceorientationabsolute', function (o) {
   worker.postMessage({type: 'deviceorientation', payload: o.alpha})
 })
