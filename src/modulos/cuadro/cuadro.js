@@ -9,6 +9,7 @@ var cuadro = style['cuadro']
 var tiempo = style['tiempo']
 var btn = style['btn']
 var divbtn = style ['divbtn']
+var imgheight = style ['imgheight']
 
 var appstate = this
 
@@ -40,7 +41,7 @@ width = "float: left; width: 31.6%; height: 344px;"
 
  return rv`<div class="${cuadro}" style="${width}">
  <style type='text/css'>${csjs.getCss(style)}</style>
-${state.img ? `<img src="${state.img}" style="width:100%;">` : ''}
+${state.img ? `<div class="${imgheight}"> <img src="${state.img}" style="width:100%;"></div>` : ''}
 <div  style="padding: 5px; background-color: ${color};"></div>
 <div class="${titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</div>
 <hr style="border: 1px dashed #dedede"/>
