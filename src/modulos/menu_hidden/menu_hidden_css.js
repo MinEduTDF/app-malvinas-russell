@@ -81,6 +81,7 @@ padding: 90px;
 }
 
 .nav li a {
+  border-bottom: 1px dashed #d8d8d8;
   text-decoration: none;
   position: relative;
   display: block;
