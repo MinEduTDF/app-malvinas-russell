@@ -37,6 +37,11 @@ module.exports = csjs`
     padding-bottom: 15%;
 }
 
+.imgheight {
+    overflow-y: hidden; 
+    height:200px;
+}
+
 .divbtn {
     width: 100%;
     position: absolute;
