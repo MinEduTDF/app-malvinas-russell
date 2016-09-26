@@ -89,7 +89,7 @@ padding: 90px;
   display: block;
   padding: 15px 15px 15px 13px;
   font-size: 14px;
-  color: #adadad;
+  color: #565656;
   font-weight: bold;
 }
 

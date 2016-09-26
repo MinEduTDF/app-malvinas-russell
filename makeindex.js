@@ -3,7 +3,7 @@ var fs = require('fs')
 var file = fs.createWriteStream(__dirname + '/build/index.html')
 file.end(makeindex(process.argv[2]))
 function makeindex (version) {
-return `<html><head>
+return `<html lang='es'><head>
 <meta charset="UTF-8">
 <!-- Chrome, Firefox OS and Opera -->
 <meta name="theme-color" content="#6389c8">

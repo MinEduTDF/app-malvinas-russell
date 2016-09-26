@@ -43,7 +43,7 @@ width = "float: left; width: 31.6%; height: 344px;"
  <style type='text/css'>${csjs.getCss(style)}</style>
 ${state.img ? `<div class="${imgheight}"> <img src="${state.img}" style="width:100%;"></div>` : ''}
 <div  style="padding: 5px; background-color: ${color};"></div>
-<div class="${titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</div>
+<h2 class="${titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</h2>
 <hr style="border: 1px dashed #dedede"/>
 ${state.pubdate ? `<div class="${tiempo}" style="color: ${color}">
 <div style="width:25px; float:left;">

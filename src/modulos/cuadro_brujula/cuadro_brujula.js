@@ -51,7 +51,7 @@ var brujula = this.orientation ? compass({angulo: angulo}) : ''
  <style type='text/css'>${csjs.getCss(style)}</style>
 ${state.img ? `<img src="${state.img}" style="width:100%;">` : ''}
 <div  style="padding: 5px; background-color: ${color};"></div>
-<div class="${titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</div>
+<h2 class="${titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</h2>
 <hr style="border: 1px dashed #dedede"/>
 <div class="${contenidox}">${state.description || ''}${brujula}</div>
 <div class="${calculo}">Rumbo: ${sh}º</div>
