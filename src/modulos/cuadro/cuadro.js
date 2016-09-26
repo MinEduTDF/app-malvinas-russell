@@ -41,7 +41,7 @@ width = "float: left; width: 31.6%; height: 344px;"
 
  return rv`<div class="${cuadro}" style="${width}">
  <style type='text/css'>${csjs.getCss(style)}</style>
-${state.img ? `<div class="${imgheight}"> <img src="${state.img}" style="width:100%;"></div>` : ''}
+${state.img ? `<div class="${imgheight}"> <img src="${state.img}" width='100%' height='auto' style="width:100%;"></div>` : ''}
 <div  style="padding: 5px; background-color: ${color};"></div>
 <h2 class="${titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</h2>
 <hr style="border: 1px dashed #dedede"/>
