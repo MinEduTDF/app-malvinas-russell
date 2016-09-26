@@ -39,8 +39,6 @@ body {
   font: 12px/1 'Montserrat', sans-serif;
   color: #333;
   background: #eaeaea;
-  overflow-x: hidden;
-  overflow-y: hidden;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 

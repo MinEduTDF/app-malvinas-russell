@@ -5,7 +5,8 @@ module.exports = function noticias( state ) {
 
 var scroll = state.isOpen ? "hidden" : "scroll"
 
-return rv`<div>${menu(state)}<div style="overflow-y: ${scroll}; height:92%;"><h1>Mensajes en el tiempo</h1>
+  var fixit = state.isOpen ? `position: fixed; overflow: hidden;` : '' 
+return rv`<div>${menu(state)}<div style='${fixit}'><h1>Mensajes en el tiempo</h1>
 		${state.mensajes.map(noticia,state)}	
 	</div></div>`
 

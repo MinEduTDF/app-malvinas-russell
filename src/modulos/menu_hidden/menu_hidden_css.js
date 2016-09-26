@@ -62,6 +62,7 @@ padding: 90px;
   top: 0;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 
