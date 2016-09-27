@@ -78,14 +78,17 @@ if (location.pathname !== url) {
   morphdom(el, ev.data.view)
 })
 }
-window.addEventListener('deviceorientation', function (o) {
-  if (!o.absolute) return
-  worker.postMessage({type: 'deviceorientation', payload: o.alpha})
-})
 
 window.addEventListener('deviceorientationabsolute', function (o) {
   worker.postMessage({type: 'deviceorientation', payload: o.alpha})
 })
+window.addEventListener('deviceorientation', function (o) {
+  // remover event listenner si no es absolute
+  if (o.absolute === false) return
+  worker.postMessage({type: 'deviceorientation', payload: o.alpha})
+})
+
+
 // if ("geolocation" in navigator) {
     /* geolocation is available */
 
