@@ -80,7 +80,7 @@ ${state.pubdate ? `<div class="${tiempo}" style="color: ${color}">
 </svg>
 </div>
 
-<div style="padding:5px; color: #828282;">${state.pubdate.toLocaleString('ES',{timeZone: 'America/Argentina/Ushuaia'})}</div></div>`:''}
+<div style="padding:5px; color: #828282;">${new Date(state.pubdate).toLocaleString('ES',{timeZone: 'America/Argentina/Ushuaia'})}</div></div>`:''}
 ${state.description ? `<div class="${contenidox}">${state.description}</div>` : ''}
 ${state.link ? `<div class="${divbtn}" style="color: ${color}">[<a class="${btn}" href="${state.link}" target="_blank">Ver mas ...</a>]</div>` : ''}
 </div>`	
