@@ -4,6 +4,8 @@ URL.revokeObjectURL(worker.objectURL);
 var morphdom = require('morphdom')
 var nT = requestAnimationFrame
 var localLinks = require('local-links')
+var attachFastClick = require('fastclick');
+attachFastClick(document.body);
 console.log('r')
 /**
  * Copyright 2015 Google Inc. All rights reserved.

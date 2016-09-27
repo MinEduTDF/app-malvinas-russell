@@ -32,6 +32,7 @@
     "csjs-extractify": "^1.0.0-alpha.0",
     "dominant-color": "0.0.1",
     "ecstatic": "^1.4.1",
+    "fastclick": "^1.0.6",
     "feedme": "^0.3.0",
     "http-proxy": "^1.14.0",
     "hyperstream": "^1.2.2",
