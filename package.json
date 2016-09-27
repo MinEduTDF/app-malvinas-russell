@@ -9,7 +9,7 @@
     "clean": "rm build/index.html build/assets/*.js build/assets/*.js.gz",
     "makeindex": "node ./makeindex.js `cat .amrversion`",
     "precache": "sw-precache --config=sw-precache-config.json --root=build",
-    "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=mozjpeg",
+    "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=mozjpeg [mozjpeg --progressive]",
     "build": "npm run imagemin && npm run version && npm run makeindex && npm run precache && browserify src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
   },
   "repository": {
