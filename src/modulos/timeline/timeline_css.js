@@ -8,6 +8,7 @@ module.exports = csjs`
 	border-radius: 150px;
 	-webkit-border-radius: 150px;
 	-moz-border-radius: 150px;
+  display: block;
 }
 .titulo {
     padding: 64px;

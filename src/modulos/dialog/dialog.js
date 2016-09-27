@@ -37,7 +37,7 @@ ${state.img ? `<img style="width:${width}; padding:10px;" src="${state.img}" />`
 <div class="${body}">${state.body}</div>
 
 <div class="${divbtn}" style="color: ${color}">[<a class="${btn}" href="${state.url}" target="_blank">Ver mas ...</a>]
-[<a class="${btn}" href="#" data-type="dialogClose" data-payload="${index}" target="_blank">Cerrar</a>]</div>
+[<a class="${btn}" href="/historia" >Cerrar</a>]</div>
 </div>
 </div>`	
 }

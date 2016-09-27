@@ -3,7 +3,6 @@ var styles = require('./timeline_css.js')
 var dialog = require('../dialog/dialog.js')
 var csjs = require('csjs')
 module.exports = function timeline(state,index) {
-
 var circle = styles['circle'];
 var titulo = styles['titulo'];
 var globalstate = this
@@ -23,9 +22,7 @@ if (index % 2 === 0) {
   side = right;
 } 
 
-if (state.dialogOpen) {
-    return yo`${dialog(state,globalstate,index)}`
-}
+
 
 return yo`
 <div>
@@ -65,7 +62,7 @@ return yo`
 
 <foreignobject ${side.img}>
     <body xmlns="http://www.w3.org/1999/xhtml">
-    <div data-type="dialogOpen" data-payload="${index}" class="${circle}" style="background: url(${state.img || 'assets/img/malvinas.jpg'}) no-repeat; background-position: 50% 50%; border: 12px solid ${side.color};"></div>
+    <a href="/historia/${index}" data-type="dialogOpen" data-payload="${index}" class="${circle}" style="background: url(${state.img || '../assets/img/malvinas.jpg'}) no-repeat; background-position: 50% 50%; border: 12px solid ${side.color};"></a>
     </body>
  
   </foreignobject>

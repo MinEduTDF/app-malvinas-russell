@@ -1,8 +1,9 @@
 var rv = require('russell-view')
 var menu = require('../modulos/menu_hidden/menu_hidden.js')
 var line = require('../modulos/timeline/timeline.js')
-module.exports = function timeline ( state ) {
-
+var dialog = require('../modulos/dialog/dialog.js')
+module.exports = function timeline ( state, params ) {
+    var d = params.index ? dialog(state.timeline[params.index],state,params.index, state) : ''
 var width = "width:100%"
 if (state.windowWidth > 500) {
 	width = "width:500px;"
@@ -15,7 +16,7 @@ if (state.windowWidth > 500) {
 ${state.timeline.map(line,state)}
   </div>
   	</div>
-	</div></div>`
+	</div>${d}</div>`
 }
 
 
