@@ -19,10 +19,11 @@ var menubarra = style['menubarra']
 var svgmenu = style['svgmenu']
 
 
-var black = state.isOpen && state.started ? style['black'] +" "+style['isOpen'] :style['black']
-  var sidebar = ''
+var sidebar = ''
+var black = ''
   if (state.started) {
   sidebar = state.isOpen ? style['isOpen'] : style['isClosed']
+  black = state.isOpen ? style['isOpenb'] : style['isClosedb']
   }
    return rv`<div>
  <style type='text/css'>${csjs.getCss(style)}</style>
@@ -65,7 +66,7 @@ var black = state.isOpen && state.started ? style['black'] +" "+style['isOpen'] 
       </li>
     </ol>
   </div>
-  <div class='${black}'></div>
+  <div class='${style['black'] + ' ' + black}'></div>
 <div class="${menu}"  data-type="menu"></div>
 <div class="${menubarra}">
 <div class="${svgmenu}">
