@@ -63,6 +63,6 @@ h2 {
 <body>
 <div id='main'>
       </div>
-	<script defer src='assets/bundle-${version}.js' type='text/javascript'></script>
+	<script src='assets/bundle-${version}.js' type='text/javascript'></script>
   <script id='state' type='text/javascript'></script>
 </body></html>`}

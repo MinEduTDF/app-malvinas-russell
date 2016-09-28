@@ -23,17 +23,12 @@ padding: 90px;
   width: 220px;
   top: 0;
   background-color: #ffffff;
-  height: 100%;
+  height: 100vh;
   overflow-y: auto;
   transform: translateX(-100%);
   will-change: transform;
-  transform: translateX(-100%);
 }
-.sidebar.isClosed {
-  transform: translateX(-100%);
-  transition: transform 130ms ease-out;  
-  will-change: transform;
-}
+
 
 
 .content {
@@ -42,41 +37,51 @@ padding: 90px;
   background: #eee;
 }
 
-.sidebar.isOpen {
-  transform: none;
-  transition: transform 330ms ease-in;  
-  will-change: transform;
-}
+
 
 .black {
-  position: relative;
   z-index: 1;
-}
-
-.black.isOpen {
   background-color: rgba(0, 0, 0, 0.74);
-  height: 100%;
-  width: 100%;
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   margin: 0;
   padding: 0;
   overflow: hidden;
+  opacity: 1;
+  transform: opacity;
+  will-change: transform;
+
+
+}
+.isOpen {
+  transform: none;
+  transition: transform 230ms ease-in;  
+  will-change: transform;
+}
+.isOpenb {
+  height: 100%;
+  width: 100%;
+  transform: none;
+  transition: transform 330ms ease-in;  
+  will-change: transform;
+
+}
+.isClosed {
+  transform: translateX(-100%);
+  transition: transform 230ms ease-out;  
+  will-change: transform;
+}
+.isClosedb {
+  opacity: 0;
+  transform: opacity;
+  transition: transform 230ms ease-out;  
+  will-change: transform;
 }
 
 
-/* Demo Navigation */
-.title {
-  font-size: 16px;
-  line-height: 50px;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 7px;
-  color: #eee;
-  border-bottom: 1px solid #222;
-  background: #2a2a2a;
-}
+
+
 
 .nav {
   background-color: white;

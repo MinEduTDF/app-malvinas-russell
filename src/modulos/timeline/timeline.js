@@ -26,22 +26,12 @@ if (index % 2 === 0) {
 
 return yo`
 <div>
- <style type='text/css'>${csjs.getCss(styles)}</style>
-<svg
+<svg width='100%' height:'auto'
   viewBox="320 0 600 200"
   preserveAspectRatio="xMinYMin meet" 
   id="svg3184"
   xmlns="http://www.w3.org/2000/svg">
-  <defs>
-       <clippath id="clip">
-      <circle
-         cx="750"
-         cy="96"
-         r="65"
-         id="svg_6-3"
-         fill="transparent" />
-         </clippath>
-</defs>
+
   <g id="main" >
   
     <g
