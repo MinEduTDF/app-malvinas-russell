@@ -1,4 +1,4 @@
-var csjs = require('csjs');
+var csjs = require('csjs')
 module.exports = csjs`
 
 .cuadro {
@@ -65,4 +65,4 @@ border: 1px solid white;
     color: #464646;
     padding: 10px;
 }
-`;
+`

@@ -2,29 +2,26 @@ var yo = require('russell-view')
 var styles = require('./timeline_css.js')
 var dialog = require('../dialog/dialog.js')
 var csjs = require('csjs')
-module.exports = function timeline(state,index) {
-var circle = styles['circle'];
-var titulo = styles['titulo'];
-var globalstate = this
-var index = index
+module.exports = function timeline (state, index) {
+  var circle = styles['circle']
+  var titulo = styles['titulo']
+  var globalstate = this
+  var index = index
 
+  // LEFT ******************** //
+  var left = { line: 'transform="rotate(180 600 100)"',
+    time: '670',
+    img: 'x="380" y="30" width="150" height="150"',
+    color: '#175f8a'
+  }
 
-//LEFT ******************** //
-var left = { line: 'transform="rotate(180 600 100)"',
-time: '670',
-img: 'x="380" y="30" width="150" height="150"',
-color: '#175f8a'
-}
+  var right = { line: '', time: '370', img: 'x="700" y="30" width="150" height="150"', color: '#f08030' }
+  var side = left
+  if (index % 2 === 0) {
+    side = right
+  }
 
-var right = { line: '', time: '370', img: 'x="700" y="30" width="150" height="150"', color:'#f08030' }
-var side = left
-if (index % 2 === 0) {
-  side = right;
-} 
-
-
-
-return yo`
+  return yo`
 <div>
 <svg width='100%' height:'auto'
   viewBox="320 0 600 200"
@@ -49,7 +46,6 @@ return yo`
          fill=${side.color} />
     </g>
 
-
 <foreignobject ${side.img}>
     <body xmlns="http://www.w3.org/1999/xhtml">
     <a href="/historia/${index}" data-type="dialogOpen" data-payload="${index}" class="${circle}" style="background: url(${state.img || '../assets/img/malvinas.jpg'}) no-repeat; background-position: 50% 50%; border: 12px solid ${side.color};"></a>
@@ -69,15 +65,15 @@ return yo`
          fill=${side.color}>${state.title}</tspan></text>
   </g>
 </svg>
-</div>`	
+</div>`
 }
-    // <g ${side.img}>
-    // <image
-    //    y="21"
-    //    x="675"
-    //    id="image3398"
-    //    xlink:href=${state.img}
-    //    height="150"
-    //    width="150"
-    //    style="-webkit-clip-path: url(#clip); clip-path: url(#clip); background-position: 50% 50%;" />
-    // </g>
+// <g ${side.img}>
+// <image
+//    y="21"
+//    x="675"
+//    id="image3398"
+//    xlink:href=${state.img}
+//    height="150"
+//    width="150"
+//    style="-webkit-clip-path: url(#clip); clip-path: url(#clip); background-position: 50% 50%;" />
+// </g>

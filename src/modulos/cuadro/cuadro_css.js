@@ -1,4 +1,4 @@
-var csjs = require('csjs');
+var csjs = require('csjs')
 module.exports = csjs`
 
 .cuadro {
@@ -38,7 +38,7 @@ module.exports = csjs`
 }
 
 .imgheight {
-    overflow-y: hidden; 
+    overflow-y: hidden; ;
     height:200px;
 }
 
@@ -57,4 +57,4 @@ module.exports = csjs`
     text-decoration: none;
     color: #828282;
     font-size: 15px;
-()}`;
+}`

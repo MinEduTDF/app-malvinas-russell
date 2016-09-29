@@ -14,9 +14,9 @@ router.addRoute('/noticias', noticias)
 router.addRoute('/azimuth', azimuth)
 router.addRoute('/historia', timeline)
 router.addRoute('/historia/:index', timeline)
-router.addRoute('*', function(){return console.log('404')})
+router.addRoute('*', function () {return console.log('404')})
 
-module.exports = function app(state) {
-  var matched = router.match(state.url) 
+module.exports = function app (state) {
+  var matched = router.match(state.url)
   return matched.fn(state, matched.params)
 }

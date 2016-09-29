@@ -1,4 +1,4 @@
-var csjs = require('csjs');
+var csjs = require('csjs')
 module.exports = csjs`
 
 .circle {
@@ -15,4 +15,4 @@ module.exports = csjs`
     float: left;
     font-size: 47px;
 }
-`;
+`

@@ -1,4 +1,4 @@
-var csjs = require('csjs');
+var csjs = require('csjs')
 
 module.exports = csjs`
 
@@ -11,7 +11,6 @@ module.exports = csjs`
 	top: 0;
 	margin: 0;
 	padding: 0;
-	
 }
 
 .btn {
@@ -41,7 +40,7 @@ module.exports = csjs`
 }
 
 .body {
-	padding:10px
+	padding:10px;
 }
 
 .dialog {
@@ -62,4 +61,4 @@ module.exports = csjs`
     box-shadow: 0px 2px 17px -5px #888888;
 }
 
-`;
+`

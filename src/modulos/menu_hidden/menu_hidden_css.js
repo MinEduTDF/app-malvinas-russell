@@ -1,11 +1,10 @@
-var csjs = require('csjs');
+var csjs = require('csjs')
 module.exports = csjs`
 
 .img {
 background-image: url('/assets/img/malvinas.jpg');
 padding: 90px;
 }
-
 
 .menu {
     padding: 23px;
@@ -29,15 +28,11 @@ padding: 90px;
   will-change: transform;
 }
 
-
-
 .content {
   flex: 1;
   padding: 30px;
   background: #eee;
 }
-
-
 
 .black {
   z-index: 1;
@@ -48,41 +43,32 @@ padding: 90px;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  opacity: 1;
+  opacity: 0;
   transform: opacity;
   will-change: transform;
-
-
 }
 .isOpen {
   transform: none;
-  transition: transform 230ms ease-in;  
+  transition: transform 230ms ease-out;  ;
   will-change: transform;
 }
 .isOpenb {
   height: 100%;
   width: 100%;
-  transform: none;
-  transition: transform 330ms ease-in;  
+  opacity: 1;
+  transition: opacity 230ms ease-in-out;
   will-change: transform;
-
 }
 .isClosed {
   transform: translateX(-100%);
-  transition: transform 230ms ease-out;  
+  transition: transform 230ms ease-out;  ;
   will-change: transform;
 }
 .isClosedb {
   opacity: 0;
-  transform: opacity;
-  transition: transform 230ms ease-out;  
+  transition: opacity 230ms ease-in-out;
   will-change: transform;
 }
-
-
-
-
-
 .nav {
   background-color: white;
 }
@@ -132,6 +118,4 @@ padding: 90px;
   padding-left: 17px;
   background-color: #6389c8;
 }
-
 `
-

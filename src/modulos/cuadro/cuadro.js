@@ -2,50 +2,39 @@ var rv = require('russell-view')
 var style = require('./cuadro_css.js')
 var csjs = require('csjs')
 
-module.exports = function cuadro (state,index) {
-var titulo = style['titulo']
-var contenidox = style['contenido']
-var cuadro = style['cuadro']
-var tiempo = style['tiempo']
-var btn = style['btn']
-var divbtn = style ['divbtn']
-var imgheight = style ['imgheight']
+module.exports = function cuadro (state, index) {
+  var color1 = '#175f8a'
+  var color2 = '#f08030'
 
-var appstate = this
 
-var color1 = '#175f8a'
-var color2 = '#f08030' 
- 
+  var color = color1
+  if (index % 2 === 0) {
+    color = color2
+  }
 
-var color = color1
-if (index % 2 === 0) {
-  color = color2;
-}
+  var width = ''
+  if (this.windowWidth > 690) {
+    width = 'float: left; width: 47%; height: 344px;'
+  }
 
-var width = ""
-if (appstate.windowWidth > 690) {
-width = "float: left; width: 47%; height: 344px;"
-} 
+  if (this.windowWidth > 850) {
+    width = 'float: left; width: 47.5%; height: 344px;'
+  }
 
-if (appstate.windowWidth > 850) {
-width = "float: left; width: 47.5%; height: 344px;"
-} 
+  if (this.windowWidth > 1108) {
+    width = 'float: left; width: 31.5%; height: 344px;'
+  }
 
-if (appstate.windowWidth > 1108) {
-width = "float: left; width: 31.5%; height: 344px;"
-}
+  if (this.windowWidth > 1170) {
+    width = 'float: left; width: 31.6%; height: 344px;'
+  }
 
-if (appstate.windowWidth > 1170) {
-width = "float: left; width: 31.6%; height: 344px;"
-}
-
- return rv`<div class="${cuadro}" style="${width}">
- <style type='text/css'>${csjs.getCss(style)}</style>
-${state.img ? `<div class="${imgheight}"> <img src="${state.img}" width='100%' height='auto' style="width:100%;"></div>` : ''}
+  return rv`<div class="${style.cuadro}" style="${width}">
+${state.img ? `<div class="${style.imgheight}"> <img src="${state.img}" width='100%' height='auto'></div>` : ''}
 <div  style="padding: 5px; background-color: ${color};"></div>
-<h2 class="${titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</h2>
+<h2 class="${style.titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</h2>
 <hr style="border: 1px dashed #dedede"/>
-${state.pubdate ? `<div class="${tiempo}" style="color: ${color}">
+${state.pubdate ? `<div class="${style.tiempo}" style="color: ${color}">
 <div style="width:25px; float:left;">
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
@@ -81,7 +70,7 @@ ${state.pubdate ? `<div class="${tiempo}" style="color: ${color}">
 </div>
 
 <div style="padding:5px; color: #828282;">${new Date(state.pubdate).toLocaleString('ES',{timeZone: 'America/Argentina/Ushuaia'})}</div></div>`:''}
-${state.description ? `<div class="${contenidox}">${state.description}</div>` : ''}
-${state.link ? `<div class="${divbtn}" style="color: ${color}">[<a class="${btn}" href="${state.link}" target="_blank">Ver mas ...</a>]</div>` : ''}
-</div>`	
+${state.description ? `<div class="${style.contenido}">${state.description}</div>` : ''}
+${state.link ? `<div class="${style.divbtn}" style="color: ${color}">[<a class="${style.btn}" href="${state.link}" target="_blank">Ver mas ...</a>]</div>` : ''}
+</div>`
 }
