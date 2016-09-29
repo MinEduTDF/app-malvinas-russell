@@ -14,26 +14,23 @@ var  initialState = {
             "id": 1,
             "title": "Puerto Argentino",
             "img": "/assets/img/puerto_arg.jpg",
-            "coordenadas": {lat: -51.6921, lng: -57.8589, elv: 0},
-            "description": "Ahí estás, como estoico testigo de la historia, esclavo de la ambición y el poder, inmerso en medio de la puja entre lo que es justo y los intereses imperialistas. Has visto mil ovejas transitar tus calles, has visto mil soldados desfilar tus arterias, has soportado mil vientos y mil nevadas. Aguanta, resiste, brinda y ofrece tu nobleza de turba y piedra, volveremos!!!. Mil barcos, mil naufragios, mil soles……."
+            "coordenadas": {lat: -51.6921, lng: -57.8589, elv: 0}
         },
         {
             "id": 2,
             "title": "Cementerio de Darwin",
             "img": "/assets/img/cementerio_darwin.jpg",
-            "coordenadas": {lat: -51.796792, lng: -58.940663, elv: 0},
-            "description": "Cuida y protege a nuestros hermanos caídos en la cruzada por la justicia y la verdad. Cobija y guarda a nuestros Héroes. Hazte faro en la neblina de los tiempos para los que siguen y seguiremos el camino eterno, para encontrarnos y juntos brillemos como guía para nuestro pueblo, para la Nación Argentina y para todos los hombres de buena voluntad que quieran seguir su ejemplo de entrega hasta la última gota de sangre. Sangre que cae con la lluvia y nieve que cubre tu campo santo."        },
+            "coordenadas": {lat: -51.796792, lng: -58.940663, elv: 0}        },
         {
             "id": 3,
-            "title": "Crucero A.R.A. Gral. Belgrano",
+            "title": "Hundimiento del Crucero Gral. Belgrano",
             "img": "/assets/img/crucero.jpg",
-            "coordenadas": {lat: -55.4, lng: -61.533333, elv: 0},
-            "description": "Latitud 55°24´S y Longitud 61°32’O                                                                                                        Tumba de Guerra /  323 /  02/04/1982 / 16:00                                                                                    Números, magnitudes, escalas y siglas, cifras frías como el mar que los envuelve como un remolino salobre e incansable. Salud Héroes!!!  Amén Hermanos!!! Gloria a los guardianes de las profundidades, desde allí han de venir a reclamar lo que les pertenece, lo robado y despojado, para entregarlo en manos de La Patria."        },
+            "coordenadas": {lat: -55.4, lng: -61.533333, elv: 0}        },
         {
           "id": 4,
           "title": "Ushuaia, Capital de Malvinas",
           "img": "",
-          "description": "Tus brazos se abren esperando incansable el abrazo de tu hermano Puerto Argentino, la llegada de hombres de cientos de años que esperan el día de la paz y la unión, mujeres que vieron cientos de nevadas sin ver el final de la disputa encallada, encallada en rocas de costas bravías que acogieron soldados, halcones y marinos cobijando al alma y  el paño Argentino.\nSalud Ushuaia! Capital de Malvinas!",
+          "description": "Tus brazos se abren esperando incansable el abrazo de tu hermano Puerto argentino, la llegada de hombres de cientos de años que esperan el día de la paz y la unión, mujeres que vieron cientos de nevadas sin ver el final de la disputa encallada, encallada en rocas de costas bravías que acogieron soldados, halcones y marinos cobijando al alma y  el paño Argentino.\nSalud Ushuaia! Capital de Malvinas!",
           "coordenadas": {lat: -54.807222, lng: -68.304444, elv: 0}
         }
 
