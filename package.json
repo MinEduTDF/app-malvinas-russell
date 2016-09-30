@@ -10,7 +10,7 @@
     "makeindex": "node ./makeindex.js `cat .amrversion`",
     "precache": "sw-precache --config=sw-precache-config.json --root=build",
     "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=mozjpeg [mozjpeg --progressive]",
-    "build": "npm run imagemin && npm run version && npm run makeindex && npm run precache && browserify src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
+    "build": "npm run imagemin && npm run version && npm run makeindex && npm run precache && browserify -p [ csjs-extractify --extension '_css.js' -o build/assets/css/main-`cat .amrversion`.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
   },
   "repository": {
     "type": "git",
@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "browserify": "^13.0.0",
+    "csjs-extractify": "^1.0.0-alpha.0",
     "csjs-injectify": "^1.0.0",
     "es6-templates": "^0.2.2",
     "imagemin-cli": "^3.0.0",
@@ -64,7 +65,6 @@
   },
   "browserify": {
     "transform": [
-      "csjs-injectify",
       "es6-templates"
     ]
   },

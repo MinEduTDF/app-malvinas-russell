@@ -22,6 +22,7 @@ function makeindex (version) {
 <meta name="msapplication-starturl" content="/">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' type='text/css' href='assets/css/main-${version}.css'>
 <style type='text/css'>* {
   margin: 0;
   padding: 0;
