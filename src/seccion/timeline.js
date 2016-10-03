@@ -8,7 +8,8 @@ if (state.windowWidth > 500) {
 	width = "width:500px;"
 }
 
-  var fixit = state.isOpen ? `position: fixed; overflow: hidden;` : '' 
+var fixit = state.isOpen ? `position: fixed; overflow: hidden;` : '' 
+  
 	return rv`<div>${menu(state)}<div style='${fixit}'><h1>L&iacute;nea de tiempo</h1>
 	<div style="width:100%; text-align:center;">
   <div style="${width} display: inline-block;">
