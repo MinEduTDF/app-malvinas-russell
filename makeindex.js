@@ -44,12 +44,7 @@ body {
 }
 
 /* Demo Description */
-h1 {
-    background-color: #e0e0e0;
-    padding: 20px;
-    color: #565656;
-    font-weight: 400;
-}
+
 
 h2 {
   font-size: 18px;
