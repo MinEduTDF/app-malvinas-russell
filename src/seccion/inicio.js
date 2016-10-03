@@ -8,6 +8,6 @@ module.exports = function noticias (state) {
 <p>Bienvenidos, argentinos de todos los lugares del Mundo y de todos los tiempos, niños, jóvenes, adultos y ancianos.</p>`
   var fixit = state.isOpen ? `position: fixed; overflow: hidden;` : ''
   return rv`<div>${menu(state)}
-	<div style='${fixit}'>	${noticia({title: 'Inicio', description: texto})}	
+	<div style='${fixit}'><h1>Inicio</h1>	${texto})}	
 	</div></div>`
 }

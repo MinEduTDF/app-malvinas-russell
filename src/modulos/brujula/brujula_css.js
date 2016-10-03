@@ -12,4 +12,8 @@ module.exports = csjs`
     float: left;
     font-size: 47px;
 }
+.brujula {
+    max-width: 300px;
+    margin: 0 auto;
+}
 `

@@ -11,6 +11,41 @@ module.exports = csjs`
     border-color: #E4E4E4;
     box-shadow: 0px 2px 10px -5px #888888;
 }
+@media (min-width: 690px) {
+  .cuadro {
+    float: left;
+    width: 47%;
+  }
+}
+@media (min-width: 850px) {
+  .cuadro {
+    float: left;
+    width: 47.5%;
+  }
+}
+@media (min-width: 1108px) {
+  .cuadro {
+    float: left;
+    width: 31.5%;
+  }
+}
+@media (min-width: 1170px) {
+  .cuadro {
+    float: left;
+    width: 31.6%;
+  }
+}
+.azul {
+  padding: 5px;
+  background-color: #175f8a;
+}
+
+
+.naranja {
+  padding: 5px;
+  background-color: #f08030;
+}
+
 
 .tiempo {
 	padding-left: 15px;

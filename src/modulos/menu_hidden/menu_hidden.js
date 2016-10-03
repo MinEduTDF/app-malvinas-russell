@@ -1,8 +1,5 @@
 var rv = require('russell-view')
 var style = require('./menu_hidden_css.js')
-var store = require('../../store.js')
-var ModCuadro = require('../cuadro/cuadro.js')
-var csjs = require('csjs')
 
 module.exports = function menu_hidden (state) {
   var sidebar = ''

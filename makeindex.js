@@ -63,6 +63,6 @@ h2 {
 <body>
 <div id='main'>
       </div>
-	<script async src='assets/bundle-${version}.js' type='text/javascript'></script>
-  <script async id='state' type='text/javascript'></script>
+	<script defer src='assets/bundle-${version}.js' type='text/javascript'></script>
+  <script defer id='state' type='text/javascript'></script>
 </body></html>`}

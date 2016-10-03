@@ -15,4 +15,13 @@ module.exports = csjs`
     float: left;
     font-size: 47px;
 }
+.anio {
+  width: 100%;
+  margin: 0 auto;
+}
+@media (min-width: 500px) {
+  .anio {
+    width: 500px;
+  } 
+}
 `

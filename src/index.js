@@ -67,16 +67,29 @@ if ('serviceWorker' in navigator) {
 }
 
 var el = document.getElementById('main')
-
+function send (orientation) {
+  return worker.postMessage({type: 'deviceorientation', payload: orientation})
+}
+var handleorientation = function (data) {
+  if (data.absolute === false) return
+  return send(data.alpha)
+}
 var url
 worker.onmessage = function onmsg (ev) {
   url = ev.data.url
-
+if (url.match('azimuth')) {
+window.addEventListener('deviceorientationabsolute', handleorientation)
+window.addEventListener('deviceorientation', handleorientation)
+} else {
+window.removeEventListener('deviceorientationabsolute', handleorientation)
+window.removeEventListener('deviceorientation', handleorientation)
+}
   nT(function render () {
     if (location.pathname !== url) {
       history.pushState(null, null, url)
     }
     morphdom(el, ev.data.view, {
+      childrenOnly: true,
       onBeforeElUpdated: function (fromEl, toEl) {
         if (fromEl.isEqualNode(toEl)) return false
       }
@@ -84,24 +97,7 @@ worker.onmessage = function onmsg (ev) {
     )
   })
 }
-function handleOrientation (o) {
-  // if (o.absolute === false) return window.removeEventListener('deviceorientationabsolute', handleorientation)
-  worker.postMessage({type: 'deviceorientation', payload: o.alpha})
-}
-if (location.pathname === '/azimuth') {
-  window.addEventListener('deviceorientationabsolute', handleOrientation)
-} else {
-  window.removeEventListener('deviceorientationabsolute', handleOrientation)
-}
-// window.addEventListener('deviceorientationabsolute', function (o) {
-//   worker.postMessage({type: 'deviceorientation', payload: o.alpha})
-// })
-// window.addEventListener('deviceorientation', function (o) {
-//   // remover event listenner si no es absolute
-//   if (o.absolute === false) return
-//   worker.postMessage({type: 'deviceorientation', payload: o.alpha})
-// })
-
+// var Promise = Promise || ES6Promise.Promise;
 // if ("geolocation" in navigator) {
 /* geolocation is available */
 
@@ -112,18 +108,18 @@ if (location.pathname === '/azimuth') {
 window.addEventListener('popstate', function () {
   worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
-
-function changeWidth () {
-  worker.postMessage({type: 'changeWidth', payload: window.innerWidth})
-}
-window.addEventListener('resize', changeWidth)
-window.addEventListener('load', function () {
-  worker.postMessage({type: 'hydrate', payload: window.state})
-  changeWidth()
   navigator.geolocation.watchPosition(function (p) {
     worker.postMessage(
       {type: 'position', payload: {lat: p.coords.latitude, lng: p.coords.longitude}})
   })
+
+// function changeWidth () {
+//   worker.postMessage({type: 'changeWidth', payload: window.innerWidth})
+// }
+// window.addEventListener('resize', changeWidth)
+window.addEventListener('load', function () {
+  worker.postMessage({type: 'hydrate', payload: window.state})
+  // changeWidth()
 // worker.postMessage({type: 'setUrl', payload: location.pathname.toString()})
 })
 

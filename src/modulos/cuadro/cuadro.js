@@ -1,41 +1,14 @@
 var rv = require('russell-view')
 var style = require('./cuadro_css.js')
-var csjs = require('csjs')
 
 module.exports = function cuadro (state, index) {
-  var color1 = '#175f8a'
-  var color2 = '#f08030'
-
-
-  var color = color1
-  if (index % 2 === 0) {
-    color = color2
-  }
-
-  var width = ''
-  if (this.windowWidth > 690) {
-    width = 'float: left; width: 47%; height: 344px;'
-  }
-
-  if (this.windowWidth > 850) {
-    width = 'float: left; width: 47.5%; height: 344px;'
-  }
-
-  if (this.windowWidth > 1108) {
-    width = 'float: left; width: 31.5%; height: 344px;'
-  }
-
-  if (this.windowWidth > 1170) {
-    width = 'float: left; width: 31.6%; height: 344px;'
-  }
-
-  return rv`<div class="${style.cuadro}" style="${width}">
+  return rv`<div id="${style.cuadro + index}" class="${style.cuadro}">
 ${state.img ? `<div class="${style.imgheight}"> <img src="${state.img}" width='100%' height='auto'></div>` : ''}
-<div  style="padding: 5px; background-color: ${color};"></div>
-<h2 class="${style.titulo}" style="color: #565656; background-color:#f7f6f6;">${state.title}</h2>
-<hr style="border: 1px dashed #dedede"/>
-${state.pubdate ? `<div class="${style.tiempo}" style="color: ${color}">
-<div style="width:25px; float:left;">
+<div class="${style.ornament} ${(index + 1) % 2 === 0 ? style.naranja : style.azul}"></div>
+<h2 class="${style.titulo}">${state.title}</h2>
+<hr class="${style.separator}"/>
+${state.pubdate ? `<div class="${style.tiempo}">
+<div class="${style.icon}">
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 58 58" style="enable-background:new 0 0 58 58;" xml:space="preserve">
 <g>
@@ -69,8 +42,8 @@ ${state.pubdate ? `<div class="${style.tiempo}" style="color: ${color}">
 </svg>
 </div>
 
-<div style="padding:5px; color: #828282;">${new Date(state.pubdate).toLocaleString('ES',{timeZone: 'America/Argentina/Ushuaia'})}</div></div>`:''}
+<div class="${style.date}">${new Date(state.pubdate).toLocaleString('ES',{timeZone: 'America/Argentina/Ushuaia'})}</div></div>`:''}
 ${state.description ? `<div class="${style.contenido}">${state.description}</div>` : ''}
-${state.link ? `<div class="${style.divbtn}" style="color: ${color}">[<a class="${style.btn}" href="${state.link}" target="_blank">Ver mas ...</a>]</div>` : ''}
+${state.link ? `<div class="${style.divbtn} ${(index + 1) % 2 === 0 ? style.textonaranja : style.textoazul}">[<a class="${style.btn}" href="${state.link}" target="_blank">Ver mas ...</a>]</div>` : ''}
 </div>`
 }

@@ -18,7 +18,6 @@ module.exports = function dialog (state, globalstate, index) {
   }
 
   return yo`<div>
- <style type='text/css'>${csjs.getCss(style)}</style>
 <div class="${style.back}">
 	<div class="${style.dialog}">
 ${state.img ? `<img style="width:${width}; padding:10px;" src="${state.img}" />` : ''}

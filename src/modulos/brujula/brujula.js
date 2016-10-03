@@ -1,7 +1,8 @@
 var yo = require('russell-view')
+var style = require('./brujula_css.js')
 
 module.exports = function brujula (state) {
-  return yo`<div>
+  return yo`<div class='${style.brujula}'>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
   <circle cx="150" cy="149" r="143.4" fill="#364e66"/>
   <circle cx="150" cy="149" r="121.5" fill="#fff"/>

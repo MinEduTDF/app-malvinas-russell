@@ -69,7 +69,9 @@ var server = http.createServer(function (req, res) {
     var hyd = JSON.stringify(state)
     var elem = app(state)
     read('index.html').pipe(hyperstream({
-      '#main': elem,
+      '#main': {
+        _appendHtml: elem
+      },
       '#state': {
         _html: 'window.state =' + hyd
       }

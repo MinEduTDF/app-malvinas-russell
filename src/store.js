@@ -6,7 +6,7 @@ var initialState = {
   position: '',
   started: false,
   isOpen: false,
-  url: '/',
+  url: '',
   news: [],
   getingNews: false,
   azimuth: [
@@ -26,13 +26,13 @@ var initialState = {
     {
       'id': 3,
       'title': 'Crucero A.R.A. Gral. Belgrano',
-      'img': '/assets/img/crucero.jpg',
+      'img': '/assets/img/crucero2.jpg',
       'coordenadas': {lat: -55.4, lng: -61.533333, elv: 0},
     'description': 'Latitud 55°24´S y Longitud 61°32’O                                                                                                        Tumba de Guerra /  323 /  02/04/1982 / 16:00                                                                                    Números, magnitudes, escalas y siglas, cifras frías como el mar que los envuelve como un remolino salobre e incansable. Salud Héroes!!!  Amén Hermanos!!! Gloria a los guardianes de las profundidades, desde allí han de venir a reclamar lo que les pertenece, lo robado y despojado, para entregarlo en manos de La Patria.'        },
     {
       'id': 4,
       'title': 'Ushuaia, Capital de Malvinas',
-      'img': '',
+      'img': '/assets/img/ushuaia.jpg',
       'description': 'Tus brazos se abren esperando incansable el abrazo de tu hermano Puerto Argentino, la llegada de hombres de cientos de años que esperan el día de la paz y la unión, mujeres que vieron cientos de nevadas sin ver el final de la disputa encallada, encallada en rocas de costas bravías que acogieron soldados, halcones y marinos cobijando al alma y  el paño Argentino.\nSalud Ushuaia! Capital de Malvinas!',
       'coordenadas': {lat: -54.807222, lng: -68.304444, elv: 0}
     }
@@ -622,14 +622,14 @@ var reducers = {
   menu: function menu (action, state) {
     return xtend(state, {isOpen: !state.isOpen, started: true})
   },
-  dialogOpen: function dialogOpen (action, state) {
-    state.timeline[action.payload].dialogOpen = true
-    return state
-  },
-  dialogClose: function dialogClose (action, state) {
-    state.timeline[action.payload].dialogOpen = false
-    return state
-  },
+  // dialogOpen: function dialogOpen (action, state) {
+  //   state.timeline[action.payload].dialogOpen = true
+  //   return state
+  // },
+  // dialogClose: function dialogClose (action, state) {
+  //   state.timeline[action.payload].dialogOpen = false
+  //   return state
+  // },
 
   setUrl: function setUrl (action, state) {
     return xtend(state, {url: action.payload, isOpen: false})
