@@ -20,13 +20,13 @@ module.exports = function dialog (state, globalstate, index) {
   return yo`<div>
 <div class="${style.back}">
 	<div class="${style.dialog}">
-${state.img ? `<img style="width:${width}; padding:10px;" src="${state.img}" />` : ''}
+${state.img !== '' ? `<img style="width:${width}; padding:10px;" src="${state.img}" />` : ''}
 <div  style="padding: 5px; background-color: ${color};"></div>
 <div class="${style.title}" style="color: #565656; background-color:#f7f6f6;">Año ${state.title}</div>
 <hr style="border: 1px dashed #dedede"/>
 <div class="${style.body}">${state.body}</div>
 
-<div class="${style.divbtn}" style="color: ${color}">[<a class="${style.btn}" href="${state.url}" target="_blank">Ver mas ...</a>]
+<div class="${style.divbtn}" style="color: ${color}">${state.url !== '' ? `[<a class="${style.btn}" href="${state.url}" target="_blank">Ver mas ...</a>]` : ''}
 [<a class="${style.btn}" href="/historia" >Cerrar</a>]</div>
 </div>
 </div>`
