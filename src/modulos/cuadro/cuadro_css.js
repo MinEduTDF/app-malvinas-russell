@@ -63,8 +63,9 @@ module.exports = csjs`
 }
 
 .icon {
-  width:25px;
+  width:12px;
   float:left;
+  margin: 7px 7px 0 0;
 }
 
 .date {
@@ -73,7 +74,6 @@ module.exports = csjs`
 }
 
 .titulo {
-    font-family: serif;
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: 16px;
@@ -86,9 +86,9 @@ module.exports = csjs`
 .contenido {
     font-family: serif;
     padding: 15px;
-    color: rgba(0, 0, 0, 1);
+    color: #333;
     line-height: 24px;
-    font-size: 18px;
+    font-size: 16px;
     padding-bottom: 15%;
 }
 
