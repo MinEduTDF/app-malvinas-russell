@@ -63,8 +63,9 @@ module.exports = csjs`
 }
 
 .icon {
-  width:25px;
+  width:12px;
   float:left;
+  margin: 7px;
 }
 
 .date {
