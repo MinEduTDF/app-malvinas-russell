@@ -54,23 +54,19 @@ module.exports = csjs`
 }
 
 .titulo {
-    font-family: serif;
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: 16px;
     padding-top: 14px;
-    color: white;
     font-size: 22px;
-    text-align:center;
 }
 
 .contenido {
-    text-align: center;
     font-family: serif;
     padding: 15px;
-    color: rgba(0, 0, 0, 0.69);
+    color: #333;
     line-height: 24px;
-    font-size: 18px;
+    font-size: 16px;
     padding-bottom: 15%;
 }
 
