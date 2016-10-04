@@ -6,11 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "version": "uuid > .amrversion",
-    "clean": "rm build/index.html build/assets/*.js build/assets/*.js.gz",
+    "clean": "rm build/index.html build/assets/*.js build/assets/*.js.gz build/assets/css/main-*.css",
     "makeindex": "node ./makeindex.js `cat .amrversion`",
     "precache": "sw-precache --config=sw-precache-config.json --root=build",
-    "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=mozjpeg",
-    "build": "npm run imagemin && npm run version && npm run makeindex && npm run precache && browserify src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
+    "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=mozjpeg [mozjpeg --progressive]",
+    "build": "npm run imagemin && npm run version && npm run makeindex && npm run precache && browserify -p [ csjs-extractify --extension '_css.js' -o build/assets/css/main-`cat .amrversion`.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
   },
   "repository": {
     "type": "git",
@@ -26,13 +26,16 @@
   },
   "homepage": "https://github.com/MinEduTDF/app-malvinas-russell#readme",
   "dependencies": {
+    "@hughsk/fulltilt": "^0.7.1",
     "JSONStream": "^1.1.1",
     "azimuth": "^0.1.0",
     "csjs": "^1.0.3",
     "csjs-extractify": "^1.0.0-alpha.0",
     "dominant-color": "0.0.1",
     "ecstatic": "^1.4.1",
+    "fastclick": "^1.0.6",
     "feedme": "^0.3.0",
+    "gyronorm": "^2.0.4",
     "http-proxy": "^1.14.0",
     "hyperstream": "^1.2.2",
     "json-select": "^2.2.0",
@@ -52,7 +55,9 @@
   },
   "devDependencies": {
     "browserify": "^13.0.0",
+    "csjs-extractify": "^1.0.0-alpha.0",
     "csjs-injectify": "^1.0.0",
+    "es2020": "^1.1.9",
     "es6-templates": "^0.2.2",
     "imagemin-cli": "^3.0.0",
     "imagemin-mozjpeg": "^6.0.0",
@@ -63,7 +68,7 @@
   },
   "browserify": {
     "transform": [
-      "es6-templates"
+      "es2020"
     ]
   },
   "browser": {

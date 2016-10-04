@@ -3,7 +3,7 @@ var fs = require('fs')
 var file = fs.createWriteStream(__dirname + '/build/index.html')
 file.end(makeindex(process.argv[2]))
 function makeindex (version) {
-return `<html><head>
+  return `<html lang='es'><head>
 <meta charset="UTF-8">
 <!-- Chrome, Firefox OS and Opera -->
 <meta name="theme-color" content="#6389c8">
@@ -22,6 +22,7 @@ return `<html><head>
 <meta name="msapplication-starturl" content="/">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel='stylesheet' type='text/css' href='assets/css/main-${version}.css'>
 <style type='text/css'>* {
   margin: 0;
   padding: 0;
@@ -43,12 +44,7 @@ body {
 }
 
 /* Demo Description */
-h1 {
-    background-color: #e0e0e0;
-    padding: 20px;
-    color: #565656;
-    font-weight: 400;
-}
+
 
 h2 {
   font-size: 18px;
@@ -59,10 +55,9 @@ h2 {
 <title>Malvinas</title>
 </head>
 
-
 <body>
 <div id='main'>
       </div>
 	<script defer src='assets/bundle-${version}.js' type='text/javascript'></script>
-  <script id='state' type='text/javascript'></script>
+  <script defer id='state' type='text/javascript'></script>
 </body></html>`}

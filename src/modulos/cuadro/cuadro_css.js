@@ -1,4 +1,4 @@
-var csjs = require('csjs');
+var csjs = require('csjs')
 module.exports = csjs`
 
 .cuadro {
@@ -12,10 +12,64 @@ module.exports = csjs`
     box-shadow: 0px 2px 10px -5px #888888;
 }
 
+@media (min-width: 690px) {
+  .cuadro {
+    float: left;
+    width: 47%;
+    height: 344px
+  }
+}
+@media (min-width: 850px) {
+  .cuadro {
+    float: left;
+    width: 47.5%;
+    height: 344px
+  }
+}
+@media (min-width: 1108px) {
+  .cuadro {
+    float: left;
+    width: 31.5%;
+    height: 344px
+  }
+}
+@media (min-width: 1170px) {
+  .cuadro {
+    float: left;
+    width: 31.6%;
+    height: 344px
+  }
+}
+.azul {
+  background-color: #175f8a;
+}
+
+.textoazul {
+  color: #175f8a;
+}
+
+.naranja {
+  background-color: #f08030;
+}
+
+.textonaranja {
+  color: #f08030;
+}
+
 .tiempo {
 	padding-left: 15px;
     padding-top: 15px;
     font-size: 15px;
+}
+
+.icon {
+  width:25px;
+  float:left;
+}
+
+.date {
+  padding:5px;
+  color: #828282;
 }
 
 .titulo {
@@ -24,8 +78,9 @@ module.exports = csjs`
     padding-right: 14px;
     padding-bottom: 16px;
     padding-top: 25px;
-    color: white;
     font-size: 22px;
+    color: #565656;
+    background-color: #f7f6f6;
 }
 
 .contenido {
@@ -38,7 +93,7 @@ module.exports = csjs`
 }
 
 .imgheight {
-    overflow-y: hidden; 
+    overflow-y: hidden; ;
     height:200px;
 }
 
@@ -57,4 +112,10 @@ module.exports = csjs`
     text-decoration: none;
     color: #828282;
     font-size: 15px;
-()}`;
+}
+.ornament {
+  padding: 5px;
+}
+.separator {
+  border: 1px dashed #dedede;
+}`

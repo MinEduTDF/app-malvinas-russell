@@ -14,14 +14,14 @@
 // toolbox.precache(['assets/css/style.css', 'assets/img/malvinas.jpg'])
 // })
 // }
-(global => {
-  'use strict';
+;(global => {
+  'use strict'
 
   // Load the sw-tookbox library.
-  importScripts('assets/js/sw-toolbox.js');
+  importScripts('assets/js/sw-toolbox.js')
 
   // Turn on debug logging, visible in the Developer Tools' console.
-  // global.toolbox.options.debug = true;
+  // global.toolbox.options.debug = true
 
   // Set up a handler for HTTP GET requests:
   // - /\.ytimg\.com\// will match any requests whose URL contains 'ytimg.com'.
@@ -38,7 +38,7 @@
   //     // Expire any entries that are older than 30 seconds.
   //     maxAgeSeconds: 30
   //   }
-  // });
+  // })
 
   toolbox.precache([
     'index.html',
@@ -51,12 +51,12 @@
   // toolbox.networkFirst cache strategy, and their responses will be stored in
   // the default cache.
   global.toolbox.router.get('/elmalvinense', global.toolbox.networkFirst)
-  global.toolbox.router.default = global.toolbox.cacheFirst;
+  global.toolbox.router.default = global.toolbox.cacheFirst
 
   // Boilerplate to ensure our service worker takes control of the page as soon
   // as possible.
   global.addEventListener('install',
-      event => event.waitUntil(global.skipWaiting()));
+    event => event.waitUntil(global.skipWaiting()))
   global.addEventListener('activate',
-      event => event.waitUntil(global.clients.claim()));
-})(self);
+    event => event.waitUntil(global.clients.claim()))
+})(self)
