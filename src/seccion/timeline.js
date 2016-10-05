@@ -10,7 +10,7 @@ module.exports = function timeline (state, params) {
   //   width = 'width:500px;'
   // }
 
-  var fixit = state.isOpen ? style.fixit : ''
+  var fixit = state.isOpen || params.index ? style.fixit : ''
   return rv`<div>${menu(state)}<div class='${fixit}'><div class="${style.info}"><h1 class="${style.header}">L&iacute;nea de tiempo</h1></div>
   <div class=${style.line}>
 ${state.timeline.map(line,state)}
