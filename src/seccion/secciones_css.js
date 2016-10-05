@@ -13,4 +13,12 @@ module.exports = csjs`
   text-transform: uppercase;
   font-weight: normal;
 }
+.line {
+  padding: 20px;
+}
+.fixit {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+}
 `
