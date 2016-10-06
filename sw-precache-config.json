@@ -6,7 +6,8 @@
     "build/historia",
     "build/azimuth",
     "build/manifest.json",
-    "build/assets/**/*"
+    "build/assets/**/*",
+    "build/historia/*"
   ],
   "stripPrefix": "build/",
   "runtimeCaching": [
@@ -19,5 +20,9 @@
       "handler": "networkFirst"
     }
   ],
-    "dontCacheBustUrlsMatching": "assets"
+    "dontCacheBustUrlsMatching": "assets",
+    "importScripts": [
+      "assets/js/offline-google-analytics-import.js",
+      "assets/js/initga.js"
+        ]
 }

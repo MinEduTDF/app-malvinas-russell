@@ -8,9 +8,10 @@
     "version": "uuid > .amrversion",
     "clean": "rm build/index.html build/assets/*.js build/assets/*.js.gz build/assets/css/main-*.css",
     "makeindex": "node ./makeindex.js `cat .amrversion`",
+      "analytics": "cp ./node_modules/sw-offline-google-analytics/offline-google-analytics-import.js initga.js build/assets/js/",
     "precache": "sw-precache --config=sw-precache-config.json --root=build",
     "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=mozjpeg [mozjpeg --progressive]",
-    "build": "npm run imagemin && npm run version && npm run makeindex && npm run precache && browserify -p [ csjs-extractify --extension '_css.js' -o build/assets/css/main-`cat .amrversion`.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
+    "build": "npm run imagemin && npm run version && npm run makeindex && npm run analytics && npm run precache && browserify -p [ csjs-extractify --extension '_css.js' -o build/assets/css/main-`cat .amrversion`.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
   },
   "repository": {
     "type": "git",
@@ -61,6 +62,7 @@
     "es6-templates": "^0.2.2",
     "imagemin-cli": "^3.0.0",
     "imagemin-mozjpeg": "^6.0.0",
+    "sw-offline-google-analytics": "^1.1.1",
     "sw-toolbox": "^3.2.1",
     "uuid-cli": "^2.0.0",
     "watchify": "^3.7.0",
