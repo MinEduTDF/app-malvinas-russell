@@ -8,13 +8,10 @@
     "version": "uuid > .amrversion",
     "clean": "rm build/index.html build/assets/*.js build/assets/*.js.gz build/assets/css/main-*.css",
     "makeindex": "node ./makeindex.js `cat .amrversion`",
-    "analytics": "cp ./node_modules/sw-offline-google-analytics/offline-google-analytics-import.js initga.js build/assets/js/",
+      "analytics": "cp ./node_modules/sw-offline-google-analytics/offline-google-analytics-import.js initga.js build/assets/js/",
     "precache": "sw-precache --config=sw-precache-config.json --root=build",
     "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=mozjpeg [mozjpeg --progressive]",
-    "prejs": "npm run imagemin && npm run version && npm run makeindex && npm run analytics && npm run precache", 
-    "buildjs": "browserify -p [ csjs-extractify --extension '_css.js' -o tmp/main-`cat .amrversion`.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz",
-    "buildcss": "cat tmp/main-`cat .amrversion`.css | postcss -u autoprefixer | tee build/assets/css/main-`cat .amrversion`.css |gzip -c > build/assets/css/main-`cat .amrversion`.css.gz",
-    "build": "npm run prejs && npm run buildjs && npm run buildcss"
+    "build": "npm run imagemin && npm run version && npm run makeindex && npm run analytics && npm run precache && browserify -p [ csjs-extractify --extension '_css.js' -o build/assets/css/main-`cat .amrversion`.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz"
   },
   "repository": {
     "type": "git",
@@ -32,7 +29,6 @@
   "dependencies": {
     "@hughsk/fulltilt": "^0.7.1",
     "JSONStream": "^1.1.1",
-    "autoprefixer": "^6.5.0",
     "azimuth": "^0.1.0",
     "csjs": "^1.0.3",
     "csjs-extractify": "^1.0.0-alpha.0",
@@ -47,7 +43,6 @@
     "local-links": "^1.4.0",
     "morphdom": "^2.0.1",
     "oppressor": "0.0.1",
-    "postcss-cli": "^2.6.0",
     "request": "^2.72.0",
     "routes": "^2.1.0",
     "russell-view": "^1.0.0",
