@@ -10,8 +10,8 @@
     "makeindex": "node ./makeindex.js `cat .amrversion`",
     "analytics": "cp ./node_modules/sw-offline-google-analytics/offline-google-analytics-import.js initga.js build/assets/js/",
     "precache": "sw-precache --config=sw-precache-config.json --root=build",
-    "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=mozjpeg [mozjpeg --progressive]",
-    "prejs": "npm run imagemin && npm run version && npm run makeindex && npm run analytics && npm run precache", 
+    "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=pngquant [pngquant --quality=80] --plugin=mozjpeg [mozjpeg --progressive]",
+    "prejs": "npm run imagemin && npm run version && npm run makeindex && npm run analytics && npm run precache",
     "buildjs": "browserify -p [ csjs-extractify --extension '_css.js' -o tmp/main-`cat .amrversion`.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz",
     "buildcss": "cat tmp/main-`cat .amrversion`.css | postcss -u autoprefixer | tee build/assets/css/main-`cat .amrversion`.css |gzip -c > build/assets/css/main-`cat .amrversion`.css.gz",
     "build": "npm run prejs && npm run buildjs && npm run buildcss"
@@ -43,6 +43,7 @@
     "gyronorm": "^2.0.4",
     "http-proxy": "^1.14.0",
     "hyperstream": "^1.2.2",
+    "imagemin-pngquant": "^5.0.0",
     "json-select": "^2.2.0",
     "local-links": "^1.4.0",
     "morphdom": "^2.0.1",
