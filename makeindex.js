@@ -52,6 +52,10 @@ h2 {
   font-weight: 400;
   color: #999;
 }
+ul {
+  list-style-type: none;
+  padding: 20px;
+}
 </style>
 <title>Malvinas</title>
 </head>
