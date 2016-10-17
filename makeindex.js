@@ -24,39 +24,6 @@ function makeindex (version) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="FbGcc4Igo8kKLnyGubgLs8dPPihhPP8GS1gPOHnGJi4" />
 <link rel='stylesheet' type='text/css' href='/assets/css/main-${version}.css'>
-<style type='text/css'>* {
-  margin: 0;
-  padding: 0;
-}
-
-*, *:before, *:after {
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  font: 12px/1 'Montserrat', sans-serif;
-  color: #333;
-  background: #eaeaea;
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
-/* Demo Description */
-
-
-h2 {
-  font-size: 18px;
-  font-weight: 400;
-  color: #999;
-}
-ul {
-  list-style-type: none;
-  padding: 20px;
-}
-</style>
 <title>Malvinas</title>
 </head>
 

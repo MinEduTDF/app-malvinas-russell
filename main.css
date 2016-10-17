@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 12px/1 'Montserrat', sans-serif;
+  color: #333;
+  background: #eaeaea;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* Demo Description */
+
+
+h2 {
+  font-size: 18px;
+  font-weight: 400;
+  color: #999;
+}
+ul {
+  list-style-type: none;
+  padding: 20px;
+}
