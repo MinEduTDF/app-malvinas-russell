@@ -114,5 +114,6 @@ padding: 90px;
   padding: 10px;
   padding-left: 17px;
   background-color: #6389c8;
+  height: 50px;
 }
 `
