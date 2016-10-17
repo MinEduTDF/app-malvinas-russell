@@ -13,7 +13,7 @@
     "imagemin": "imagemin img/**/* --out-dir=build/assets/img --plugin=pngquant [pngquant --quality=80] --plugin=mozjpeg [mozjpeg --progressive]",
     "prejs": "npm run imagemin && npm run version && npm run makeindex && npm run analytics && npm run precache",
     "buildjs": "browserify -p [ csjs-extractify --extension '_css.js' -o tmp/main-`cat .amrversion`.css ] src/index.js | uglifyjs -cm | tee build/assets/bundle-`cat .amrversion`.js | gzip -c > build/assets/bundle-`cat .amrversion`.js.gz",
-    "buildcss": "cat tmp/main-`cat .amrversion`.css | postcss -u autoprefixer | tee build/assets/css/main-`cat .amrversion`.css |gzip -c > build/assets/css/main-`cat .amrversion`.css.gz",
+    "buildcss": "cat main.css >> tmp/main-`cat .amrversion`.css && cat tmp/main-`cat .amrversion`.css | postcss -u autoprefixer | tee build/assets/css/main-`cat .amrversion`.css |gzip -c > build/assets/css/main-`cat .amrversion`.css.gz",
     "build": "npm run prejs && npm run buildjs && npm run buildcss"
   },
   "repository": {
