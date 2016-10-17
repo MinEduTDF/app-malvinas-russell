@@ -36,7 +36,6 @@
     "azimuth": "^0.1.0",
     "csjs": "^1.0.3",
     "csjs-extractify": "^1.0.0-alpha.0",
-    "dominant-color": "0.0.1",
     "ecstatic": "^1.4.1",
     "fastclick": "^1.0.6",
     "feedme": "^0.3.0",
@@ -56,7 +55,6 @@
     "sw-precache": "^4.0.0",
     "sw-toolbox": "^3.2.1",
     "uglify-js": "^2.7.3",
-    "wayfarer": "^6.1.4",
     "xhr": "^2.2.2",
     "xtend": "^4.0.1"
   },
@@ -65,7 +63,6 @@
     "csjs-extractify": "^1.0.0-alpha.0",
     "csjs-injectify": "^1.0.0",
     "es2020": "^1.1.9",
-    "es6-templates": "^0.2.2",
     "imagemin-cli": "^3.0.0",
     "imagemin-mozjpeg": "^6.0.0",
     "sw-offline-google-analytics": "^1.1.1",
