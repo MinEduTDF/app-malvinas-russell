@@ -61,6 +61,7 @@ var server = http.createServer(function (req, res) {
   // }
   return render(store.getState())
   function render (state) {
+  var nonce = Math.random().toString().split('.')[1]
     res.setHeader('Content-Type', 'text/html; charset=UTF-8')
     res.setHeader('Cache-Control', 'no-cache')
     res.setHeader('Max-Age', '0')
@@ -68,6 +69,8 @@ var server = http.createServer(function (req, res) {
     res.setHeader('X-XSS-Protection', '1; mode=block')
     res.setHeader('X-Frame-Options', 'DENY')
     res.setHeader('X-Content-Type-Options', 'nosniff')
+    res.setHeader('Content-Security-Policy', "object-src 'none'; script-src 'nonce-" + nonce + "' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:;")
+
     // var state = store.getState()
     var hyd = JSON.stringify(state)
     var elem = app(state)
@@ -76,7 +79,17 @@ var server = http.createServer(function (req, res) {
         _appendHtml: elem
       },
       '#state': {
-        _html: 'window.state =' + hyd
+        _html: 'window.state =' + hyd,
+        nonce: {append: nonce}
+      },
+      '#css': {
+        nonce: {append: nonce}
+      },
+      '#bundle': {
+        nonce: {append: nonce}
+      },
+      '#ga2': {
+        nonce: {append: nonce}
       }
     })).pipe(oppressor(req)).pipe(res)
   }
