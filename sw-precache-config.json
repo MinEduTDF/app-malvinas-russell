@@ -1,7 +1,7 @@
 {
   "staticFileGlobs": [
-    "build/index.html",
-    "build/mensajes/",
+    "build",
+    "build/mensajes",
     "build/noticias",
     "build/historia",
     "build/azimuth",
@@ -9,7 +9,7 @@
     "build/assets/**/*",
     "build/historia/*"
   ],
-  "stripPrefix": "build",
+  "stripPrefix": "build/",
   "runtimeCaching": [
     {
       "urlPattern": "/\/elmalvinense/",
@@ -20,7 +20,7 @@
       "handler": "networkFirst"
     }
   ],
-    "dontCacheBustUrlsMatching": "assets/**/*",
+    "dontCacheBustUrlsMatching": "assets",
     "importScripts": [
       "assets/js/offline-google-analytics-import.js",
       "assets/js/initga.js"
