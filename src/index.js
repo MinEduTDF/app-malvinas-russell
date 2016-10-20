@@ -1,6 +1,7 @@
-var work = require('webworkify')
-var worker = work(require('./worker.js'))
-URL.revokeObjectURL(worker.objectURL)
+// var work = require('webworkify')
+// var worker = work(require('./worker.js'))
+// URL.revokeObjectURL(worker.objectURL)
+var worker = new Worker('/assets/js/worker.js')
 var morphdom = require('morphdom')
 var nT = requestAnimationFrame
 var localLinks = require('local-links')
@@ -139,3 +140,4 @@ document.body.addEventListener('click', function (event) {
     return worker.postMessage({type: click, payload: event.target.dataset.payload})
   }
 })
+

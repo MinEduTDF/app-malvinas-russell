@@ -69,7 +69,7 @@ var server = http.createServer(function (req, res) {
     res.setHeader('X-XSS-Protection', '1; mode=block')
     res.setHeader('X-Frame-Options', 'DENY')
     res.setHeader('X-Content-Type-Options', 'nosniff')
-    res.setHeader('Content-Security-Policy', "object-src 'none'; script-src 'nonce-" + nonce + "' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http:;")
+    res.setHeader('Content-Security-Policy', "object-src 'none'; script-src 'nonce-" + nonce + "' 'unsafe-inline' 'strict-dynamic' https: ;")
 
     // var state = store.getState()
     var hyd = JSON.stringify(state)
@@ -85,7 +85,10 @@ var server = http.createServer(function (req, res) {
       '#css': {
         nonce: {append: nonce}
       },
-      '#bundle': {
+       '#w': {
+        nonce: {append: nonce}
+      },
+     '#bundle': {
         nonce: {append: nonce}
       },
       '#ga2': {
