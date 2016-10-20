@@ -32,6 +32,17 @@ var st2 = ecstatic({
 var http = require('http')
 
 var server = http.createServer(function (req, res) {
+  var nonce = Math.random().toString().split('.')[1]
+    res.setHeader('Content-Type', 'text/html; charset=UTF-8')
+    res.setHeader('Cache-Control', 'no-cache')
+    res.setHeader('Max-Age', '0')
+    res.setHeader('Expires', Date.now())
+    res.setHeader('X-XSS-Protection', '1; mode=block')
+    res.setHeader('X-Frame-Options', 'DENY')
+    res.setHeader('X-Content-Type-Options', 'nosniff')
+    res.setHeader('Content-Security-Policy', "object-src 'none'; script-src 'nonce-" + nonce + "' 'unsafe-inline' 'strict-dynamic' https: ;")
+
+
   if (req.url.match('manifest.json')) return st(req, res)
   if (req.url.match('service-worker.js')) return st2(req, res)
   if (req.url.match('assets')) return st(req, res)
@@ -61,17 +72,7 @@ var server = http.createServer(function (req, res) {
   // }
   return render(store.getState())
   function render (state) {
-  var nonce = Math.random().toString().split('.')[1]
-    res.setHeader('Content-Type', 'text/html; charset=UTF-8')
-    res.setHeader('Cache-Control', 'no-cache')
-    res.setHeader('Max-Age', '0')
-    res.setHeader('Expires', Date.now())
-    res.setHeader('X-XSS-Protection', '1; mode=block')
-    res.setHeader('X-Frame-Options', 'DENY')
-    res.setHeader('X-Content-Type-Options', 'nosniff')
-    res.setHeader('Content-Security-Policy', "object-src 'none'; script-src 'nonce-" + nonce + "' 'unsafe-inline' 'strict-dynamic' https: ;")
-
-    // var state = store.getState()
+        // var state = store.getState()
     var hyd = JSON.stringify(state)
     var elem = app(state)
     read('index.html').pipe(hyperstream({
