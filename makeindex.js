@@ -11,8 +11,9 @@ function makeindex (version) {
 <meta name="msapplication-navbutton-color" content="#6389c8">
 <!-- iOS Safari -->
 <meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="/assets/img/launcher-icon-4x.png">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="assets/img/favicon.ico" type="image/x-icon">
 <link rel="manifest" href="manifest.json">
 <meta name="mobile-web-app-capable" content="yes">
