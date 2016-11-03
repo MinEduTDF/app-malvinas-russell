@@ -74,14 +74,12 @@ padding: 90px;
 }
 
 .nav li a {
-  border-bottom: 1px dashed #dedede;
   text-decoration: none;
   position: relative;
   display: block;
   padding: 15px 15px 15px 13px;
   font-size: 14px;
   color: #565656;
-  font-weight: bold;
 }
 
 .nav li a:before {
@@ -105,10 +103,9 @@ padding: 90px;
 
 .icon {
     fill: #6182C2;
-    margin-top: -7px;
     float: left;
-    height: 27px;
-    padding-right: 9px;
+    height: 14px;
+    margin-right: 15px;
 }
 .svgmenu {
   width: 30px;
@@ -117,5 +114,6 @@ padding: 90px;
   padding: 10px;
   padding-left: 17px;
   background-color: #6389c8;
+  height: 50px;
 }
 `
