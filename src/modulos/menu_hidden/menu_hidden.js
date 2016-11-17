@@ -46,7 +46,7 @@ module.exports = function menu_hidden (state) {
     </svg>
         Distancias del coraz&oacute;n</a>
       </li>
-      <li><a href="/agradecimientos">Sobre el proyecto</a></li>
+      <li><a href="/agradecimientos">Sobre el proyecto</a> </li>
     </ol>
   </div>
   <div class='${style['black'] + ' ' + black}'></div>
