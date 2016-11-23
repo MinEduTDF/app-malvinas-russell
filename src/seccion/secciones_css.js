@@ -1,6 +1,24 @@
 var csjs = require('csjs')
 
 module.exports = csjs`
+
+@media screen and (min-width: 600px) {
+  .logo_centro {
+    width:40%;
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .logo_centro {
+    width:100%;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
 .info {
   padding: 30px 20px 10px 20px;
   font-size: 14px;
