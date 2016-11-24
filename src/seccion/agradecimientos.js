@@ -30,7 +30,11 @@ module.exports = function noticias (state) {
     <br/>
     <h3>C&oacute;digo fuente</h3>
     <p><a href="https://github.com/MinEduTDF/app-malvinas-russell" target="_blank">Github</a></p> 
-    </div>`
+    </div>
+    <div class="${style.center}">
+  <img class="${style.logo_centro}" src="/assets/img/logo_educacion.svg"/>
+</div>
+    `
   var fixit = state.isOpen ? style.fixit : ''
   return rv`<div>${menu(state)}
 	<div class='${fixit}'><div class="${style.info}"><h1 class="${style.header}">Sobre el proyecto</h1>${texto}</div>
