@@ -20,7 +20,7 @@
       "handler": "networkFirst"
     }
   ],
-    "dontCacheBustUrlsMatching": "assets",
+    "dontCacheBustUrlsMatching": "/assets/",
     "importScripts": [
       "assets/js/offline-google-analytics-import.js",
       "assets/js/initga.js"
