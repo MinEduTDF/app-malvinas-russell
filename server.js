@@ -66,9 +66,9 @@ var server = http.createServer(function (req, res) {
     res.setHeader('Cache-Control', 'no-cache')
     res.setHeader('Max-Age', '0')
     res.setHeader('Expires', Date.now())
-    res.setHeader('X-XSS-Protection', '1; mode=block')
-    res.setHeader('X-Frame-Options', 'DENY')
-    res.setHeader('X-Content-Type-Options', 'nosniff')
+    // res.setHeader('X-XSS-Protection', '1; mode=block')
+    // res.setHeader('X-Frame-Options', 'DENY')
+    // res.setHeader('X-Content-Type-Options', 'nosniff')
     // res.setHeader('Content-Security-Policy', "object-src 'none'; script-src 'nonce-" + nonce + "' 'unsafe-inline' 'strict-dynamic' https: ;")
 
     // var state = store.getState()
