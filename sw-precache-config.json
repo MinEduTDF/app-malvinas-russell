@@ -12,7 +12,7 @@
   "stripPrefix": "build/",
   "runtimeCaching": [
     {
-      "urlPattern": "/\/elmalvinense/",
+      "urlPattern": "/elmalvinense/",
       "handler": "networkFirst"
     },
     { 
