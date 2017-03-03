@@ -25,13 +25,6 @@ module.exports = function menu_hidden (state) {
               Mensajes en el tiempo</a>
       </li>
 
-      <li>
-          <a href="/noticias"><svg  viewBox="0 0 32 32" class="${style.icon}"> <path class="path1" d="M28 8v-4h-28v22c0 1.105 0.895 2 2 2h27c1.657 0 3-1.343 3-3v-17h-4zM26 26h-24v-20h24v20zM4 10h20v2h-20zM16 14h8v2h-8zM16 18h8v2h-8zM16 22h6v2h-6zM4 14h10v10h-10z"></path>
-
-</svg>
-              Noticias</a>
-      </li>
-
             <li>
         <a href="/historia">
 <svg viewBox="0 0 32 32" class="${style.icon}"> <path class="path1" d="M28 4v26h-21c-1.657 0-3-1.343-3-3s1.343-3 3-3h19v-24h-20c-2.2 0-4 1.8-4 4v24c0 2.2 1.8 4 4 4h24v-28h-2z"></path>
