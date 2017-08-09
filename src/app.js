@@ -15,7 +15,7 @@ router.addRoute('/agradecimientos', agradecimientos)
 router.addRoute('/noticias', noticias)
 router.addRoute('/azimuth', azimuth)
 router.addRoute('/historia', timeline)
-router.addRoute('/historia/:index([0-9]|[1-4][0-9])', timeline)
+router.addRoute('/historia/:index([0-9]|[1-5][0-9])', timeline)
 router.addRoute('*', function () {return '404 no encontrado'})
 
 module.exports = function app (state) {
