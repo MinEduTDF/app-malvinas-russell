@@ -8,6 +8,17 @@ module.exports = function menu_hidden (state) {
     sidebar = state.isOpen ? style['isOpen'] : style['isClosed']
     black = state.isOpen ? style['isOpenb'] : style['isClosedb']
   }
+
+        /* <li><a href="/noticias">
+<svg viewBox="0 0 32 32" class="${style.icon}">
+<path class="path1" d="M28,7V3H0v22c0,0,0,4,4,4h25c0,0,3-0.062,3-4V7H28z M4,27c-2,0-2-2-2-2V5h24v20    c0,0.921,0.284,1.559,0.676,2H4z" fill="#006DF0"/>
+    <rect x="4" y="9" width="20" height="2" fill="#006DF0"/>
+    <rect x="15" y="21" width="7" height="2" fill="#006DF0"/>
+    <rect x="15" y="17" width="9" height="2" fill="#006DF0"/>
+    <rect x="15" y="13" width="9" height="2" fill="#006DF0"/>
+    <rect x="4" y="13" width="9" height="10" fill="#006DF0"/>
+     </svg>
+      Noticias educativas</a> </li> */
   return rv`<div>
   <div class='${style.sidebar  + " " + sidebar}'>
 
@@ -39,16 +50,7 @@ module.exports = function menu_hidden (state) {
     </svg>
         Distancias del coraz&oacute;n</a>
       </li>
-      <li><a href="/noticias">
-<svg viewBox="0 0 32 32" class="${style.icon}">
-<path class="path1" d="M28,7V3H0v22c0,0,0,4,4,4h25c0,0,3-0.062,3-4V7H28z M4,27c-2,0-2-2-2-2V5h24v20    c0,0.921,0.284,1.559,0.676,2H4z" fill="#006DF0"/>
-    <rect x="4" y="9" width="20" height="2" fill="#006DF0"/>
-    <rect x="15" y="21" width="7" height="2" fill="#006DF0"/>
-    <rect x="15" y="17" width="9" height="2" fill="#006DF0"/>
-    <rect x="15" y="13" width="9" height="2" fill="#006DF0"/>
-    <rect x="4" y="13" width="9" height="10" fill="#006DF0"/>
-     </svg>
-      Noticias</a> </li>
+
       <li><a href="http://concursomalvinas.tierradelfuego.gov.ar" target="_blank">
 <svg viewBox="0 0 32 32" class="${style.icon}">
   <path d="M22.395,14.54V9.65h-1.924L27.221,0h-8.405c0,0-2.739,4.67-2.863,4.483c-0.002-0.003-0.01-0.017-0.014-0.021   c-0.004,0.005-0.012,0.019-0.014,0.021C15.801,4.67,13.061,0,13.061,0H4.656l6.749,9.65H9.481v4.89   c-2.112,1.808-3.455,4.487-3.455,7.483c0,5.441,4.41,9.854,9.852,9.854c0.021,0,0.04-0.003,0.061-0.003s0.04,0.003,0.061,0.003   c5.441,0,9.851-4.411,9.851-9.854C25.85,19.027,24.508,16.348,22.395,14.54z M20.901,13.486c-1.445-0.831-3.116-1.314-4.902-1.314   c-0.021,0-0.04,0.004-0.061,0.004s-0.04-0.004-0.061-0.004c-1.786,0-3.457,0.483-4.902,1.314v-2.342h4.963h4.963V13.486z" fill="#006DF0"/>
