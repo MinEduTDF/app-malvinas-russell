@@ -589,35 +589,14 @@ var initialState = {
       'created': '2016-09-21T00:00:00+0000',
       'modified': '2016-09-21T00:00:00+0000'
     },
+    
     {
       'id': 51,
       'category_id': 1,
       'title': '2017',
-      'body': 'Durante el año 2016 se llevó a cabo el Concurso Nacional Malvinas Argentinas. Esta convocatoria fue organizada por el Ministerio de Educación de la Provincia de Tierra del Fuego, Antártida e islas del Atlántico Sur, y consistió en la elaboración y presentación por parte de estudiantes de los tres niveles: inicial, primario y secundario de producciones audiovisuales con la utilización de las TIC (Tecnología de la información y de la Comunicación). A través de estos recursos visuales se buscó promover la identidad y la pertenencia regional y nacional de las Islas, como parte integral de la provincia fueguina, desde su larga historia, su geografía y sus recursos naturales.        Los alumnos Ana Laura Varela, Tomás Leonardelli y Francisco Pacheco, de la Escuela Nº 17 “General Martín Miguel de Güemes” de Entre Ríos, acompañados por su docente, María José Barrios, fueron los ganadores del nivel secundario con una presentación gráfica enfocada puntualmente en los 649 héroes caídos en Malvinas.        Por el nivel primario, las ganadoras fueron las alumnas Sofía Arce, Daiana Suarez y Malena Ríos, de la Escuela Provincial Nº 14 “Solidaridad Latinoamericana” de Río Grande, junto a su docente Liliana Sevilla, con una producción audiovisual acerca de la historia y extinción del Guará, el zorro-lobo de las Islas Malvinas.',
-      'img': '/assets/img/2017-1.jpg',
-      'url': 'https://www.educ.ar/noticias/200141/concurso-nacional-laquomalvinas-argentinasraquo-edicioacuten-2017',
-      'status': 1,
-      'created': '2016-09-21T00:00:00+0000',
-      'modified': '2016-09-21T00:00:00+0000'
-    },
-    {
-      'id': 52,
-      'category_id': 1,
-      'title': '2017',
-      'body': 'El 14 de septiembre del año 2016, en medio del Foro de Inversiones y Negocios que el Gobierno argentino organizó en el Centro Cultural Néstor Kircher en la ciudad de Buenos Aires, se encontraron la canciller Susana Malcorra y el vicecanciller británico de Asuntos Exteriores, Alan Duncan. Ambos Gobiernos anunciaron la cooperación conjunta en la explotación del petróleo, el desarrollo de la pesca, comercio, navegación y transporte aerocomercial en las  islas Malvinas. Respecto a este punto, se acordó negociar el regreso de los vuelos desde aeropuertos continentales argentinos a las Islas Malvinas. Asimismo se consideró la cuestión del reconocimiento de los soldados enterrados como NN en Malvinas.',
+      'body': 'El 14 de septiembre del año 2016, en medio del Foro de Inversiones y Negocios que el Gobierno argentino organizó en el Centro Cultural Néstor Kirchner en la ciudad de Buenos Aires, se encontraron la canciller Susana Malcorra y el vicecanciller británico de Asuntos Exteriores, Alan Duncan. Ambos Gobiernos anunciaron la cooperación conjunta en la explotación del petróleo, el desarrollo de la pesca, comercio, navegación y transporte aerocomercial en las  islas Malvinas. Respecto a este punto, se acordó negociar el regreso de los vuelos desde aeropuertos continentales argentinos a las Islas Malvinas. Asimismo se consideró la cuestión del reconocimiento de los soldados enterrados como NN en Malvinas.',
       'img': '/assets/img/2017-2.jpg',
       'url': 'https://www.mrecic.gov.ar/comunicado-conjunto-10',
-      'status': 1,
-      'created': '2016-09-21T00:00:00+0000',
-      'modified': '2016-09-21T00:00:00+0000'
-    },
-    {
-      'id': 53,
-      'category_id': 1,
-      'title': '2017',
-      'body': 'En el marco de la conmemoración de los 35 años de la guerra de Malvinas se realizó la clásica vigilia del 2 de abril en las ciudades de Ushuaia y Río Grande. En esta oportunidad se realizó una ceremonia oficial, en la cual el Centro de Ex-Combatientes de Ushuaia cedió en custodia la bandera, que flameó todo el año junto al Monumento a los Caídos durante la Guerra en la Plaza Malvinas, a la Escuela  N° 38 “Presidente Raúl Alfonsín” de la Base Esperanza de la Antártida.',
-      'img': '/assets/img/2017-3.jpg',
-      'url': 'http://www.eldiariodelfindelmundo.com/noticias/2017/03/30/71367-tierra-del-fuego-ultima-los-preparativos-para-conmemorar-el-35-aniversario-de-la-guerra-de-malvinas',
       'status': 1,
       'created': '2016-09-21T00:00:00+0000',
       'modified': '2016-09-21T00:00:00+0000'
@@ -625,6 +604,19 @@ var initialState = {
 
 
 
+  ],
+  noticias: [{id: 1,
+    title: 'Concurso Malvinas',
+    //'url': 'https://www.educ.ar/noticias/200141/concurso-nacional-laquomalvinas-argentinasraquo-edicioacuten-2017',
+    img: '/assets/img/2017-1.jpg',
+    description: 'Durante el año 2016 se llevó a cabo el Concurso Nacional Malvinas Argentinas. Esta convocatoria fue organizada por el Ministerio de Educación de la Provincia de Tierra del Fuego, Antártida e islas del Atlántico Sur, y consistió en la elaboración y presentación por parte de estudiantes de los tres niveles: inicial, primario y secundario de producciones audiovisuales con la utilización de las TIC (Tecnología de la información y de la Comunicación). A través de estos recursos visuales se buscó promover la identidad y la pertenencia regional y nacional de las Islas, como parte integral de la provincia fueguina, desde su larga historia, su geografía y sus recursos naturales.        Los alumnos Ana Laura Varela, Tomás Leonardelli y Francisco Pacheco, de la Escuela Nº 17 “General Martín Miguel de Güemes” de Entre Ríos, acompañados por su docente, María José Barrios, fueron los ganadores del nivel secundario con una presentación gráfica enfocada puntualmente en los 649 héroes caídos en Malvinas.        Por el nivel primario, las ganadoras fueron las alumnas Sofía Arce, Daiana Suarez y Malena Ríos, de la Escuela Provincial Nº 14 “Solidaridad Latinoamericana” de Río Grande, junto a su docente Liliana Sevilla, con una producción audiovisual acerca de la historia y extinción del Guará, el zorro-lobo de las Islas Malvinas.'
+  },
+    {id: 2,
+    title: 'Conmemoración',
+    //'url': 'http://www.eldiariodelfindelmundo.com/noticias/2017/03/30/71367-tierra-del-fuego-ultima-los-preparativos-para-conmemorar-el-35-aniversario-de-la-guerra-de-malvinas',
+    img: '/assets/img/2017-3.jpg',
+    description: 'En el marco de la conmemoración de los 35 años de la guerra de Malvinas se realizó la clásica vigilia del 2 de abril en las ciudades de Ushuaia y Río Grande. En esta oportunidad se realizó una ceremonia oficial, en la cual el Centro de Ex-Combatientes de Ushuaia cedió en custodia la bandera, que flameó todo el año junto al Monumento a los Caídos durante la Guerra en la Plaza Malvinas, a la Escuela  N° 38 “Presidente Raúl Alfonsín” de la Base Esperanza de la Antártida.'
+  }
   ],
   mensajes: [{id: 1,
     title: 'Jose Purcelli',
