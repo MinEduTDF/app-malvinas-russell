@@ -616,7 +616,7 @@ var initialState = {
   noticias: [{id: 1,
     title: 'Concurso Malvinas',
     //'url': 'https://www.educ.ar/noticias/200141/concurso-nacional-laquomalvinas-argentinasraquo-edicioacuten-2017',
-    img: '/assets/img/concurso2016.jpg',
+    img: '/assets/img/concurs02016.jpg',
     description: 'Durante el año 2016 se llevó a cabo el Concurso Nacional Malvinas Argentinas. Esta convocatoria fue organizada por el Ministerio de Educación de la Provincia de Tierra del Fuego, Antártida e islas del Atlántico Sur, y consistió en la elaboración y presentación por parte de estudiantes de los tres niveles: inicial, primario y secundario de producciones audiovisuales con la utilización de las TIC (Tecnología de la información y de la Comunicación). A través de estos recursos visuales se buscó promover la identidad y la pertenencia regional y nacional de las Islas, como parte integral de la provincia fueguina, desde su larga historia, su geografía y sus recursos naturales.        Los alumnos Ana Laura Varela, Tomás Leonardelli y Francisco Pacheco, de la Escuela Nº 17 “General Martín Miguel de Güemes” de Entre Ríos, acompañados por su docente, María José Barrios, fueron los ganadores del nivel secundario con una presentación gráfica enfocada puntualmente en los 649 héroes caídos en Malvinas.        Por el nivel primario, las ganadoras fueron las alumnas Sofía Arce, Daiana Suarez y Malena Ríos, de la Escuela Provincial Nº 14 “Solidaridad Latinoamericana” de Río Grande, junto a su docente Liliana Sevilla, con una producción audiovisual acerca de la historia y extinción del Guará, el zorro-lobo de las Islas Malvinas.'
   }
   ],
